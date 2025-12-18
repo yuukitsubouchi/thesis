@@ -18,9 +18,15 @@
 \end{center}
 \vspace{1.0zh}
 %
+本論文では，ROS 2 における Navigation2 を用いた自律移動ロボットのパラメータ調整が，ロボットの挙動に与える影響について調査する．本研究室では，屋外自律移動ロボットの研究を行っており，津田沼チャレンジやつくばチャレンジといった実環境での自律走行競技に参加している．
 
+Navigation2 を用いた自律移動では，自己位置推定，経路計画，障害物回避などを実現するために多数のパラメータを適切に設定する必要がある．しかし，これらのパラメータがロボットの挙動にどのような影響を与えるかについては十分に整理されておらず，特に屋外環境においては調整が困難である．実際にロボットの調整を行う過程においても，パラメータ設定によって意図しない挙動や走行性能の低下が生じる問題が確認された．
 
-キーワード: Orne-box3
+そこで本研究では，Navigation2 における各種パラメータを変化させた際のロボットの挙動の変化を明らかにすることを目的とする．ロボットの挙動に影響を与えると考えられるパラメータを対象として走行実験を行い，それぞれの設定値における走行挙動を比較・分析した．
+
+実験の結果，調査対象としたパラメータの中から，ロボットの走行安定性や経路追従性能に大きな影響を与えるものを確認することができた．これらの結果から，Navigation2 におけるパラメータ調整の指針を得ることができ，今後のロボット調整作業の効率化や，問題の挙動の原因究明に有用であることが示された．
+
+キーワード: 屋外自律移動ロボット、ナビゲーション、パラメータ
 %
 \newpage
 %%
@@ -38,6 +44,9 @@
 \end{center}
 \vspace{1.0zh}
 %
+This thesis investigates the effects of parameter tuning in Navigation2 on the behavior of autonomous mobile robots using ROS 2. Our laboratory conducts research on outdoor autonomous mobile robots and participates in real-world autonomous navigation competitions such as the Tsudanuma Challenge and the Tsukuba Challenge.
+Autonomous navigation using Navigation2 requires appropriate tuning of numerous parameters to achieve functions such as self-localization, path planning, and obstacle avoidance. However, the influence of these parameters on robot behavior has not been sufficiently organized, and parameter tuning remains particularly challenging in outdoor environments. In practice, during the tuning process of the robot, issues such as unintended behavior and degradation of navigation performance were observed depending on parameter settings.
+Therefore, the objective of this study is to clarify the changes in robot behavior caused by variations in parameters in Navigation2. Driving experiments were conducted by adjusting parameters that are considered to significantly affect robot behavior, and the resulting navigation behaviors under different parameter settings were compared and analyzed.
+Experimental results confirmed that several of the investigated parameters have a significant impact on the stability of robot motion and path-following performance. These findings provide useful guidelines for parameter tuning in Navigation2 and contribute to improving the efficiency of robot configuration and identifying the causes of problematic behaviors.
 
-
-keywords: 
+keywords: outdoor autonomous mobile robot,navigation,parameters
