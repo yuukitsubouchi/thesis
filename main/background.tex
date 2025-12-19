@@ -150,7 +150,106 @@
 この値を超える測距データは無効として扱われる．
 外乱やノイズの多い環境では，自己位置推定の安定化に寄与する．
 
+\subsection{Navigation2}
+\subsubsection{controller}
 
+\subsubsection{max\_vel\_x}
+ロボットの前進方向の最大速度を設定するパラメータである．
+値を大きくすると高速移動が可能となるが，制御の不安定化や振動が生じやすくなる．
+安全性と走行性能のバランスが重要となる．
+
+\subsubsection{max\_vel\_theta}
+ロボットの最大回転速度を設定するパラメータである．
+値を大きくすると旋回が速くなるが，急激な姿勢変化が発生する可能性がある．
+狭い環境では慎重な調整が必要である．
+
+\subsubsection{max\_speed\_xy}
+平面移動における最大速度を制限するパラメータである．
+前進速度と横方向速度を含めた総合的な移動速度の上限を定める．
+移動の滑らかさに影響を与える．
+
+\subsubsection{min\_theta\_velocity\_threshold}
+回転速度が停止と判定される最小閾値を表すパラメータである．
+値を大きくすると微小な回転が無視されやすくなり，姿勢制御が粗くなる．
+ゴール付近での姿勢安定性に影響を与える．
+
+\subsubsection{acc\_lim\_x}
+前進方向の加速度制限を設定するパラメータである．
+値を小さくすると加減速が緩やかになり，安定した走行が可能となる．
+一方で応答性は低下する．
+
+\subsubsection{acc\_lim\_theta}
+回転方向の加速度制限を設定するパラメータである．
+急激な旋回動作を抑制し，滑らかな姿勢制御を実現するために用いられる．
+
+\subsubsection{costmap}
+\subsubsection{global\_resolution}
+Global Costmap の解像度を設定するパラメータである．
+値を小さくすると詳細な地図表現が可能となるが，計算負荷が増加する．
+
+\subsubsection{global\_cost\_scaling\_factor}
+障害物からの距離に応じたコストの減衰率を設定するパラメータである．
+値を大きくすると障害物付近のコストが急激に低下する．
+
+\subsubsection{global\_inflation\_radius}
+障害物の周囲をどの程度膨張させるかを設定するパラメータである．
+安全距離の確保に直接影響する．
+
+\subsubsection{local\_resolution}
+Local Costmap の解像度を設定するパラメータである．
+局所的な障害物回避性能に影響を与える．
+
+\subsubsection{local\_cost\_scaling\_factor}
+Local Costmap における障害物コストの減衰率を設定する．
+回避挙動の敏感さに影響する．
+
+\subsubsection{local\_inflation\_radius}
+Local Costmap における障害物の膨張半径を設定する．
+障害物回避時の安全性を左右する．
+
+\subsubsection{Velocity Smoother}
+\subsubsection{smoothing\_frequency}
+速度平滑化処理の更新周波数を設定するパラメータである．
+値を大きくすると滑らかな速度制御が可能となる．
+
+\subsubsection{max\_velocity\_x}
+max\_velocityの第1要素は，ロボットの 前後方向（x方向）の最大並進速度を表す．
+この値を超える速度指令は制限されるため，ロボットの最高走行速度が規定される．
+値を大きくすると移動速度は向上するが，停止距離や制御安定性への影響が大きくなる．
+
+\subsubsection{max\_velocity\_theta}
+max\_velocity の第3要素は，ロボットの 回転方向（θ方向）の最大角速度を表す．
+旋回時の最大回転速度を制限し，急激な回転動作を防ぐ役割を持つ．
+値を大きくすると旋回応答は向上するが，姿勢の安定性が低下する可能性がある．
+
+\subsubsection{max\_accel\_ms}
+max\_accelの第1要素は，並進方向の最大加速度を制限するパラメータである．
+走行時の急発進を抑制する．
+
+\subsubsection{max\_accel\_rads}
+max\_accel の第3要素は，回転方向の最大加速度を制限するパラメータである．
+旋回動作の安定性向上に寄与する．
+
+\subsubsection{planner/ゴール判定}
+\subsubsection{linear\_granularity}
+経路生成時の直線方向の分割間隔を設定するパラメータである．
+値を小さくすると経路が滑らかになるが，計算量が増加する．
+
+\subsubsection{angular\_granularity}
+経路生成時の角度方向の分割間隔を設定する．
+旋回精度に影響を与える．
+
+\subsubsection{xy\_goal\_tolerance}
+ロボットがゴールに到達したと判定される位置誤差の許容範囲を表す．
+値を大きくするとゴール判定が緩くなる．
+
+\subsubsection{trans\_stopped\_velocity}
+並進速度が停止と判定される閾値を設定するパラメータである．
+ゴール付近での停止判定に影響を与える．
+
+\subsubsection{planner\_tolerance}
+経路計画時に許容されるゴール周辺の誤差範囲を設定するパラメータである．
+局所的な計画失敗を防ぐ役割を持つ．
 
 \begin{figure}[hbtp]
   \centering
