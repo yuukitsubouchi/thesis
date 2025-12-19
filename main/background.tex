@@ -9,18 +9,121 @@
  %\label{Fig:Example}
 \end{figure}
 
-\begin{table}[htbp]
 
-\caption{パラメータ一覧}
-\begin{tabular}{cc}
-項目 & 値 \\
-\end{tabular}
+%\begin{table}[htbp]
+  %\centering
+  \begin{table}[htbp]
+  \centering
+  \caption{emcl2におけるパラメータ一覧}
+  \label{tab:emcl2_params}
+  \begin{tabular}{p{0.8\textwidth}}
+    \toprule
+    パラメータ名 \\
+    \midrule
+    odom\_fw\_dev\_per\_fw \\
+    odom\_fw\_dev\_per\_rot \\
+    odom\_rot\_dev\_per\_fw \\
+    odom\_rot\_dev\_per\_rot \\
+    laser\_likelihood\_max\_dist \\
+    range\_threshold \\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
-\subsubsection{etc...}
+\begin{table}[htbp]
+  \centering
+  \caption{Controllerに関するパラメータ一覧}
+  \label{tab:controller_params}
+  \begin{tabular}{p{0.8\textwidth}}
+    \toprule
+    パラメータ名 \\
+    \midrule
+    max\_vel\_x \\
+    max\_vel\_theta \\
+    max\_speed\_xy \\
+    min\_theta\_velocity\_threshold \\
+    acc\_lim\_x \\
+    acc\_lim\_theta \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Costmapに関するパラメータ一覧}
+  \label{tab:costmap_params}
+  \begin{tabular}{p{0.8\textwidth}}
+    \toprule
+    パラメータ名 \\
+    \midrule
+    global\_resolution \\
+    global\_cost\_scaling\_factor \\
+    global\_inflation\_radius \\
+    local\_resolution \\
+    local\_cost\_scaling\_factor \\
+    local\_inflation\_radius \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Velocity Smootherに関するパラメータ一覧}
+  \label{tab:smoother_params}
+  \begin{tabular}{p{0.8\textwidth}}
+    \toprule
+    パラメータ名 \\
+    \midrule
+    smoothing\_frequency \\
+    max\_velocity \\
+    max\_accel\_ms \\
+    max\_accel\_rads \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Plannerおよびゴール判定に関するパラメータ一覧}
+  \label{tab:planner_params}
+  \begin{tabular}{p{0.8\textwidth}}
+    \toprule
+    パラメータ名 \\
+    \midrule
+    linear\_granularity \\
+    angular\_granularity \\
+    xy\_goal\_tolerance \\
+    trans\_stopped\_velocity \\
+    planner\_tolerance \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+%\begin{table}[htbp]
+%\begin{table}[htbp]
+  %\centering
+  
+  %\end{tabular}
+ %\end{table}
+
+
+%\caption{パラメータ一覧}
+%\begin{tabular}{cc}
+%項目 & 値 \\
+%\end{tabular}
+%\end{table}
+
+%\subsubsection{etc...}
 \newpage
 
 \section{パラメータの詳細}
+
+\subsubsection{odom\_fw\_dev\_per\_fw}
+前進移動時における前進方向のオドメトリ誤差を表すパラメータである．
+値を大きくするとオドメトリを信頼しにくくなり，パーティクルの分散が大きくなる．
+
 \begin{figure}[hbtp]
   \centering
  %\includegraphics[keepaspectratio, scale=0.8]
