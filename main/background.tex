@@ -18,7 +18,7 @@
   \label{tab:emcl2_params}
   \begin{tabular}{p{0.8\textwidth}}
     \toprule
-    パラメータ名 \\
+    Parameter Name \\
     \midrule
     odom\_fw\_dev\_per\_fw \\
     odom\_fw\_dev\_per\_rot \\
@@ -32,11 +32,11 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{Controllerに関するパラメータ一覧}
+  \caption{Nav2のControllerに関するパラメータ一覧}
   \label{tab:controller_params}
   \begin{tabular}{p{0.8\textwidth}}
     \toprule
-    パラメータ名 \\
+    Parameter Name \\
     \midrule
     max\_vel\_x \\
     max\_vel\_theta \\
@@ -50,11 +50,11 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{Costmapに関するパラメータ一覧}
+  \caption{Nav2のCostmapに関するパラメータ一覧}
   \label{tab:costmap_params}
   \begin{tabular}{p{0.8\textwidth}}
     \toprule
-    パラメータ名 \\
+    Parameter Name \\
     \midrule
     global\_resolution \\
     global\_cost\_scaling\_factor \\
@@ -68,11 +68,11 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{Velocity Smootherに関するパラメータ一覧}
+  \caption{Nav2のVelocity Smootherに関するパラメータ一覧}
   \label{tab:smoother_params}
   \begin{tabular}{p{0.8\textwidth}}
     \toprule
-    パラメータ名 \\
+    Parameter Name \\
     \midrule
     smoothing\_frequency \\
     max\_velocity \\
@@ -84,11 +84,11 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{Plannerおよびゴール判定に関するパラメータ一覧}
+  \caption{Nav2のPlannerおよびゴール判定に関するパラメータ一覧}
   \label{tab:planner_params}
   \begin{tabular}{p{0.8\textwidth}}
     \toprule
-    パラメータ名 \\
+    Parameter Name \\
     \midrule
     linear\_granularity \\
     angular\_granularity \\
@@ -119,10 +119,38 @@
 \newpage
 
 \section{パラメータの詳細}
+\subsection{emcl2}
 
 \subsubsection{odom\_fw\_dev\_per\_fw}
 前進移動時における前進方向のオドメトリ誤差を表すパラメータである．
 値を大きくするとオドメトリを信頼しにくくなり，パーティクルの分散が大きくなる．
+
+\subsubsection{odom\_fw\_dev\_per\_rot}
+回転動作時における前進方向のオドメトリ誤差を表すパラメータである．
+値を大きくすると，回転時の前進誤差を大きく見積もるため，自己位置推定の不確実性が増加する．
+回転動作の多い環境では，推定安定性に影響を与える．
+
+\subsubsection{odom\_rot\_dev\_per\_fw}
+前進移動量に対する回転方向のオドメトリ誤差を表すパラメータである．
+値を大きく設定すると，直進時の姿勢角誤差を大きく考慮するようになる．
+これにより，直進走行中の姿勢推定のばらつきが増加する．
+
+\subsubsection{odom\_rot\_dev\_per\_rot}
+回転動作時における回転方向のオドメトリ誤差を表す．
+値を大きくすると回転量の信頼度が低下し，姿勢角の推定誤差が大きくなる．
+旋回動作の安定性に影響を与える重要なパラメータである．
+
+\subsubsection{laser\_likelihood\_max\_dist}
+レーザスキャンを用いた尤度計算において考慮する最大距離を設定するパラメータである．
+値を大きくすると遠方の障害物まで尤度計算に含まれるが，計算誤差の影響を受けやすくなる．
+屋外環境では環境特性に応じた調整が必要である．
+
+\subsubsection{range\_threshold}
+レーザスキャンデータの有効距離の上限を設定するパラメータである．
+この値を超える測距データは無効として扱われる．
+外乱やノイズの多い環境では，自己位置推定の安定化に寄与する．
+
+
 
 \begin{figure}[hbtp]
   \centering
@@ -132,5 +160,5 @@
  %\label{Fig:Example}
 \end{figure}
 
-\subsubsection{etc...}
+%\subsubsection{etc...}
 \newpage
