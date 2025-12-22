@@ -8,7 +8,7 @@
  %\caption{Example}
  %\label{Fig:Example}
 \end{figure}
-
+次に実験で使うパラメータを紹介する。下の表に示しているのが今回研究に使われたパラメータである
 
 %\begin{table}[htbp]
   %\centering
@@ -20,6 +20,7 @@
     \toprule
     Parameter Name \\
     \midrule
+    num\_particles \\
     odom\_fw\_dev\_per\_fw \\
     odom\_fw\_dev\_per\_rot \\
     odom\_rot\_dev\_per\_fw \\
@@ -120,6 +121,12 @@
 
 \section{パラメータの詳細}
 \subsection{emcl2}
+
+\subsubsection{num\_particles}
+本パラメータは，自己位置推定に用いる パーティクルの数を設定するものである．
+パーティクル数を増加させることで，自己位置分布をより詳細に表現でき，
+推定精度やロバスト性の向上が期待できる．
+一方で，計算負荷が増加するため，リアルタイム性とのトレードオフが存在する．
 
 \subsubsection{odom\_fw\_dev\_per\_fw}
 前進移動時における前進方向のオドメトリ誤差を表すパラメータである．
