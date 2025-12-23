@@ -125,7 +125,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.65]
-      {images/base_muki.png}
+      {images/base_muki2.png}
  \caption{base orientation}
  \label{Fig:base orientation}
 \end{figure}
@@ -141,22 +141,177 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 基準の値は、0.19
 \begin{figure}[H]
   \centering
- \includegraphics[keepaspectratio, scale=0.8]
-      {images/fwfwpose.png}
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.01muki.png}
  \caption{Robot orientation with fw\_dev\_per\_fw = 0.01}
  \label{Fig:Robot orientation with fw_dev_per_fw = 0.01 }
 \end{figure}
 \begin{figure}[H]
   \centering
- \includegraphics[keepaspectratio, scale=0.8]
-      {images/fwfwposition.png}
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.01iti.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.01
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.01}
 \end{figure}
 
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.05muki2.png}
+ \caption{Robot orientation with fw\_dev\_per\_fw = 0.05}
+ \label{Fig:Robot orientation with fw_dev_per_fw = 0.05 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.05iti2.png}
+ \caption{Robot position with fw\_dev\_per\_fw = 0.05
+}
+ \label{Fig:Robot position with fw_dev_per_fw = 0.05}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.1muki2.png}
+ \caption{Robot orientation with fw\_dev\_per\_fw = 0.1}
+ \label{Fig:Robot orientation with fw_dev_per_fw = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.1iti2.png}
+ \caption{Robot position with fw\_dev\_per\_fw = 0.1
+}
+ \label{Fig:Robot position with fw_dev_per_fw = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.3muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_fw = 0.3}
+ \label{Fig:Robot orientation with fw_dev_per_fw = 0.3 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.3iti.png}
+ \caption{Robot position with fw\_dev\_per\_fw = 0.3
+}
+ \label{Fig:Robot position with fw_dev_per_fw = 0.3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.4muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_fw = 0.4}
+ \label{Fig:Robot orientation with fw_dev_per_fw = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.4iti.png}
+ \caption{Robot position with fw\_dev\_per\_fw = 0.4
+}
+ \label{Fig:Robot position with fw_dev_per_fw = 0.4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.5muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_fw = 0.5}
+ \label{Fig:Robot orientation with fw_dev_per_fw = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.5iti.png}
+ \caption{Robot position with fw\_dev\_per\_fw = 0.5
+}
+ \label{Fig:Robot position with fw_dev_per_fw = 0.5}
+\end{figure}
+
+\figref{Fig:Robot orientation with fw_dev_per_fw = 0.5 }で示すように、odom\_fw\_dev\_per\_fw を 0.5 に設定した場合，ロボットは走行を続けるにつれて自己位置推定の誤差が累積し，最終的にゴールに到達することができなかった．一方で，0.4 以下の値に設定した場合には，ロボットはゴールまで到達することが確認された．
+
+また，直線走行時の挙動を基準条件と比較すると，odom\_fw\_dev\_per\_fw を大きく設定した場合には，推定されたロボットの位置が徐々にずれていく様子が確認された．このことから，odom\_fw\_dev\_per\_fw の値を過度に大きくすると，前進移動に対するオドメトリ誤差が強調され，自己位置推定の精度が低下することが示唆される．
+
+%\figref{Fig:Robot orientation with fw_dev_per_fw = 0.01 },\figref{Fig:Robot position with fw_dev_per_fw = 0.01}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_rot)}
+基準の値は、0.0001
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.001muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_rot = 0.001}
+ \label{Fig:Robot orientation with fw_dev_per_rot = 0.001 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.001iti.png}
+ \caption{Robot position with fw\_dev\_per\_rot = 0.001
+}
+ \label{Fig:Robot position with fw_dev_per_rot = 0.001}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.01muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_rot = 0.01}
+ \label{Fig:Robot orientation with fw_dev_per_rot = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.01iti.png}
+ \caption{Robot position with fw\_dev\_per\_rot = 0.01
+}
+ \label{Fig:Robot position with fw_dev_per_rot = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.1muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_rot = 0.1}
+ \label{Fig:Robot orientation with fw_dev_per_rot = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.1iti.png}
+ \caption{Robot position with fw\_dev\_per\_rot = 0.1
+}
+ \label{Fig:Robot position with fw_dev_per_rot = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.5muki.png}
+ \caption{Robot orientation with fw\_dev\_per\_rot = 0.5}
+ \label{Fig:Robot orientation with fw_dev_per_rot = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwrot0.5iti.png}
+ \caption{Robot position with fw\_dev\_per\_rot = 0.5
+}
+ \label{Fig:Robot position with fw_dev_per_rot = 0.5}
+\end{figure}
+
+odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値においてロボットはゴールに到達することができた．特に，odom\_fw\_dev\_per\_rot を 0.5 に設定した場合には，走行中に自己位置推定のずれが一部確認されたものの，走行不能となるような大きな影響は見られず，最終的にゴールまで到達することが確認された．
+
+この結果から，odom\_fw\_dev\_per\_rot は自己位置推定に一定の影響を与えるものの，fw 方向の移動誤差を表す odom\_fw\_dev\_per\_fw と比較すると，ゴール到達性に与える影響は相対的に小さいと考えられる．
+
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_fw)}
 
@@ -169,34 +324,51 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 \subsection{実験結果(Nav2\_controller)}
 
 \subsubsection{実験結果(max\_vel\_x)}
+
 \subsubsection{実験結果(max\_vel\_theta)}
+
 \subsubsection{実験結果(max\_speed\_xy)}
+
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
+
 \subsubsection{実験結果(acc\_lim\_x)}
+
 \subsubsection{実験結果(acc\_lim\_theta)}
 
 \subsection{実験結果(Nav2\_Costmap)}
 
 \subsubsection{実験結果(global\_resolution)}
+
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
+
 \subsubsection{実験結果(global\_inflation\_radius)}
+
 \subsubsection{実験結果(local\_resolution)}
+
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
+
 \subsubsection{実験結果(local\_inflation\_radius)}
 
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
 \subsubsection{実験結果(smoothing\_frequency)}
+
 \subsubsection{実験結果(max\_velocity)}
+
 \subsubsection{実験結果(max\_accel\_ms)}
+
 \subsubsection{実験結果(max\_accel\_rads)}
 
 \subsection{実験結果(Nav2\_planner goal)}
 
 \subsubsection{実験結果(linear\_granularity)}
+
 \subsubsection{実験結果(angular\_granularity)}
+
 \subsubsection{実験結果(xy\_goal\_tolerance)}
+
 \subsubsection{実験結果(trans\_stopped\_velocity)}
+
 \subsubsection{実験結果(planner\_tolerance)}
 
 
