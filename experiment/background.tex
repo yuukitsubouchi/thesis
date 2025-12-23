@@ -68,13 +68,16 @@
 %\end{figure}
 \subsection{実験結果(emcl2)}
 \subsubsection{実験結果(num\_particles)}
+
 \begin{table}[H]
   \centering
   \caption{パーティクル数の違いによるゴール到達可否}
   \label{tab:num_particles_result}
   \begin{tabular}{c|c|c|c}
     \hline
-    number of times & 200 & 500 (base) & 1000 \\
+    & \multicolumn{3}{c}{Number of particles} \\
+    \hline
+    number of times  & 200 & 500 (base) & 1000 \\
     \hline
     1  & $\times$ & ○ & ○ \\
     2  & ○ & ○ & $\times$ \\
@@ -90,17 +93,96 @@
   \end{tabular}
 \end{table}
 
+Table\ref{tab:num_particles_result}に、パーティクル数の違いによるゴール到達の可否を示す.
+
+\begin{table}[H]
+  \centering
+  \caption{パーティクル数ごとのゴール到達成功率}
+  \label{tab:num_particles_success_rate}
+  \begin{tabular}{c|c}
+    \hline
+    パーティクル数 & 成功率 [\%] \\
+    \hline
+    200  & 60 \\
+    500 (base) & 80 \\
+    1000 & 60 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Table\ref{tab:num_particles_success_rate}に，
+パーティクル数を変化させた際のゴール到達成功率を示す．
+
+Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が示すように、パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
+その結果，パーティクル数 500 の場合に最も高いゴール到達率が得られた．
+一方で，200 および 1000 の場合は，到達率がやや低下する傾向が確認された．
+パーティクル数が少ないと自己位置推定が破綻しやすく、成功率が低下した.また、パーティクル数が多すぎても計算量の増加によって、遅延が発生して安定性が低下した。
+以上より，パーティクル数は多ければ良いわけではなく，
+自己位置推定の精度と計算負荷のバランスを考慮した適切な設定が重要であることが分かる．
+本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
+
+次からの実験では、\figref{Fig:base direction},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base direction}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/base_derection.png}
+ \caption{base direction}
+ \label{Fig:base direction}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.5]
+      {images/base_postion.png}
+ \caption{base position}
+ \label{Fig:base position}
+\end{figure}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_fw)}
+基準の値は、0.19
 
+
+\subsubsection{実験結果(odom\_fw\_dev\_per\_rot)}
+
+\subsubsection{実験結果(odom\_rot\_dev\_per\_fw)}
+
+\subsubsection{実験結果(odom\_rot\_dev\_per\_rot)}
+
+\subsubsection{実験結果(laser\_likelihood\_max\_dist)}
+
+\subsubsection{実験結果(range\_threshold)}
 
 \subsection{実験結果(Nav2\_controller)}
 
+\subsubsection{実験結果(max\_vel\_x)}
+\subsubsection{実験結果(max\_vel\_theta)}
+\subsubsection{実験結果(max\_speed\_xy)}
+\subsubsection{実験結果(min\_theta\_velocity\_threshold)}
+\subsubsection{実験結果(acc\_lim\_x)}
+\subsubsection{実験結果(acc\_lim\_theta)}
+
 \subsection{実験結果(Nav2\_Costmap)}
+
+\subsubsection{実験結果(global\_resolution)}
+\subsubsection{実験結果(global\_cost\_scaling\_factor)}
+\subsubsection{実験結果(global\_inflation\_radius)}
+\subsubsection{実験結果(local\_resolution)}
+\subsubsection{実験結果(local\_cost\_scaling\_factor)}
+\subsubsection{実験結果(local\_inflation\_radius)}
 
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
+\subsubsection{実験結果(smoothing\_frequency)}
+\subsubsection{実験結果(max\_velocity)}
+\subsubsection{実験結果(max\_accel\_ms)}
+\subsubsection{実験結果(max\_accel\_rads)}
+
 \subsection{実験結果(Nav2\_planner goal)}
+
+\subsubsection{実験結果(linear\_granularity)}
+\subsubsection{実験結果(angular\_granularity)}
+\subsubsection{実験結果(xy\_goal\_tolerance)}
+\subsubsection{実験結果(trans\_stopped\_velocity)}
+\subsubsection{実験結果(planner\_tolerance)}
 
 
 %\subsubsection{etc...}
