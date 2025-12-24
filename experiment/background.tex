@@ -406,11 +406,142 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 \subsubsection{実験結果(odom\_rot\_dev\_per\_rot)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.19
 
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.1muki2.png}
+ \caption{Robot orientation with rot\_dev\_per\_rot = 0.1}
+ \label{Fig:Robot orientation with rot_dev_per_rot = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.1iti.png}
+ \caption{Robot position with rot\_dev\_per\_rot = 0.1
+}
+ \label{Fig:Robot position with rot_dev_per_rot = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.3muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_rot = 0.3}
+ \label{Fig:Robot orientation with rot_dev_per_rot = 0.3 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.3iti.png}
+ \caption{Robot position with rot\_dev\_per\_rot = 0.3
+}
+ \label{Fig:Robot position with rot_dev_per_rot = 0.3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.4muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_rot = 0.4}
+ \label{Fig:Robot orientation with rot_dev_per_rot = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.4iti.png}
+ \caption{Robot position with rot\_dev\_per\_rot = 0.4
+}
+ \label{Fig:Robot position with rot_dev_per_rot = 0.4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.5muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_rot = 0.5}
+ \label{Fig:Robot orientation with rot_dev_per_rot = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotrot0.5iti.png}
+ \caption{Robot position with rot\_dev\_per\_rot = 0.5
+}
+ \label{Fig:Robot position with rot_dev_per_rot = 0.5}
+\end{figure}
+
+%\subsection{rot\_dev\_per\_rot に関する実験結果}
+rot\_dev\_per\_rot は，emcl において回転量に比例して付加される回転誤差を表すパラメータであり，
+値が大きいほどセンサ情報を重視し，値が小さいほどオドメトリ情報を重視する設定となる．
+
+本実験の結果，rot\_dev\_per\_rot の値を大きく設定した場合，
+自己位置推定においてセンサの影響が強くなり，
+ロボットの姿勢推定が不安定となることで，走行中の挙動がふらつく傾向が確認された．
+
+特に旋回動作時においてセンサ重視の設定とした場合，
+ゴール付近で自己位置推定が不安定となり，
+rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
+ロボットがゴール端付近で停止し，正常にゴールへ到達できない事例が確認された．
+
+以上より，rot\_dev\_per\_rot を過度に大きく設定すると，
+回転時の姿勢推定においてセンサノイズの影響を受けやすくなり，
+ナビゲーション性能が低下する可能性があることが示唆される．
 
 
 \subsubsection{実験結果(laser\_likelihood\_max\_dist)}
 
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.2
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/llmd0.5muki.png}
+ \caption{Robot orientation with laser\_likelihood\_max\_dist = 0.5}
+ \label{Fig:Robot orientation with laser_likelihood_max_dist = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/llmd0.5iti.png}
+ \caption{Robot position with laser\_likelihood\_max\_dist = 0.5
+}
+ \label{Fig:Robot position with laser_likelihood_max_dist = 0.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/llmd1.0muki.png}
+ \caption{Robot orientation with laser\_likelihood\_max\_dist = 1.0}
+ \label{Fig:Robot orientation with laser_likelihood_max_dist = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/llmd1.0iti.png}
+ \caption{Robot position with laser\_likelihood\_max\_dist = 1.0
+}
+ \label{Fig:Robot position with laser_likelihood_max_dist = 1.0}
+\end{figure}
+
+本実験では，基準値から laser\_likelihood\_max\_dist の値を増加させた場合，
+レーザによって評価される情報量が増加し，
+特に障害物や構造物が多く存在する環境において，
+自己位置推定の更新が頻繁に行われることが確認された．
+
+その結果，レーザスキャンによる評価負荷が高い箇所では，
+ロボットが一時的に停止する挙動が観測された．
+これは，自己位置推定の更新に伴い，
+ナビゲーションが安全側に制御されたためであると考えられる．
+
+一方で，laser\_likelihood\_max\_dist を約 0.5 程度まで増加させた場合でも，
+ロボットは全体として安定した走行が可能であり，
+大きなナビゲーション性能の低下は確認されなかった．
+
 \subsubsection{実験結果(range\_threshold)}
+
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
+
 
 \subsection{実験結果(Nav2\_controller)}
 
