@@ -121,7 +121,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 自己位置推定の精度と計算負荷のバランスを考慮した適切な設定が重要であることが分かる．
 本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
 
-次からの実験では、\figref{Fig:base direction},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base direction}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
+次からの実験では、\figref{Fig:base orientation},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base direction}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.65]
@@ -138,7 +138,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 \end{figure}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_fw)}
-基準の値は、0.19
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.19
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -242,7 +242,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 %\figref{Fig:Robot orientation with fw_dev_per_fw = 0.01 },\figref{Fig:Robot position with fw_dev_per_fw = 0.01}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_rot)}
-基準の値は、0.0001
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように、基準の値は、0.0001
 
 \begin{figure}[H]
   \centering
@@ -314,8 +314,99 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_fw)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.13
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.01muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_fw = 0.01}
+ \label{Fig:Robot orientation with rot_dev_per_fw = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.01iti.png}
+ \caption{Robot position with rot\_dev\_per\_fw = 0.01
+}
+ \label{Fig:Robot position with rot_dev_per_fw = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.2muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_fw = 0.2}
+ \label{Fig:Robot orientation with rot_dev_per_fw = 0.2 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.2iti.png}
+ \caption{Robot position with rot\_dev\_per\_fw = 0.2
+}
+ \label{Fig:Robot position with rot_dev_per_fw = 0.2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.3muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_fw = 0.3}
+ \label{Fig:Robot orientation with rot_dev_per_fw = 0.3 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.3iti.png}
+ \caption{Robot position with rot\_dev\_per\_fw = 0.3
+}
+ \label{Fig:Robot position with rot_dev_per_fw = 0.3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.4muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_fw = 0.4}
+ \label{Fig:Robot orientation with rot_dev_per_fw = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.4iti.png}
+ \caption{Robot position with rot\_dev\_per\_fw = 0.4
+}
+ \label{Fig:Robot position with rot_dev_per_fw = 0.4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.5muki.png}
+ \caption{Robot orientation with rot\_dev\_per\_fw = 0.5}
+ \label{Fig:Robot orientation with rot_dev_per_fw = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rotfw0.5iti.png}
+ \caption{Robot position with rot\_dev\_per\_fw = 0.5
+}
+ \label{Fig:Robot position with rot_dev_per_fw = 0.5}
+\end{figure}
+
+rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした場合においても，ロボットは直進走行中に自己位置および姿勢のわずかなずれが生じるのみであり，走行不能となることはなく，最終的にゴールまで問題なく到達することが確認された．
+
+直線走行区間（目標方位 270°）でのロボットの向きに着目すると，rot\_dev\_per\_fw を 0.01 に設定した\figref{Fig:Robot orientation with rot_dev_per_fw = 0.01 }の場合には，ロボットは目標方位をほぼ維持したまま高い精度で直進していることが確認できた．一方で，rot\_dev\_per\_fw を 0.4 以上に設定した\figref{Fig:Robot orientation with rot_dev_per_fw = 0.4 },\figref{Fig:Robot orientation with rot_dev_per_fw = 0.5 }で示した場合には，走行中のロボットの方位が 270° を下回る傾向が見られ，進行に伴って姿勢が徐々にずれていく様子が確認された．
+
+しかしながら，この方位のずれはナビゲーション全体に致命的な影響を与えるほどではなく，ゴール到達性に大きな影響は見られなかった．
+
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_rot)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.19
+
+
 
 \subsubsection{実験結果(laser\_likelihood\_max\_dist)}
 
