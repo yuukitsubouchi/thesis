@@ -121,7 +121,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 自己位置推定の精度と計算負荷のバランスを考慮した適切な設定が重要であることが分かる．
 本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
 
-次からの実験では、\figref{Fig:base orientation},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base direction}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
+次からの実験では、\figref{Fig:base orientation},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base orientation}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.65]
@@ -541,57 +541,219 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 \subsubsection{実験結果(range\_threshold)}
 
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rt0.5muki.png}
+ \caption{Robot orientation with range\_threshold = 0.5}
+ \label{Fig:Robot orientation with range_threshold = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rt0.5iti.png}
+ \caption{Robot position with range\_threshold = 0.5
+}
+ \label{Fig:Robot position with range_threshold = 0.5}
+\end{figure}
 
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rt0.9muki.png}
+ \caption{Robot orientation with range\_threshold = 0.9}
+ \label{Fig:Robot orientation with range_threshold = 0.9 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/rt0.9iti.png}
+ \caption{Robot position with range\_threshold = 0.9
+}
+ \label{Fig:Robot position with range_threshold = 0.9}
+\end{figure}
+
+range\_thresholdのまとめ
+
+かつemcl2のパラメータ総括
 
 \subsection{実験結果(Nav2\_controller)}
 
 \subsubsection{実験結果(max\_vel\_x)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.6
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.2muki.png}
+ \caption{Robot orientation with max\_vel\_x = 0.2}
+ \label{Fig:Robot orientation with max_vel_x = 0.2 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.2iti.png}
+ \caption{Robot position with max\_vel\_x = 0.2
+}
+ \label{Fig:Robot position with max_vel_x = 0.2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.2sokudo2.png}
+ \caption{Robot speed with max\_vel\_x = 0.2
+}
+ \label{Fig:Robot speed with max_vel_x = 0.2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.0muki.png}
+ \caption{Robot orientation with max\_vel\_x = 0.2}
+ \label{Fig:Robot orientation with max_vel_x = 0.2 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.0iti.png}
+ \caption{Robot position with max\_vel\_x = 1.0
+}
+ \label{Fig:Robot position with max_vel_x = 1.0}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.0sokudo.png}
+ \caption{Robot speed with max\_vel\_x = 1.0
+}
+ \label{Fig:Robot speed with max_vel_x = 1.0}
+\end{figure}
+
+0.6速度,maxspeedxy,maxvelsmoother,
 
 \subsubsection{実験結果(max\_vel\_theta)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.7
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt0.4muki.png}
+ \caption{Robot orientation with max\_vel\_theta = 0.4}
+ \label{Fig:Robot orientation with max_vel_theta = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt0.4iti.png}
+ \caption{Robot position with max\_vel\_theta = 0.4
+}
+ \label{Fig:Robot position with max_vel_theta = 0.4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt1.0muki.png}
+ \caption{Robot orientation with max\_vel\_theta = 1.0}
+ \label{Fig:Robot orientation with max_vel_theta = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt1.0iti.png}
+ \caption{Robot position with max\_vel\_theta = 1.0
+}
+ \label{Fig:Robot position with max_vel_theta = 1.0}
+\end{figure}
+
 
 \subsubsection{実験結果(max\_speed\_xy)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.9
+
+0.1,0.5,1.5
+
 
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.001
+
+0.01,0.1,1.0,
 
 \subsubsection{実験結果(acc\_lim\_x)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
+
+0.1,0.5,1.5,
 
 \subsubsection{実験結果(acc\_lim\_theta)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.2
+
+0.1,1.0,4.0,
 
 \subsection{実験結果(Nav2\_Costmap)}
 
 \subsubsection{実験結果(global\_resolution)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
+
+0.05
 
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(global\_inflation\_radius)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(local\_resolution)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(local\_inflation\_radius)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
 \subsubsection{実験結果(smoothing\_frequency)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(max\_velocity)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(max\_accel\_ms)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsubsection{実験結果(max\_accel\_rads)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
 
 \subsection{実験結果(Nav2\_planner goal)}
 
 \subsubsection{実験結果(linear\_granularity)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.05
+
+0.01,0.1,0.5,
+
 
 \subsubsection{実験結果(angular\_granularity)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.025
+
+0.001,0.01,0.04,
 
 \subsubsection{実験結果(xy\_goal\_tolerance)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.25
+
+0.01,0.1,0.4,
 
 \subsubsection{実験結果(trans\_stopped\_velocity)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.25
+
+0.01,0.1,0.4
 
 \subsubsection{実験結果(planner\_tolerance)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+
+0.1,1.0,
 
 
 %\subsubsection{etc...}
