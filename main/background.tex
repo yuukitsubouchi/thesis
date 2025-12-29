@@ -77,8 +77,8 @@
     \midrule
     smoothing\_frequency \\
     max\_velocity \\
-    max\_accel\_ms \\
-    max\_accel\_rads \\
+    max\_accel\_x \\
+    max\_accel\_theta \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -229,11 +229,11 @@ max\_velocity の第3要素は，ロボットの 回転方向（θ方向）の�
 旋回時の最大回転速度を制限し，急激な回転動作を防ぐ役割を持つ．
 値を大きくすると旋回応答は向上するが，姿勢の安定性が低下する可能性がある．
 
-\subsubsection{max\_accel\_ms}
+\subsubsection{max\_accel\_x}
 max\_accelの第1要素は，並進方向の最大加速度を制限するパラメータである．
 走行時の急発進を抑制する．
 
-\subsubsection{max\_accel\_rads}
+\subsubsection{max\_accel\_theta}
 max\_accel の第3要素は，回転方向の最大加速度を制限するパラメータである．
 旋回動作の安定性向上に寄与する．
 

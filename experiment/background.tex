@@ -524,6 +524,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
  \label{Fig:Robot position with laser_likelihood_max_dist = 1.0}
 \end{figure}
 
+
 本実験では，基準値から laser\_likelihood\_max\_dist の値を増加させた場合，
 レーザによって評価される情報量が増加し，
 特に障害物や構造物が多く存在する環境において，
@@ -573,9 +574,38 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
  \label{Fig:Robot position with range_threshold = 0.9}
 \end{figure}
 
-range\_thresholdのまとめ
+%\subsection{range\_threshold に関する実験結果}
 
-かつemcl2のパラメータ総括
+本実験では、基準値である range\_threshold = 0.3 の場合，
+ロボットは主に比較的近距離のレーザスキャン情報を用いて
+自己位置推定を行っており，
+推定された位置および姿勢は安定していた．
+
+一方，range\_threshold を 0.9 に設定した場合，
+より遠方のレーザスキャン情報も自己位置推定に使用されるため，
+基準値の場合と比較して，
+推定されたロボットの位置に明らかなずれが生じることや，
+姿勢が異なる方向を示す場合が確認された．
+しかしながら，これらのずれが生じた場合でも，
+ロボットは最終的にゴール地点へ到達することができた．
+
+また，range\_threshold を 0.5 に設定した場合には，
+自己位置推定および走行挙動は安定しており，
+基準値と比較して大きな性能低下は確認されなかった．
+
+以上の結果より，range\_threshold は過度に大きな値を設定すると
+自己位置推定の精度低下を招く可能性がある一方で，
+0.5 程度までであれば，
+安定したナビゲーションを維持したまま設定値を引き上げることが
+可能であると考えられる．
+
+以上の結果より，emcl2 における各パラメータは，
+オドメトリ情報とレーザセンサ情報の信頼度のバランスを調整する役割を持ち，
+設定値によって自己位置推定の特性および
+ロボットの走行挙動が大きく変化することが明らかとなった．
+そのため，実環境におけるナビゲーションでは，
+各パラメータの意味を理解した上で，
+環境特性に応じた適切な調整が重要であるといえる．
 
 \subsection{実験結果(Nav2\_controller)}
 
@@ -598,21 +628,13 @@ range\_thresholdのまとめ
  \label{Fig:Robot position with max_vel_x = 0.2}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx0.2sokudo2.png}
- \caption{Robot speed with max\_vel\_x = 0.2
-}
- \label{Fig:Robot speed with max_vel_x = 0.2}
-\end{figure}
 
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx1.0muki.png}
- \caption{Robot orientation with max\_vel\_x = 0.2}
- \label{Fig:Robot orientation with max_vel_x = 0.2 }
+ \caption{Robot orientation with max\_vel\_x = 1.0}
+ \label{Fig:Robot orientation with max_vel_x = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
@@ -623,16 +645,35 @@ range\_thresholdのまとめ
  \label{Fig:Robot position with max_vel_x = 1.0}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx1.0sokudo.png}
- \caption{Robot speed with max\_vel\_x = 1.0
-}
- \label{Fig:Robot speed with max_vel_x = 1.0}
-\end{figure}
+%\subsection{Controller における max\_vel\_x の実験結果}
 
-0.6速度,maxspeedxy,maxvelsmoother,
+%本実験では，Navigation2 の Controller における
+%最大並進速度を制御するパラメータ max\_vel\_x を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+まず，max\_vel\_x の値を小さく設定した場合，
+ロボットの走行速度が低下し，
+走行中の挙動が不安定になる傾向が確認された．
+しかしながら，速度が低下した状態であっても，
+ロボットはゴールまで到達することができ，
+ナビゲーション自体が破綻することはなかった．
+
+一方で，max\_vel\_x の値を基準値より大きく設定した場合，
+走行挙動に大きな変化は見られず，
+ロボットの実際の走行速度も基準値である 0.6\,[m/s] 以上には上昇しなかった．
+この結果から，
+max\_vel\_x を増加させても，
+他のパラメータやシステム制約によって
+ロボットの最大速度が制限されている可能性が考えられる．
+
+以上のことから，
+max\_vel\_x は走行速度の上限を設定する重要なパラメータである一方で，
+ロボットの実際の最高速度は，
+Controller 以外のパラメータや
+ハードウェア設定の影響も受けることが示唆された．
+この速度制限の要因については，
+後述する実験において詳細に検証する．
+
 
 \subsubsection{実験結果(max\_vel\_theta)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.7
@@ -669,17 +710,196 @@ range\_thresholdのまとめ
  \label{Fig:Robot position with max_vel_theta = 1.0}
 \end{figure}
 
+%\subsection{Controller における max\_vel\_theta の実験結果}
+%本実験では，Navigation2 の Controller における
+%最大角速度を制御するパラメータ max\_vel\_theta を変更し，
+%ロボットの旋回挙動への影響を調査した．
+
+本実験で、max\_vel\_theta の値を基準値より大きく設定した場合，
+ロボットの走行挙動に顕著な変化は見られなかった．
+この結果から，
+基準値の時点でロボットの旋回性能は十分に確保されており，
+それ以上角速度の上限を引き上げても，
+実際の挙動には大きく反映されないことが示唆される．
+
+一方で，max\_vel\_theta の値を基準値より小さく設定した場合，
+ロボットの挙動が不安定になる様子が確認された．
+特に，旋回が必要となる箇所において，
+ロボットが一時的に停止し，
+旋回完了までに時間を要する場面が多く見られた．
+さらに，旋回後の直進動作においても，
+進行方向が安定せず，
+ふらついた挙動を示す傾向が確認された．
+
+以上の結果より，
+max\_vel\_theta を過度に小さく設定すると，
+旋回動作およびその後の直進動作に悪影響を及ぼし，
+ナビゲーション全体の安定性が低下することが明らかとなった．
+そのため，本パラメータは，
+旋回性能を確保できる十分な値に設定することが重要である．
+
 
 \subsubsection{実験結果(max\_speed\_xy)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.9
 
-0.1,0.5,1.5
+%0.1,0.5,1.5
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy0.1muki.png}
+ \caption{Robot orientation with max\_speed\_xy = 0.1}
+ \label{Fig:Robot orientation with max_speed_xy = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy0.1iti.png}
+ \caption{Robot position with max\_speed\_xy = 0.1
+}
+ \label{Fig:Robot position with max_speed_xy = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy0.5muki.png}
+ \caption{Robot orientation with max\_speed\_xy = 0.5}
+ \label{Fig:Robot orientation with max_speed_xy = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy0.5iti.png}
+ \caption{Robot position with max\_speed\_xy = 0.5
+}
+ \label{Fig:Robot position with max_speed_xy = 0.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy1.5muki.png}
+ \caption{Robot orientation with max\_speed\_xy = 1.5}
+ \label{Fig:Robot orientation with max_speed_xy = 1.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy1.5iti.png}
+ \caption{Robot position with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot position with max_speed_xy = 1.5}
+\end{figure}
+
+%\subsection{Controller における max\_speed\_xy の実験結果}
+
+%本実験では，Navigation2 の Controller において，
+%並進方向の合成速度の上限を制御するパラメータ max\_speed\_xy を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+本実験では、max\_speed\_xy を 0.5 に設定した場合，
+ロボットは安定した走行を維持したままゴールへ到達することができた．
+また，max\_speed\_xy を 1.5 に設定した場合においても，
+ロボットの実際の走行速度に大きな変化は見られなかった．
+この挙動は，
+前節で述べた max\_vel\_x の実験結果と同様であり，
+他のパラメータやシステム制約によって
+ロボットの最大速度が制限されている可能性が考えられる．
+この点については，後述する実験において検証を行う．
+
+一方で，max\_speed\_xy を 0.1 に設定した場合，
+ロボットの走行速度が極端に低下し，
+ゴールまで到達することができなかった．
+特に，走行開始後の初期段階において，
+最初の曲がり角付近の段差に接触する挙動が確認された．
+また，この設定値では，
+曲がり角に進入する際に左右の車輪を交互に動かすような挙動が見られ，
+滑らかな旋回動作が行われていなかった．
+
+以上の結果より，
+max\_speed\_xy を過度に小さく設定すると，
+旋回動作が不安定となり，
+ナビゲーションの遂行が困難になることが明らかとなった．
+一方で，本パラメータを大きく設定した場合でも，
+他の速度制限要因によって
+実際の走行速度が制約される可能性があるため，
+他の速度関連パラメータとの関係を考慮した調整が重要である．
+
 
 
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.001
 
 0.01,0.1,1.0,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt0.01muki.png}
+ \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.01}
+ \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt0.01iti.png}
+ \caption{Robot position with min\_theta\_velocity\_threshold = 0.01
+}
+ \label{Fig:Robot position with min_theta_velocity_threshold = 0.01}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt0.1muki.png}
+ \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.1}
+ \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt0.1iti.png}
+ \caption{Robot position with min\_theta\_velocity\_threshold = 0.1
+}
+ \label{Fig:Robot position with min_theta_velocity_threshold = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt1.0muki.png}
+ \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.01}
+ \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mtvt1.0iti.png}
+ \caption{Robot position with min\_theta\_velocity\_threshold = 0.01
+}
+ \label{Fig:Robot position with min_theta_velocity_threshold = 0.01}
+\end{figure}
+%\subsection{Controller における min\_theta\_velocity\_threshold の実験結果}
+
+%本実験では，Navigation2 の Controller において，
+%角速度の最小閾値を定義するパラメータ
+%min\_theta\_velocity\_threshold を変更し，
+%ロボットの旋回挙動への影響を調査した．
+
+本実験では、基準値である min\_theta\_velocity\_threshold = 0.001 に対し，
+本実験では 0.01，0.1，1.0 の各値について走行実験を行った．
+その結果，基準値から値を段階的に増加させた場合においても，
+ロボットの走行挙動に大きな変化は確認されなかった．
+
+特に，min\_theta\_velocity\_threshold を 1.0 に設定した場合，
+旋回動作時にロボットが停止する挙動が生じることが予想されたが，
+実際には旋回および直進動作ともに問題なく行われ，
+ロボットはゴール地点まで到達することができた．
+
+以上の結果より，
+min\_theta\_velocity\_threshold は，
+今回の実験環境および走行条件においては，
+一定範囲内で値を変化させても
+ロボットの挙動に与える影響が比較的小さいパラメータであることが示唆された．
+
 
 \subsubsection{実験結果(acc\_lim\_x)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
@@ -696,36 +916,59 @@ range\_thresholdのまとめ
 \subsubsection{実験結果(global\_resolution)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
 
-0.05
+0.05,0.5,1.0,
 
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.0
+
+1.0,5.0,10
 
 \subsubsection{実験結果(global\_inflation\_radius)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+
+0.1,1.0,2.0
 
 \subsubsection{実験結果(local\_resolution)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
+
+0.05,0.5,1.0
 
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3
+
+1.0,5.0,10
 
 \subsubsection{実験結果(local\_inflation\_radius)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
+
+0.1,0.5,1.0,2.0
 
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
 \subsubsection{実験結果(smoothing\_frequency)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、20
 
-\subsubsection{実験結果(max\_velocity)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+5,10,40,60
 
-\subsubsection{実験結果(max\_accel\_ms)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+\subsubsection{実験結果(max\_velocity\_x)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.6
 
-\subsubsection{実験結果(max\_accel\_rads)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、
+0.3,0.9,1.2
+
+\subsubsection{実験結果(max\_velocity\_theta)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.7
+
+0.6,2.5
+
+\subsubsection{実験結果(max\_accel\_x)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+
+0.2,1.0
+
+\subsubsection{実験結果(max\_accel\_theta)}
+\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
+
+0.5,2.0
 
 \subsection{実験結果(Nav2\_planner goal)}
 
@@ -756,4 +999,27 @@ range\_thresholdのまとめ
 0.1,1.0,
 
 
+
+
+sokudo
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.2sokudo2.png}
+ \caption{Robot speed with max\_vel\_x = 0.2
+}
+ \label{Fig:Robot speed with max_vel_x = 0.2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.0sokudo.png}
+ \caption{Robot speed with max\_vel\_x = 1.0
+}
+ \label{Fig:Robot speed with max_vel_x = 1.0}
+\end{figure}
+
+0.6速度,maxvelx,maxspeedxy,maxvelsmoother,
 %\subsubsection{etc...}
