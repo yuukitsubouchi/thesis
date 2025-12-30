@@ -599,7 +599,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 安定したナビゲーションを維持したまま設定値を引き上げることが
 可能であると考えられる．
 
-以上の結果より，emcl2 における各パラメータは，
+emcl2の各パラメータの結果より，emcl2 における各パラメータは，
 オドメトリ情報とレーザセンサ情報の信頼度のバランスを調整する役割を持ち，
 設定値によって自己位置推定の特性および
 ロボットの走行挙動が大きく変化することが明らかとなった．
@@ -1055,7 +1055,7 @@ acc\_lim\_theta を過度に小さく設定すると，
 一定以上の値に設定することで，
 安定した旋回挙動を維持できることが示唆された．
 
-以上の結果より，
+Controllerの各パラメータの結果より，
 Controller に関するパラメータは，
 ロボットの走行速度や旋回特性といった
 運動特性を調整する上で重要な役割を果たす一方で，
@@ -1072,7 +1072,53 @@ Controller に関するパラメータは，
 \subsubsection{実験結果(global\_resolution)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
 
-0.05,0.5,1.0,
+%0.05,0.5,1.0,
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr0.05muki.png}
+ \caption{Robot orientation with global\_resolution = 0.05}
+ \label{Fig:Robot orientation with global_resolution = 0.05 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr0.05iti.png}
+ \caption{Robot position with global\_resolution = 0.05
+}
+ \label{Fig:Robot position with global_resolution = 0.05}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr0.5muki.png}
+ \caption{Robot orientation with global\_resolution = 0.5}
+ \label{Fig:Robot orientation with global_resolution = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr0.5iti.png}
+ \caption{Robot position with global\_resolution = 0.5
+}
+ \label{Fig:Robot position with global_resolution = 0.5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr1.0muki.png}
+ \caption{Robot orientation with global\_resolution = 1.0}
+ \label{Fig:Robot orientation with global_resolution = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gr1.0iti.png}
+ \caption{Robot position with global\_resolution = 1.0
+}
+ \label{Fig:Robot position with global_resolution = 1.0}
+\end{figure}
 %\subsection{global\_resolution に関する実験結果}
 
 %global\_resolution は，Global Costmap における
@@ -1101,7 +1147,52 @@ global\_resolution を変更しても，
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.0
 
-1.0,5.0,10
+%1.0,5.0,10
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf1.0muki.png}
+ \caption{Robot orientation with global\_cost\_scaling\_factor = 1.0}
+ \label{Fig:Robot orientation with global_cost_scaling_factor = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf1.0iti.png}
+ \caption{Robot position with global\_cost\_scaling\_factor = 1.0
+}
+ \label{Fig:Robot position with global_cost_scaling_factor = 1.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf5.0muki.png}
+ \caption{Robot orientation with global\_cost\_scaling\_factor = 5.0}
+ \label{Fig:Robot orientation with global_cost_scaling_factor = 5.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf5.0iti.png}
+ \caption{Robot position with global\_cost\_scaling\_factor = 5.0
+}
+ \label{Fig:Robot position with global_cost_scaling_factor = 5.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf10muki.png}
+ \caption{Robot orientation with global\_cost\_scaling\_factor = 10}
+ \label{Fig:Robot orientation with global_cost_scaling_factor = 10 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gcsf10iti.png}
+ \caption{Robot position with global\_cost\_scaling\_factor = 10
+}
+ \label{Fig:Robot position with global_cost_scaling_factor = 10}
+\end{figure}
 
 %\subsection{global\_cost\_scaling\_factor に関する実験結果}
 
@@ -1140,8 +1231,52 @@ global\_cost\_scaling\_factor は，
 \subsubsection{実験結果(global\_inflation\_radius)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
 
-0.1,1.0,2.0
-
+%0.1,1.0,2.0
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir0.1muki.png}
+ \caption{Robot orientation with global\_inflation\_radius = 0.1}
+ \label{Fig:Robot orientation with global_inflation_radius = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir0.1iti.png}
+ \caption{Robot position with global\_inflation\_radius = 0.1
+}
+ \label{Fig:Robot position with global_inflation_radius = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir1.0muki.png}
+ \caption{Robot orientation with global\_inflation\_radius = 1.0}
+ \label{Fig:Robot orientation with global_inflation_radius = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir1.0iti.png}
+ \caption{Robot position with global\_inflation\_radius = 1.0
+}
+ \label{Fig:Robot position with global_inflation_radius = 1.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir2.0muki.png}
+ \caption{Robot orientation with global\_inflation\_radius = 2.0}
+ \label{Fig:Robot orientation with global_inflation_radius = 2.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/gir2.0iti.png}
+ \caption{Robot position with global\_inflation\_radius = 2.0
+}
+ \label{Fig:Robot position with global_inflation_radius = 2.0}
+\end{figure}
 %\subsection{global\_inflation\_radius に関する実験結果}
 
 %global\_inflation\_radius は，
@@ -1182,8 +1317,52 @@ global\_inflation\_radius は，
 \subsubsection{実験結果(local\_resolution)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
 
-0.05,0.5,1.0
-
+%0.05,0.5,1.0
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr0.05muki.png}
+ \caption{Robot orientation with local\_resolution = 0.05}
+ \label{Fig:Robot orientation with local_resolution = 0.05 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr0.05iti.png}
+ \caption{Robot position with local\_resolution = 0.05
+}
+ \label{Fig:Robot position with local_resolution = 0.05}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr0.5muki.png}
+ \caption{Robot orientation with local\_resolution = 0.5}
+ \label{Fig:Robot orientation with local_resolution = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr0.5iti.png}
+ \caption{Robot position with local\_resolution = 0.5
+}
+ \label{Fig:Robot position with local_resolution = 0.5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr1.0muki.png}
+ \caption{Robot orientation with local\_resolution = 1.0}
+ \label{Fig:Robot orientation with local_resolution = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lr1.0iti.png}
+ \caption{Robot position with local\_resolution = 1.0
+}
+ \label{Fig:Robot position with local_resolution = 1.0}
+\end{figure}
 %\subsection{local\_resolution に関する実験結果}
 
 %local\_resolution は，
@@ -1239,39 +1418,631 @@ local\_resolution はロボットの走行安定性や
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3
 
-1.0,5.0,10
+%1.0,5.0,10
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf1.0muki.png}
+ \caption{Robot orientation with local\_cost\_scaling\_factor = 1.0}
+ \label{Fig:Robot orientation with local_cost_scaling_factor = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf1.0iti.png}
+ \caption{Robot position with local\_cost\_scaling\_factor = 1.0
+}
+ \label{Fig:Robot position with local_cost_scaling_factor = 1.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf5.0muki.png}
+ \caption{Robot orientation with local\_cost\_scaling\_factor = 5.0}
+ \label{Fig:Robot orientation with local_cost_scaling_factor = 5.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf5.0iti.png}
+ \caption{Robot position with local\_cost\_scaling\_factor = 5.0
+}
+ \label{Fig:Robot position with local_cost_scaling_factor = 5.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf10muki.png}
+ \caption{Robot orientation with local\_cost\_scaling\_factor = 10}
+ \label{Fig:Robot orientation with local_cost_scaling_factor = 10 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lcsf10iti.png}
+ \caption{Robot position with local\_cost\_scaling\_factor = 10
+}
+ \label{Fig:Robot position with local_cost_scaling_factor = 10}
+\end{figure}
+%\subsection{local\_cost\_scaling\_factor に関する実験結果}
+
+%local\_cost\_scaling\_factor は，
+%障害物からの距離に応じてコストをどの程度急激に減衰させるかを決定する
+%パラメータであり，
+%ローカルコストマップ上での障害物回避挙動に影響を与える．
+%値が大きいほど，
+%障害物近傍のコスト勾配が急になり，
+%ロボットは障害物をより強く回避する傾向を示す．
+
+本実験では，
+基準値を 3 とし，
+値を 1，5，10 に変更した場合のロボットの挙動を比較した．
+その結果，
+いずれの値においても，
+ロボットは安定して走行し，
+大きな挙動の変化は見られず，
+無事にゴールへ到達することが確認された．
+走行経路や障害物回避の様子についても，
+基準値の場合と比較して，
+顕著な差は認められなかった．
+
+以上の結果から，
+本実験環境においては，
+local\_cost\_scaling\_factor の値を
+基準値から上下に変化させても，
+ロボットのナビゲーション性能や走行安定性への影響は小さいと考えられる．
+そのため，
+本パラメータは，
+特定の障害物回避挙動を微調整する目的で用いるよりも，
+他のパラメータと組み合わせて調整することで，
+効果を発揮する可能性が高いといえる．
+
 
 \subsubsection{実験結果(local\_inflation\_radius)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
 
-0.1,0.5,1.0,2.0
+%0.1,0.5,1.0,2.0
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir0.1muki.png}
+ \caption{Robot orientation with local\_inflation\_radius = 0.1}
+ \label{Fig:Robot orientation with local_inflation_radius = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir0.1iti.png}
+ \caption{Robot position with local\_inflation\_radius = 0.1
+}
+ \label{Fig:Robot position with local_inflation_radius = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir0.5muki.png}
+ \caption{Robot orientation with local\_inflation\_radius = 0.5}
+ \label{Fig:Robot orientation with local_inflation_radius = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir0.5iti.png}
+ \caption{Robot position with local\_inflation\_radius = 0.5
+}
+ \label{Fig:Robot position with local_inflation_radius = 0.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir1.0muki.png}
+ \caption{Robot orientation with local\_inflation\_radius = 1.0}
+ \label{Fig:Robot orientation with local_inflation_radius = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir1.0iti.png}
+ \caption{Robot position with local\_inflation\_radius = 1.0
+}
+ \label{Fig:Robot position with local_inflation_radius = 1.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir2.0muki.png}
+ \caption{Robot orientation with local\_inflation\_radius = 2.0}
+ \label{Fig:Robot orientation with local_inflation_radius = 2.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lir2.0iti.png}
+ \caption{Robot position with local\_inflation\_radius = 2.0
+}
+ \label{Fig:Robot position with local_inflation_radius = 2.0}
+\end{figure}
+%\subsection{local\_inflation\_radius に関する実験結果}
+
+%local\_inflation\_radius は，
+%障害物の周囲に設定される膨張領域の大きさを決定するパラメータであり，
+%ロボットが障害物からどの程度距離を保って走行するかに影響を与える．
+%値が大きいほど，
+%障害物周辺の回避領域が広がり，
+%ロボットはより保守的な経路を選択する傾向を示す．
+
+本実験では，
+基準値を 0.1 とし，
+0.5，1.0，2.0 に変更した場合のロボットの挙動を比較した．
+その結果，
+基準値である 0.1 の場合には，
+ロボットの挙動に特に大きな変化は見られず，
+安定した走行が確認された．
+0.5 の場合には，
+最初の曲がり角において一時的に停止する挙動が見られたものの，
+その後は走行を再開し，
+最終的には問題なくゴールへ到達した．
+
+さらに，
+1.0 および 2.0 の場合には，
+ロボットの走行は安定しており，
+顕著な挙動の変化は見られず，
+いずれも問題なくゴールに到達した．
+この結果から，
+local\_inflation\_radius の値を 1.0 程度まで増加させても，
+本実験環境においては，
+ロボットのナビゲーション性能に悪影響を及ぼさないことが確認された．
+
+ただし，
+本実験環境では，
+ロボットの走行経路周辺に障害物が少なかったため，
+inflation\_radius の増加による影響が顕在化しにくかった可能性がある．
+そのため，
+障害物が密集した環境や，
+狭い通路を走行する場合には，
+本パラメータの設定がロボットの挙動に与える影響について，
+さらなる検討が必要であると考えられる．
+
+Costmapの各パラメータの結果から，
+Global Costmap の各パラメータは，
+主に経路計画全体の安全性や余裕度に影響を与える一方で，
+Local Costmap のパラメータは，
+ロボットの即時的な挙動や走行安定性に強く影響を及ぼすことが確認された．
+特に，
+Local Costmap の解像度設定は，
+屋外環境における安定した自律走行を実現する上で重要であり，
+環境特性や走行条件に応じた慎重な調整が必要であるといえる．
+
 
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
 \subsubsection{実験結果(smoothing\_frequency)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、20
 
-5,10,40,60
+%5,10,40,60
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf5muki.png}
+ \caption{Robot orientation with smoothing\_frequency = 5}
+ \label{Fig:Robot orientation with smoothing_frequency = 5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf5iti.png}
+ \caption{Robot position with smoothing\_frequency = 5
+}
+ \label{Fig:Robot position with smoothing_frequency = 5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf10muki.png}
+ \caption{Robot orientation with smoothing\_frequency = 10}
+ \label{Fig:Robot orientation with smoothing_frequency = 10 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf10iti.png}
+ \caption{Robot position with smoothing\_frequency = 10
+}
+ \label{Fig:Robot position with smoothing_frequency = 10}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf40muki.png}
+ \caption{Robot orientation with smoothing\_frequency = 40}
+ \label{Fig:Robot orientation with smoothing_frequency = 40 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf40iti.png}
+ \caption{Robot position with smoothing\_frequency = 40
+}
+ \label{Fig:Robot position with smoothing_frequency = 40}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf60muki.png}
+ \caption{Robot orientation with smoothing\_frequency = 60}
+ \label{Fig:Robot orientation with smoothing_frequency = 60 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sf60iti.png}
+ \caption{Robot position with smoothing\_frequency = 60
+}
+ \label{Fig:Robot position with smoothing_frequency = 60}
+\end{figure}
+%\subsection{smoothing\_frequency に関する実験結果}
+
+%smoothing\_frequency は，
+%Velocity Smoother において速度指令の平滑化を行う頻度を決定するパラメータであり，
+%値が大きいほど，
+%速度指令の更新が高頻度で行われる．
+
+本実験では，
+基準値を 20 とし，
+5，10，40，60 に変更した場合のロボットの挙動を比較した．
+その結果，
+5 および 10 の場合には，
+基準値である 20 と比較して，
+ロボットの走行挙動に大きな変化は見られず，
+いずれの条件においても問題なくゴールに到達した．
+
+一方，
+40 に設定した場合には，
+最後の曲がり角において，
+ロボットが比較的スムーズに旋回している様子が確認された．
+このことから，
+smoothing\_frequency を適度に高く設定することで，
+旋回時の挙動が改善される可能性が示唆される．
+
+しかし，
+60 に設定した場合には，
+直進区間から最後の曲がり角へ移行する際の
+旋回開始のタイミングおよび位置が他の条件と異なり，
+その後，
+ロボットが進行方向を頻繁に修正しながら走行する挙動が見られた．
+この結果から，
+smoothing\_frequency を過度に大きく設定すると，
+速度指令の更新が過剰となり，
+走行挙動が不安定になる可能性があることが分かった．
+
+以上より，
+smoothing\_frequency は，
+ロボットの旋回動作の滑らかさに影響を与えるパラメータであり，
+過度に大きな値を設定することは避け，
+走行環境やロボット特性に応じた適切な値を選択することが重要である．
+
 
 \subsubsection{実験結果(max\_velocity\_x)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.6
 
-0.3,0.9,1.2
+%0.3,0.9,1.2
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.3muki.png}
+ \caption{Robot orientation with max\_velocity\_x = 0.3}
+ \label{Fig:Robot orientation with max_velocity_x = 0.3 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.3iti.png}
+ \caption{Robot position with max\_velocity\_x = 0.3
+}
+ \label{Fig:Robot position with max_velocity_x = 0.3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.9muki.png}
+ \caption{Robot orientation with max\_velocity\_x = 0.9}
+ \label{Fig:Robot orientation with max_velocity_x = 0.9 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx0.9iti.png}
+ \caption{Robot position with max\_velocity\_x = 0.9
+}
+ \label{Fig:Robot position with max_velocity_x = 0.9}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.2muki.png}
+ \caption{Robot orientation with max\_velocity\_x = 1.2}
+ \label{Fig:Robot orientation with max_velocity_x = 1.2 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.2iti.png}
+ \caption{Robot position with max\_velocity\_x = 1.2
+}
+ \label{Fig:Robot position with max_velocity_x = 1.2}
+\end{figure}
+
+%\subsection{max\_velocity（x 成分）に関する実験結果}
+
+%Velocity Smoother における \texttt{max\_velocity} の x 成分は，
+%ロボットの並進方向の最大速度を制限するパラメータであり，
+%速度指令の平滑化処理後に適用される．
+
+本実験では，
+\texttt{max\_velocity} の x 成分の値を変化させ，
+ロボットの走行挙動への影響を調査した．
+その結果，
+値を基準より小さく設定した0.3の場合には，
+ロボットの走行速度が低下し，
+全体的に低速な移動となったものの，
+走行は安定しており，
+最終的には問題なくゴールに到達した．
+このことから，
+本パラメータはロボットの移動速度に直接的な影響を与える一方で，
+過度に小さな値を設定しない限り，
+ナビゲーションの成立自体には大きな影響を及ぼさないことが確認された．
+
+一方で，
+値を基準より大きく設定した0.9、1.2の場合には，
+設定値に関わらず，
+ロボットの走行速度が明らかに基準値である 0.6\,m/s を超えることはなく，
+実際の挙動に大きな変化は見られなかった．
+この結果から，
+ロボットの最大速度は，
+Velocity Smoother の本パラメータ以外の要因，
+例えば Controller やロボット固有の制限パラメータによって
+制約されている可能性が示唆される．
+本点については，
+Controller における \texttt{max\_vel\_x} や
+\texttt{max\_speed\_xy} の実験結果と併せて，
+後続の実験において検証を行う．
+
+以上より，
+Velocity Smoother の \texttt{max\_velocity}（x 成分）は，
+ロボットの並進速度の上限を調整するためのパラメータであり，
+低速での安定走行を実現するための調整には有効であるが，
+高速化を目的とする場合には，
+他の速度制限パラメータとの関係を考慮した総合的な調整が必要である．
+
 
 \subsubsection{実験結果(max\_velocity\_theta)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.7
 
-0.6,2.5
+%0.6,2.5
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt0.6muki.png}
+ \caption{Robot orientation with max\_velocity\_theta = 0.6}
+ \label{Fig:Robot orientation with max_velocity_theta = 0.6 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt0.6iti.png}
+ \caption{Robot position with max\_velocity\_theta = 0.6
+}
+ \label{Fig:Robot position with max_velocity_theta = 0.6}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt2.5muki.png}
+ \caption{Robot orientation with max\_velocity\_theta = 2.5}
+ \label{Fig:Robot orientation with max_velocity_theta = 2.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvt2.5iti.png}
+ \caption{Robot position with max\_velocity\_theta = 2.5
+}
+ \label{Fig:Robot position with max_velocity_theta = 2.5}
+\end{figure}
+
+%\subsection{max\_velocity（$\theta$ 成分）に関する実験結果}
+
+%Velocity Smoother における \texttt{max\_velocity} の $\theta$ 成分は，
+%ロボットの角速度の最大値を制限するパラメータであり，
+%旋回動作時の速度上限に影響を与える．
+
+本実験では，
+基準値を 1.7\,rad/s とし，
+0.6\,rad/s および 2.5\,rad/s に変更した場合の
+ロボットの挙動を比較した．
+その結果，
+いずれの値においても，
+ロボットの走行挙動に顕著な変化は見られず，
+問題なくゴールに到達することが確認された．
+
+基準値より小さい 0.6\,rad/s に設定した場合においても，
+旋回動作が極端に遅くなることはなく，
+ナビゲーション全体の進行に大きな影響は与えなかった．
+また，
+基準値より大きい 2.5\,rad/s に設定した場合には，
+最初の曲がり角において，
+一時的に左方向へ回転した後に右旋回へ移行する挙動が確認されたが，
+その影響は限定的であり，
+最終的なゴール到達には支障をきたさなかった．
+
+以上の結果から，
+Velocity Smoother における \texttt{max\_velocity}（$\theta$ 成分）は，
+本実験環境においては，
+ロボットの挙動に与える影響が比較的小さいパラメータであることが分かった．
+このことは，
+旋回時の角速度が，
+他の制御パラメータやロボットの物理的制約によって
+主に制御されている可能性を示唆している．
+
 
 \subsubsection{実験結果(max\_accel\_x)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
 
-0.2,1.0
+%0.2,1.0
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mams0.2muki.png}
+ \caption{Robot orientation with max\_accel\_x = 0.2}
+ \label{Fig:Robot orientation with max_accel_x = 0.2 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mams0.2iti.png}
+ \caption{Robot position with max\_accel\_x = 0.2
+}
+ \label{Fig:Robot position with max_accel_x = 0.2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mams1.0muki.png}
+ \caption{Robot orientation with max\_accel\_x = 1.0}
+ \label{Fig:Robot orientation with max_accel_x = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mams1.0iti.png}
+ \caption{Robot position with max\_accel\_x = 1.0
+}
+ \label{Fig:Robot position with max_accel_x = 1.0}
+\end{figure}
+
+%\subsection{max\_accel（x 成分）に関する実験結果}
+
+%Velocity Smoother における \texttt{max\_accel} の x 成分は，
+%ロボットの並進方向における最大加速度を制限するパラメータであり，
+%速度指令の変化量に影響を与える．
+
+本実験では，
+基準値を 0.5\,m/s$^2$ とし，
+0.2\,m/s$^2$ および 1.0\,m/s$^2$ に変更した場合の
+ロボットの挙動を比較した．
+その結果，
+基準値より小さい 0.2\,m/s$^2$ に設定した場合には，
+走行中にロボットが小刻みに左右へ揺れるような挙動が観察された．
+しかしながら，
+走行自体は継続可能であり，
+最終的には問題なくゴールに到達した．
+このことから，
+加速度制限を厳しく設定すると，
+速度変化が緩やかになりすぎ，
+進行方向の微調整が頻発する可能性があると考えられる．
+
+一方，
+基準値より大きい 1.0\,m/s$^2$ に設定した場合には，
+最初の曲がり角において一時的に停止する挙動が確認されたものの，
+その後は安定した走行を維持し，
+最終的にはゴールに到達した．
+この結果から，
+加速度を大きく設定した場合でも，
+ナビゲーション全体の成立には大きな影響を及ぼさないことが分かった．
+
+以上より，
+Velocity Smoother における \texttt{max\_accel}（x 成分）は，
+ロボットの速度変化の滑らかさや走行安定性に一定の影響を与えるものの，
+本実験環境においては，
+適度な範囲での調整であれば，
+ゴール到達の可否に大きな影響を与えないパラメータであるといえる．
+
 
 \subsubsection{実験結果(max\_accel\_theta)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
 
-0.5,2.0
+%0.5,2.0
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mars0.5muki.png}
+ \caption{Robot orientation with max\_accel\_theta = 0.5}
+ \label{Fig:Robot orientation with max_accel_theta = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mars0.5iti.png}
+ \caption{Robot position with max\_accel\_theta = 0.5
+}
+ \label{Fig:Robot position with max_accel_theta = 0.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mars2.0muki.png}
+ \caption{Robot orientation with max\_accel\_theta = 2.0}
+ \label{Fig:Robot orientation with max_accel_theta = 2.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mars2.0iti.png}
+ \caption{Robot position with max\_accel\_theta = 2.0
+}
+ \label{Fig:Robot position with max_accel_theta = 2.0}
+\end{figure}
+
+%\subsection{Velocity Smootherにおける角速度加速度制限（max\_accel[2]）の影響}
+
+%本節では，Velocity Smoother における角速度方向の最大加速度制限である
+%\texttt{max\_accel} の第3要素（$\theta$ 成分）がロボットの走行挙動に与える影響を調査した。
+%基準値を 1.0 とし，小さい値として 0.5，大きい値として 2.0 を設定し，それぞれ同一環境・同一経路条件下で走行実験を行った。
+
+実験の結果，基準値 1.0 に対して，0.5 および 2.0 のいずれの場合においても，
+走行全体の挙動に大きな変化は見られなかった。
+いずれの設定においても，ロボットは安定して経路を追従し，最終的にゴールへ到達することができた。
+
+一方で，角速度加速度を 2.0 に設定した場合，曲がり角を通過した直後の回転後加速が，
+他の設定と比較してわずかに速く感じられる傾向が確認された。
+これは，角速度の立ち上がりが速くなることで，回転動作から次の直進動作への移行が
+より迅速になったためであると考えられる。
+
+以上の結果から，本実験環境においては，
+角速度方向の最大加速度制限（\texttt{max\_accel[$\theta$]}）は，
+ロボットのゴール到達可否や走行安定性に対して大きな影響を及ぼさないことが示唆される。
+ただし，回転後の応答性にはわずかな差が見られたことから，
+より複雑な経路や急旋回を含む環境においては，
+本パラメータの影響が顕在化する可能性があると考えられる。
+
+Velocity Smoother の各パラメータの実験結果から，
+Velocity Smoother の各パラメータは，
+ゴール到達可否に直接的な影響を与えるというよりも，
+走行の滑らかさ，安定性，および応答性に影響を及ぼすことが分かった。
+特に，\texttt{smoothing\_frequency} および
+並進方向の \texttt{max\_accel} は，
+値の設定によって走行挙動の違いが比較的顕著に現れた。
+
+本実験環境では，
+多少パラメータを変化させてもロボットはゴールに到達可能であったが，
+障害物が密集した環境や急旋回を多く含む経路では，
+Velocity Smoother のパラメータ設定が
+走行の安定性や安全性に大きく影響すると考えられる。
+そのため，実環境への適用においては，
+単一パラメータのみを調整するのではなく，
+複数パラメータの相互関係を考慮した調整が重要である。
 
 \subsection{実験結果(Nav2\_planner goal)}
 
@@ -1694,18 +2465,17 @@ Controller や自己位置推定に関するパラメータ調整を
 優先すべきであると考えられる．
 
 
-\subsubsection{実験結果(速度関係)}
-sokudo
+\subsubsection{実験結果(速度制限パラメータに関する追加実験)}
+%max\_vel\_xとmax\_speed\_xy,max\_velocity\_xで速度が制限されていることが分かった。下のグラフは、速度が0.6m/sから大きくなっていないことを示している
 
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx0.2sokudo2.png}
- \caption{Robot speed with max\_vel\_x = 0.2
-}
- \label{Fig:Robot speed with max_vel_x = 0.2}
-\end{figure}
-
+%\begin{figure}[H]
+  %\centering
+ %\includegraphics[keepaspectratio, scale=0.6]
+      %{images/mvx0.2sokudo2.png}
+ %\caption{Robot speed with max\_vel\_x = 0.2
+%}
+ %\label{Fig:Robot speed with max_vel_x = 0.2}
+%\end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -1715,5 +2485,186 @@ sokudo
  \label{Fig:Robot speed with max_vel_x = 1.0}
 \end{figure}
 
-0.6速度,maxvelx,maxspeedxy,maxvelsmoother,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy1.5sokudo.png}
+ \caption{Robot speed with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_speed_xy = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.2sokudo.png}
+ \caption{Robot speed with max\_velocity\_x = 1.2
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.2}
+\end{figure}
+
+これまでの Controller および Velocity Smoother に関する実験において，
+各パラメータの上限値を増加させた場合でも，
+ロボットの並進速度が一定値以上に増加しない挙動が確認された.
+特に，Velocity Smoother における
+\texttt{max\_velocity} や，
+Controller における
+\texttt{max\_vel\_x}，
+\texttt{max\_speed\_xy}
+の値を大きく設定した場合でも，
+実際の走行速度は基準値付近に制限されていた.
+
+この結果から，Navigation2 におけるロボットの並進速度は，
+単一のパラメータによって決定されるのではなく，
+Controller と Velocity Smoother の複数の速度制限パラメータが
+相互に影響し合うことで制約されている可能性が示唆された.
+
+そこで，速度制限に関与するパラメータ間の関係性を明らかにするため，
+Controller の \texttt{max\_vel\_x} および \texttt{max\_speed\_xy}，
+ならびに Velocity Smoother の
+\texttt{max\_velocity} を対象として，
+それぞれの値を変化させた際のロボットの挙動を比較・評価する
+追加実験を行った.
+
+本実験では，
+Controller の \texttt{max\_vel\_x} を 1.5 に固定し，
+\texttt{max\_speed\_xy} および
+Velocity Smoother の速度制限パラメータ\texttt{max\_velocity\_x}を段階的に変更することで，
+実際の走行速度およびロボットの挙動への影響を調査した.
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvxmsxy1.5.png}
+ \caption{Robot speed with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_speed_xy = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvxmvx1.5.png}
+ \caption{Robot speed with max\_velocity\_x = 1.5
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sokudoall1.5.png}
+ \caption{Robot speed with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+\end{figure}
+
+次にロボットの挙動は下のグラフに示す.\texttt{max\_vel\_x}の値は1.5とする.
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s1muki.png}
+ \caption{Robot orientation with max\_speed\_xy = 1.5}
+ \label{Fig:Robot orientation with max_speed_xy = 1.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s1iti.png}
+ \caption{Robot position with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot position with max_speed_xy = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s2muki.png}
+ \caption{Robot orientation with max\_velocity\_x = 1.5}
+ \label{Fig:Robot orientation with max_velocity_x = 1.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s2iti.png}
+ \caption{Robot position with max\_velocity\_x = 1.5
+}
+ \label{Fig:Robot position with max_velocity_x = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s3muki.png}
+ \caption{Robot orientation with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5}
+ \label{Fig:Robot orientation with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s3iti.png}
+ \caption{Robot position with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot position with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+\end{figure}
+
+%\subsection{速度制限パラメータの組み合わせによる影響}
+
+Controller および Velocity Smoother における速度制限パラメータの関係性を明らかにするため，
+Controller の \texttt{max\_vel\_x} を 1.5 に固定し，
+\texttt{max\_speed\_xy} および
+Velocity Smoother の \texttt{max\_velocity}（x成分）を
+それぞれ 1.5 に設定した組み合わせ実験を行った。
+本実験では，以下の 3 通りの組み合わせについて評価を行った.
+
+\begin{itemize}
+  \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_speed\_xy = 1.5}
+  \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_velocity\_x = 1.5}
+  \item \texttt{max\_vel\_x = 1.5}，\texttt{max\_velocity\_x = 1.5}，
+        \texttt{max\_speed\_xy = 1.5}
+\end{itemize}
+
+その結果，
+3 つすべてのパラメータを 1.5 に設定した場合，
+最も高い並進速度が確認されたが，
+走行中に経路から外れ，
+コース脇の段差方向へ進行したため，
+ゴールに到達することはできなかった.
+このことから，
+速度制限を同時に緩和しすぎると，
+経路追従性や安定性が低下することが確認された.
+
+一方，
+\texttt{max\_vel\_x = 1.5} と
+\texttt{max\_velocity\_x = 1.5} の組み合わせでは，
+速度が基準値である 0.6 を超えて明確に上昇したにもかかわらず，
+ロボットは安定した挙動を保ち，
+ゴールまで到達することができた.
+この結果は，
+Controller と Velocity Smoother の速度上限を適切に一致させることで，
+速度向上とナビゲーションの安定性を両立できる可能性を示している.
+
+また，
+\texttt{max\_vel\_x = 1.5} と
+\texttt{max\_speed\_xy = 1.5} の組み合わせでは，
+走行中の速度は基準値である 0.6 以上には増加せず，
+他のパラメータによる制限が依然として有効であることが確認された.
+この条件では，
+最初の曲がり角付近で一時的に停止する挙動が見られたものの，
+最終的にはゴールに到達しており，
+ナビゲーション自体は安定していた.
+
+以上の結果から，
+Navigation2 における実際の走行速度は，
+単一の速度制限パラメータではなく，
+Controller と Velocity Smoother にまたがる複数の制約条件の
+組み合わせによって決定されることが明らかとなった.
+特に，
+すべての制限を同時に緩和すると速度は向上するが，
+経路追従性能が低下する一方で，
+一部の制限のみを調整することで，
+安定性を保ったまま速度向上が可能であることが示唆された.
+
+
 %\subsubsection{etc...}
