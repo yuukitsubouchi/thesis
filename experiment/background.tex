@@ -831,7 +831,7 @@ max\_speed\_xy を過度に小さく設定すると，
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.001
 
-0.01,0.1,1.0,
+%0.01,0.1,1.0,
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -866,16 +866,16 @@ max\_speed\_xy を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mtvt1.0muki.png}
- \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.01}
- \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.01 }
+ \caption{Robot orientation with min\_theta\_velocity\_threshold = 1.0}
+ \label{Fig:Robot orientation with min_theta_velocity_threshold = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mtvt1.0iti.png}
- \caption{Robot position with min\_theta\_velocity\_threshold = 0.01
+ \caption{Robot position with min\_theta\_velocity\_threshold = 1.0
 }
- \label{Fig:Robot position with min_theta_velocity_threshold = 0.01}
+ \label{Fig:Robot position with min_theta_velocity_threshold = 1.0}
 \end{figure}
 %\subsection{Controller における min\_theta\_velocity\_threshold の実験結果}
 
@@ -904,12 +904,168 @@ min\_theta\_velocity\_threshold は，
 \subsubsection{実験結果(acc\_lim\_x)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
 
-0.1,0.5,1.5,
+%0.1,0.5,1.5,
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx0.1muki.png}
+ \caption{Robot orientation with acc\_lim\_x = 0.1}
+ \label{Fig:Robot orientation with acc_lim_x = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx0.1iti.png}
+ \caption{Robot position with acc\_lim\_x = 0.1
+}
+ \label{Fig:Robot position with acc_lim_x = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx0.5muki.png}
+ \caption{Robot orientation with acc\_lim\_x = 0.5}
+ \label{Fig:Robot orientation with acc_lim_x = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx0.5iti.png}
+ \caption{Robot position with acc\_lim\_x = 0.5
+}
+ \label{Fig:Robot position with acc_lim_x = 0.5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx1.5muki.png}
+ \caption{Robot orientation with acc\_lim\_x = 1.5}
+ \label{Fig:Robot orientation with acc_lim_x = 1.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alx1.5iti.png}
+ \caption{Robot position with acc\_lim\_x = 1.5
+}
+ \label{Fig:Robot position with acc_lim_x = 1.5}
+\end{figure}
+%\subsection{Controller における acc\_lim\_x の実験結果}
+
+%本実験では，Navigation2 の Controller において，
+%並進方向の加速度制限を定義するパラメータ acc\_lim\_x を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+本実験では、acc\_lim\_x の値を変化させた場合，
+曲がり角通過後の直進動作において，
+ロボットの加速がやや速く感じられる場面が確認された．
+しかしながら，それ以外の走行挙動においては
+顕著な変化は見られず，
+いずれの設定値においても
+ロボットは安定した走行を維持したまま
+ゴール地点へ到達することができた．
+
+以上の結果より，
+acc\_lim\_x はロボットの加速特性を決定する上で
+必要なパラメータであるものの，
+本実験条件においては，
+走行経路の追従性能や
+ナビゲーション全体の安定性に与える影響は比較的小さいことが示唆された．
+
+
 
 \subsubsection{実験結果(acc\_lim\_theta)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.2
 
-0.1,1.0,4.0,
+%0.1,1.0,4.0,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt0.1muki.png}
+ \caption{Robot orientation with acc\_lim\_theta = 0.1}
+ \label{Fig:Robot orientation with acc_lim_theta = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt0.1iti.png}
+ \caption{Robot position with acc\_lim\_theta = 0.1
+}
+ \label{Fig:Robot position with acc_lim_theta = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt1.0muki.png}
+ \caption{Robot orientation with acc\_lim\_theta = 1.0}
+ \label{Fig:Robot orientation with acc_lim_theta = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt1.0iti.png}
+ \caption{Robot position with acc\_lim\_theta = 1.0
+}
+ \label{Fig:Robot position with acc_lim_theta = 1.0}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt4.0muki.png}
+ \caption{Robot orientation with acc\_lim\_theta = 4.0}
+ \label{Fig:Robot orientation with acc_lim_theta = 4.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/alt4.0iti.png}
+ \caption{Robot position with acc\_lim\_theta = 4.0
+}
+ \label{Fig:Robot position with acc_lim_theta = 4.0}
+\end{figure}
+%\subsection{Controller における acc\_lim\_theta の実験結果}
+
+%本実験では，Navigation2 の Controller において，
+%角加速度の制限を定義するパラメータ acc\_lim\_theta を変更し，
+%ロボットの旋回挙動への影響を調査した．
+
+本実験では、acc\_lim\_theta を 0.1 に設定した場合，
+最終的な旋回動作後の直進区間において，
+ロボットの進行方向が細かく変化する，
+いわゆるくねくねとした挙動が確認された．
+その後，姿勢が安定し，
+最終的にはゴール地点へ到達することができた．
+
+また，acc\_lim\_theta を 1 に設定した場合においても，
+走行中の進行方向が細かく変化する挙動が確認され，
+これは取得したグラフからも明確に観察された．
+しかしながら，この設定値においても，
+ナビゲーション自体に支障はなく，
+ロボットは問題なくゴールへ到達した．
+
+一方で，acc\_lim\_theta を 4 に設定した場合，
+走行挙動に大きな変化は見られず，
+旋回および直進動作ともに安定した走行が確認された．
+
+以上の結果より，
+acc\_lim\_theta を過度に小さく設定すると，
+旋回後の姿勢制御が不安定になりやすい一方で，
+一定以上の値に設定することで，
+安定した旋回挙動を維持できることが示唆された．
+
+以上の結果より，
+Controller に関するパラメータは，
+ロボットの走行速度や旋回特性といった
+運動特性を調整する上で重要な役割を果たす一方で，
+一部のパラメータについては，
+他の設定値やシステム制約との相互作用によって
+挙動への影響が限定されることが分かった．
+そのため，Controller パラメータの調整においては，
+単一のパラメータのみを変更するのではなく，
+関連するパラメータとの関係を考慮しながら
+総合的に調整を行うことが重要である．
 
 \subsection{実験結果(Nav2\_Costmap)}
 
@@ -917,21 +1073,168 @@ min\_theta\_velocity\_threshold は，
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
 
 0.05,0.5,1.0,
+%\subsection{global\_resolution に関する実験結果}
+
+%global\_resolution は，Global Costmap における
+%地図の解像度を決定するパラメータであり，
+%値を小さくするほど環境を高解像度で表現できる一方，
+%計算量の増加が生じることが知られている．
+
+本実験では，
+global\_resolution の値を0.05,0.5,1.0に変化させて走行実験を行ったが，
+いずれの設定においても，
+ロボットの挙動に大きな変化は見られなかった．
+また，経路生成や走行中の挙動は安定しており，
+ゴールまで問題なく到達することが確認された．
+
+この結果から，
+今回使用した環境およびタスク条件においては，
+global\_resolution を変更しても，
+経路計画やロボットの走行挙動への影響は小さいと考えられる．
+そのため，
+本実験環境では，
+過度に解像度を高く設定する必要はなく，
+計算負荷とのバランスを考慮した
+標準的な値を用いることが有効であるといえる．
+
 
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.0
 
 1.0,5.0,10
 
+%\subsection{global\_cost\_scaling\_factor に関する実験結果}
+
+%global\_cost\_scaling\_factor は，
+%障害物からの距離に応じたコストの減衰具合を調整するパラメータであり，
+%値が大きいほど，
+%障害物付近のコストが急激に低下し，
+%障害物をより強く回避する傾向を示す．
+
+本実験では，
+基準値に対して値を下げた場合（1.0）および，
+値を上げた場合（5，10）について走行実験を行った．
+その結果，
+いずれの設定においてもロボットは無事にゴールへ到達し，
+ナビゲーション全体や走行中の基本的な挙動に
+大きな差異は見られなかった．
+
+一方で，
+ゴール地点付近に設置されたコーンを回避する際の挙動に違いが確認された．
+具体的には，
+global\_cost\_scaling\_factor の値が大きい場合，
+障害物に対する回避動作の開始が早く，
+より余裕を持って障害物を避ける挙動が見られた．
+これに対し，
+値が小さい場合は，
+障害物に比較的近づいてから回避動作を行う傾向が確認された．
+
+以上の結果から，
+global\_cost\_scaling\_factor は，
+経路生成の成否やゴール到達自体には大きな影響を与えないものの，
+障害物回避のタイミングや挙動の余裕度に影響を及ぼすパラメータであると考えられる．
+そのため，
+環境中の障害物配置や安全マージンの要求に応じて，
+適切な値を選択することが重要である．
+
 \subsubsection{実験結果(global\_inflation\_radius)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
 
 0.1,1.0,2.0
 
+%\subsection{global\_inflation\_radius に関する実験結果}
+
+%global\_inflation\_radius は，
+%障害物や建物の周囲に設定される膨張領域の半径を決定するパラメータであり，
+%ロボットが障害物に近づかないようにするための安全マージンを調整する役割を持つ．
+
+本実験では，
+global\_inflation\_radius の値を基準値から大きくした場合と小さくした場合について
+走行実験を行った．
+値を大きく設定した1.0,2.0の場合，
+建物や障害物の周囲に広い膨張領域が生成され，
+ロボットがその範囲に進入しないような経路が生成された．
+その結果，
+道幅が狭い最初の直線区間において，
+ロボットが通行可能な領域が制限され，
+進行開始がやや遅れる挙動が確認された．
+しかしながら，
+走行中の挙動は安定しており，
+最終的には問題なくゴールに到達した．
+
+一方，
+global\_inflation\_radius の値を小さく設定した0.5の場合においても，
+ロボットは大きな問題なくゴールへ到達した．
+障害物との距離は近くなるものの，
+今回の環境では衝突や著しい不安定挙動は確認されなかった．
+
+以上の結果から，
+global\_inflation\_radius は，
+ゴール到達の可否よりも，
+狭い通路や細い道を通過する際の経路の取り方や
+ロボットの走行余裕に影響を与えるパラメータであると考えられる．
+そのため，
+通路幅が限られた環境や，
+障害物間を通過する必要がある環境においては，
+ロボットのサイズや走行特性に応じて
+適切に調整することが重要である．
+
 \subsubsection{実験結果(local\_resolution)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
 
 0.05,0.5,1.0
+
+%\subsection{local\_resolution に関する実験結果}
+
+%local\_resolution は，
+%ローカルコストマップにおける地図の解像度を決定するパラメータであり，
+%周囲環境をどの程度細かく表現するかに影響を与える．
+%値を小さくするほど詳細な環境表現が可能となる一方で，
+%計算量が増加する．
+
+本実験では，
+基準値である 0.1 を中心に，
+値を小さくした場合および大きくした場合の挙動を比較した．
+値を 0.05 に設定した場合，
+ロボットは経路を正確に追従し，
+全体を通して安定した走行を行い，
+問題なくゴールに到達した．
+基準値より高い解像度で環境を認識できていることから，
+障害物回避や経路追従が適切に行われたと考えられる．
+
+一方，
+local\_resolution を 0.5 に設定した場合，
+ロボットは長い直進区間において，
+右側の段差付近を通過する挙動が確認された．
+走行位置はやや危険な箇所であったものの，
+最終的にはゴールまで到達することができた．
+このことから，
+解像度の低下により環境表現が粗くなり，
+障害物との距離評価が不十分になっている可能性が考えられる．
+
+さらに，
+local\_resolution を 1.0 に設定した場合，
+ロボットは走行開始直後にその場でゆっくり回転し，
+すぐには移動を開始しなかった．
+その後も，
+停止とわずかな旋回を繰り返す挙動が見られ，
+最終的には最初の曲がり角付近で停止し，
+ゴールに到達することができなかった．
+これは，
+解像度が極端に低下したことで，
+周囲環境を正しく認識できず，
+適切な経路生成や障害物回避が行えなかったためであると考えられる．
+
+以上の結果から，
+local\_resolution はロボットの走行安定性や
+障害物回避性能に大きく影響を与えるパラメータであり，
+値を大きくしすぎると，
+ナビゲーションの破綻を引き起こす可能性があることが確認された．
+本実験環境においては，
+基準値である 0.1 もしくは，
+それ以下の値を用いることで，
+安定した自律走行が実現できると考えられる．
+
 
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3
@@ -975,32 +1278,423 @@ min\_theta\_velocity\_threshold は，
 \subsubsection{実験結果(linear\_granularity)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.05
 
-0.01,0.1,0.5,
+%0.01,0.1,0.5,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.01muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.01}
+ \label{Fig:Robot orientation with linear_granularity = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.01iti.png}
+ \caption{Robot position with linear\_granularity = 0.01
+}
+ \label{Fig:Robot position with linear_granularity = 0.01}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.1muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.1}
+ \label{Fig:Robot orientation with linear_granularity = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.1iti.png}
+ \caption{Robot position with linear\_granularity = 0.1
+}
+ \label{Fig:Robot position with linear_granularity = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.5muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.5}
+ \label{Fig:Robot orientation with linear_granularity = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.5iti.png}
+ \caption{Robot position with linear\_granularity = 0.5
+}
+ \label{Fig:Robot position with linear_granularity = 0.5}
+\end{figure}
+%\subsection{Planner における linear\_granularity の実験結果}
+
+%本実験では，Navigation2 の Planner において，
+%経路生成時の並進方向の分解能を定義するパラメータ
+%linear\_granularity を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+%本実験では、基準値である linear\_granularity = 0.05 に対し，
+%0.1 および 0.5 の各値について走行実験を行った．
+本実験では、linear\_granularity を 0.5 に設定した場合，
+走行開始後の最初の旋回箇所において
+ロボットが一時的に停止する挙動が確認され，
+その後，再び動き出すまでに時間を要した．
+この挙動は，
+経路の分解能が粗くなったことにより，
+滑らかな経路生成が困難になったためであると考えられる．
+
+一方で，linear\_granularity を 0.1 に設定した場合，
+走行挙動は安定しており，
+旋回動作を含めた経路においても
+スムーズな走行が確認された．
+この結果から，
+linear\_granularity を基準値よりやや大きく設定した場合でも，
+安定したナビゲーションが可能であることが示唆された．
+
+以上の結果より，
+linear\_granularity を過度に大きく設定すると，
+経路生成の精度低下により
+走行挙動が不安定になる可能性がある一方で，
+0.1 程度の設定値であれば，
+計算負荷と走行安定性の両立が可能であると考えられる．
+
 
 
 \subsubsection{実験結果(angular\_granularity)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.025
 
-0.001,0.01,0.04,
+%0.001,0.01,0.04,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.001muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.001}
+ \label{Fig:Robot orientation with angular_granularity = 0.001 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.001iti.png}
+ \caption{Robot position with angular\_granularity = 0.001
+}
+ \label{Fig:Robot position with angular_granularity = 0.001}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.01muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.01}
+ \label{Fig:Robot orientation with angular_granularity = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.01iti.png}
+ \caption{Robot position with angular\_granularity = 0.01
+}
+ \label{Fig:Robot position with angular_granularity = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.04muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.04}
+ \label{Fig:Robot orientation with angular_granularity = 0.04 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.04iti.png}
+ \caption{Robot position with angular\_granularity = 0.04
+}
+ \label{Fig:Robot position with angular_granularity = 0.04}
+\end{figure}
+
+%\subsection{Planner における angular\_granularity の実験結果}
+
+%本実験では，Navigation2 の Planner において，
+%経路生成時の角度方向の分解能を定義するパラメータ
+%angular\_granularity を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+本実験では、angular\_granularity の値を基準値より小さく設定した場合，
+ロボットの走行挙動に大きな変化は見られず，
+旋回および直進動作ともに
+安定した走行が確認された．
+この結果から，
+角度分解能を高めても，
+本実験環境においては
+挙動への影響は限定的であることが示唆される．
+
+一方で，angular\_granularity を 4.0 に設定した場合，
+最終的な旋回区間において，
+ロボットの進行方向に
+わずかな変化が生じていることが確認された．
+この挙動は，
+angular\_granularity = 4.0 の設定における
+ロボットの姿勢変化を示したグラフからも確認でき，
+角度分解能が粗くなったことにより，
+旋回動作の精度が低下した可能性が考えられる．
+
+以上の結果より，
+angular\_granularity は，
+一定範囲内で値を小さく設定しても
+走行挙動に大きな影響を与えない一方で，
+過度に大きな値を設定した場合には，
+旋回動作時の姿勢精度に影響を及ぼす可能性があることが示された．
+
 
 \subsubsection{実験結果(xy\_goal\_tolerance)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.25
 
-0.01,0.1,0.4,
+%0.01,0.1,0.4,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.01muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.01}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.01iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.01
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.1muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.1}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.1iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.1
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.4muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.4}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.4iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.4
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.4}
+\end{figure}
+%\subsection{Goal Checker における xy\_goal\_tolerance の実験結果}
+
+%本実験では，Navigation2 の Goal Checker において，
+%ゴール位置到達判定の許容誤差を示すパラメータ
+%xy\_goal\_tolerance を変更し，
+%ロボットの走行挙動およびゴール到達時の安定性への影響を評価した．
+
+本実験では、xy\_goal\_tolerance の値を0.01,0.1,0.4に設定して実験を行った結果，
+いずれの値においても，
+ロボットの走行挙動に顕著な変化は確認されなかった．
+また，ゴール付近での振動や停止位置の不安定化といった現象も見られず，
+すべての条件において安定したゴール到達が達成された．
+
+この結果から，
+本実験環境および使用したロボットモデルにおいては，
+xy\_goal\_tolerance の設定値が
+ロボットの走行挙動に与える影響は小さいことが示唆される．
+したがって，本パラメータは，
+厳密な位置精度よりも
+ゴール到達判定の柔軟性を調整する目的で用いられ，
+挙動そのものへの影響は限定的であると考えられる．
+
 
 \subsubsection{実験結果(trans\_stopped\_velocity)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.25
 
-0.01,0.1,0.4
+%0.01,0.1,0.4
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.01muki.png}
+ \caption{Robot orientation with trans\_stopped\_velocity = 0.01}
+ \label{Fig:Robot orientation with trans_stopped_velocity = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.01iti.png}
+ \caption{Robot position with trans\_stopped\_velocity = 0.01
+}
+ \label{Fig:Robot position with trans_stopped_velocity = 0.01}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.1muki.png}
+ \caption{Robot orientation with trans\_stopped\_velocity = 0.1}
+ \label{Fig:Robot orientation with trans_stopped_velocity = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.1iti.png}
+ \caption{Robot position with trans\_stopped\_velocity = 0.1
+}
+ \label{Fig:Robot position with trans_stopped_velocity = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.4muki.png}
+ \caption{Robot orientation with trans\_stopped\_velocity = 0.4}
+ \label{Fig:Robot orientation with trans_stopped_velocity = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/tsv0.4iti.png}
+ \caption{Robot position with trans\_stopped\_velocity = 0.4
+}
+ \label{Fig:Robot position with trans_stopped_velocity = 0.4}
+\end{figure}
+%\subsection{Goal Checker における trans\_stopped\_velocity の実験結果}
+
+%本実験では，Navigation2 の Goal Checker における
+%trans\_stopped\_velocity を変更し，
+%Waypoint 通過時およびゴール判定に与える影響を検証した．
+%本パラメータは，ロボットが停止状態と判定される際の
+%並進速度の閾値を定義するものである．
+
+実験の結果，
+trans\_stopped\_velocity の値を大きく設定した場合，
+ロボットが完全に減速する前の段階で
+停止状態と判定されやすくなり，
+Waypoint を通過する際のゴール判定位置が
+Waypoint からやや離れた位置で行われる傾向が確認された．
+そのため，Waypoint 付近での軌道修正が少なくなり，
+通過精度が低下する挙動が見られた．
+
+一方で，trans\_stopped\_velocity の値を小さく設定した場合，
+ロボットはより低速になるまで移動を継続するため，
+Waypoint 近傍で正確に曲がる，あるいは直進する挙動が観測された．
+これにより，Waypoint 周辺での軌道精度が向上し，
+より意図した経路に沿った走行が実現できていた．
+
+なお，いずれの設定値においても，
+最終的には安定してゴールに到達しており，
+ゴール失敗や停止不能といった問題は発生しなかった．
+以上の結果から，
+trans\_stopped\_velocity は
+ロボットの到達可否そのものに影響を与えるパラメータではなく，
+Waypoint 通過時の判定精度や挙動の細かさを調整するための
+補助的なパラメータであると考えられる．
+
+本実験環境においては，
+より正確な Waypoint 通過を実現するため，
+trans\_stopped\_velocity の値は
+現行設定よりもやや小さな値に設定することが
+有効である可能性が示唆された．
+
 
 \subsubsection{実験結果(planner\_tolerance)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
 
-0.1,1.0,
+%0.1,1.0,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/pt0.1muki.png}
+ \caption{Robot orientation with planner\_tolerance = 0.1}
+ \label{Fig:Robot orientation with planner_tolerance = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/pt0.1iti.png}
+ \caption{Robot position with planner\_tolerance = 0.1
+}
+ \label{Fig:Robot position with planner_tolerance = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/pt1.0muki.png}
+ \caption{Robot orientation with planner\_tolerance = 1.0}
+ \label{Fig:Robot orientation with planner_tolerance = 1.0 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/pt1.0iti.png}
+ \caption{Robot position with planner\_tolerance = 1.0
+}
+ \label{Fig:Robot position with planner_tolerance = 1.0}
+\end{figure}
 
 
 
+%\subsection{Planner における planner\_tolerance の実験結果}
 
+%本実験では，Navigation2 の Planner における
+%planner\_tolerance を変更し，
+%経路生成およびロボットの走行挙動への影響を評価した．
+%planner\_tolerance は，
+%ゴール位置に対する許容誤差を表すパラメータであり，
+%この値が大きいほど，
+%ゴール近傍の広い範囲を到達可能領域として
+%経路生成が行われる．
+
+実験では，planner\_tolerance を 0.1 および 1.0 に設定して比較した．
+その結果，
+planner\_tolerance を 1.0 とした場合，
+経路上で曲がり始めるタイミングが
+0.1 の場合と比べてやや早くなる傾向が確認された．
+これは，ゴールに対する許容範囲が広がったことで，
+より早い段階で経路生成が完了し，
+経路の形状がわずかに変化したためであると考えられる．
+
+しかしながら，
+この違いはロボットの走行挙動に大きな影響を与えるものではなく，
+速度変化や安定性，ゴール到達の可否といった点において，
+顕著な差は見られなかった．
+また，その他の区間においても，
+planner\_tolerance の値を変更したことによる
+明確な挙動の変化は観測されなかった．
+
+以上の結果から，
+planner\_tolerance は
+経路生成の細かな形状やタイミングに影響を与えるものの，
+本実験環境においては
+ロボットの走行安定性や到達性能に対する影響は小さいパラメータである
+と考えられる．
+
+以上の結果より，
+Planner に関するパラメータは，
+「どのような経路を生成するか」という
+大域的な計画に影響を与える一方で，
+ロボットの実際の運動挙動や安定性に対しては，
+Controller や Localization に比べて
+影響が小さいことが明らかとなった．
+そのため，
+Planner のパラメータ調整は，
+経路の形状や計画のタイミングを整える目的で行い，
+ロボットの走行安定性や挙動の改善については，
+Controller や自己位置推定に関するパラメータ調整を
+優先すべきであると考えられる．
+
+
+\subsubsection{実験結果(速度関係)}
 sokudo
 
 \begin{figure}[H]
