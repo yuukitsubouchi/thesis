@@ -53,11 +53,14 @@ Navigation2 は，自己位置推定，経路計画，障害物回避，移動�
     min\_theta\_velocity\_threshold \\
     acc\_lim\_x \\
     acc\_lim\_theta \\
+    linear\_granularity \\
+    angular\_granularity \\
+    xy\_goal\_tolerance \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Parameters of the Nav2 Costmap}
   \label{tab:costmap_params}
@@ -75,7 +78,7 @@ Navigation2 は，自己位置推定，経路計画，障害物回避，移動�
   \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Parameters of the Nav2 Velocity Smoother}
   \label{tab:smoother_params}
@@ -91,7 +94,7 @@ Navigation2 は，自己位置推定，経路計画，障害物回避，移動�
   \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Parameters of the Nav2 Planner and Goal Checker}
   \label{tab:planner_params}
@@ -99,9 +102,9 @@ Navigation2 は，自己位置推定，経路計画，障害物回避，移動�
     \toprule
     Parameter Name \\
     \midrule
-    linear\_granularity \\
-    angular\_granularity \\
-    xy\_goal\_tolerance \\
+    %linear\_granularity \\
+    %angular\_granularity \\
+    %xy\_goal\_tolerance \\
     trans\_stopped\_velocity \\
     planner\_tolerance \\
     \bottomrule
@@ -197,6 +200,18 @@ Navigation2 は，自己位置推定，経路計画，障害物回避，移動�
 回転方向の加速度制限を設定するパラメータである．
 急激な旋回動作を抑制し，滑らかな姿勢制御を実現するために用いられる．
 
+\subsubsection{linear\_granularity}
+経路生成時の直線方向の分割間隔を設定するパラメータである．
+値を小さくすると経路が滑らかになるが，計算量が増加する．
+
+\subsubsection{angular\_granularity}
+経路生成時の角度方向の分割間隔を設定する．
+旋回精度に影響を与える．
+
+\subsubsection{xy\_goal\_tolerance}
+ロボットがゴールに到達したと判定される位置誤差の許容範囲を表す．
+値を大きくするとゴール判定が緩くなる．
+
 \subsubsection{costmap}
 \subsubsection{global\_resolution}
 Global Costmap の解像度を設定するパラメータである．
@@ -246,17 +261,17 @@ max\_accel の第3要素は，回転方向の最大加速度を制限するパ�
 旋回動作の安定性向上に寄与する．
 
 \subsubsection{planner/ゴール判定}
-\subsubsection{linear\_granularity}
-経路生成時の直線方向の分割間隔を設定するパラメータである．
-値を小さくすると経路が滑らかになるが，計算量が増加する．
+%\subsubsection{linear\_granularity}
+%経路生成時の直線方向の分割間隔を設定するパラメータである．
+%値を小さくすると経路が滑らかになるが，計算量が増加する．
 
-\subsubsection{angular\_granularity}
-経路生成時の角度方向の分割間隔を設定する．
-旋回精度に影響を与える．
+%\subsubsection{angular\_granularity}
+%経路生成時の角度方向の分割間隔を設定する．
+%旋回精度に影響を与える．
 
-\subsubsection{xy\_goal\_tolerance}
-ロボットがゴールに到達したと判定される位置誤差の許容範囲を表す．
-値を大きくするとゴール判定が緩くなる．
+%\subsubsection{xy\_goal\_tolerance}
+%ロボットがゴールに到達したと判定される位置誤差の許容範囲を表す．
+%値を大きくするとゴール判定が緩くなる．
 
 \subsubsection{trans\_stopped\_velocity}
 並進速度が停止と判定される閾値を設定するパラメータである．

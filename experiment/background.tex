@@ -9,25 +9,58 @@
  %\label{Fig:Example}
 %\end{figure}
 %\subsection{実験概要}
-本研究では，本研究室で開発されているロボット ORNE-box3\cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne} を用いて走行実験を行った．実機ロボットの外観は\figref{Fig:ORNE-box3}に示す.ORNE-box3のセンサ構成については、\figref{Fig:sensor configuration}に示すように,PCとしてJetson Orin NX 16GBを搭載しており、3D LiDAR:R-Fans-16
-、IMU：ADIS16465、Encoder : i-Cart middleを備えている.3D LiDARは、自己位置推定と障害物検知に使用し、IMUとエンコーダは、emcl2に対して情報を提供している.
 
-走行ルートは\figref{Fig:Course map of the Tsudanuma Challenge 2025}が示すように，津田沼校舎2号館前から食堂前に設置されたコーンまでとし，
-津田沼チャレンジのコースの一部を利用した．このルートは，屋外環境における
-自律移動性能を評価するための実環境を想定したものである．
+本章では，Navigation2 における各種パラメータ設定が，自律移動ロボットの走行挙動に与える影響を調査するために実施した走行実験について述べる．
+
+以下では，まず実験の目的を示し，次に実験装置および実験環境について説明する．その後，実験方法とパラメータ設定条件を示すことで，本研究における実験の全体像を明らかにする．
+%本研究では，本研究室で開発されているロボット ORNE-box3\cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne} を用いて走行実験を行った．実機ロボットの外観を\figref{Fig:ORNE-box3}に示す.
+%ORNE-box3のセンサ構成については、\figref{Fig:sensor configuration}に示すように,PCとしてJetson Orin NX 16GBを搭載しており、3D LiDAR:R-Fans-16
+%、IMU：ADIS16465、Encoder : i-Cart middleを備えている.3D LiDARは、自己位置推定と障害物検知に使用し、IMUとエンコーダは、emcl2に対して情報を提供している.
+\subsection{実験目的}
+
+本実験の目的は，ROS 2 Navigation2 における各種パラメータを個別に変化させた際に，自律移動中のロボットの挙動がどのように変化するかを明らかにすることである．
+
+特に，走行速度，軌道の安定性，旋回挙動，およびゴール到達可否といった観点から，パラメータ設定がロボットの走行性能に与える影響を評価することを目的とする.
+%走行ルートは\figref{Fig:Course map of the Tsudanuma Challenge 2025}が示すように，津田沼校舎2号館前から食堂前に設置されたコーンまでとし，
+%津田沼チャレンジのコースの一部を利用した．このルートは，屋外環境における
+%自律移動性能を評価するための実環境を想定したものである．
 
 
-実験では，Navigation2 における各種パラメータを個別に変化させた場合の
-ロボットの挙動の変化を調査することを目的とした．
-各走行実験においては，対象とするパラメータのみを変更し，
-それ以外のパラメータはすべて一定に保った．
+%実験では，Navigation2 における各種パラメータを個別に変化させた場合の
+%ロボットの挙動の変化を調査することを目的とした．
+%各走行実験においては，対象とするパラメータのみを変更し，
+%それ以外のパラメータはすべて一定に保った．
 
-また，パラメータの変更に際しては，変更前の設定値を基準値とし，
-基準値から増減させた場合のロボットの走行挙動を比較・分析した．
-これにより，各パラメータがロボットの走行安定性や挙動に与える影響を
-明確にすることを試みた．
+%また，パラメータの変更に際しては，変更前の設定値を基準値とし，
+%基準値から増減させた場合のロボットの走行挙動を比較・分析した．
+%これにより，各パラメータがロボットの走行安定性や挙動に与える影響を
+%明確にすることを試みた．
 
-\begin{figure}[hbtp]
+\subsection{実験装置}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.3]
+      {images/orne-box3.png}
+ \caption{ORNE-box3(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
+ \label{Fig:ORNE-box3}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.3]
+      {images/117.png}
+ \caption{Overview of ORNE-box3 and its onboard sensors}
+ \label{Fig:Overview of ORNE-box3 and its onboard sensors}
+\end{figure}
+
+実験には，本研究室で開発されている自律移動ロボット ORNE-box3\cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne} を使用した．ORNE-box3 の外観を\figref{Fig:ORNE-box3} に示す．
+
+本ロボットは，計算機として Jetson Orin NX 16GB を搭載しており，自己位置推定およびナビゲーション処理を行う．また，周辺環境の認識および状態推定のために，3D LiDAR（R-Fans-16），IMU（ADIS16465），エンコーダ（i-Cart middle）を備えている．
+
+3D LiDAR は自己位置推定および障害物検知に使用され，IMU とエンコーダから得られる情報は emcl2 に入力され，ロボットの自己位置推定に利用される．
+\subsection{実験環境及び走行ルート}
+
+\begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/tsudanumachallenge.png}
@@ -35,25 +68,242 @@
  \label{Fig:Course map of the Tsudanuma Challenge 2025}
 \end{figure}
 
-\begin{figure}[hbtp]
+走行実験は\figref{Fig:Course map of the Tsudanuma Challenge 2025}に示すように，津田沼校舎 2 号館前から食堂前に設置されたコーンまでの区間で実施した．本ルートは，本研究室が参加している「津田沼チャレンジ」において使用されるコースの一部である．
+
+津田沼チャレンジは，大学キャンパス内の実環境を対象として，自律移動ロボットの走行性能を検証する取り組みであり，歩行者や段差などが存在する屋外環境を想定している．本実験では，この実環境を模擬した走行ルートを用いることで，実運用に近い条件下での挙動評価を行った．
+
+
+\subsection{実験方法}
+
+実験では，Navigation2 における各種パラメータを個別に変化させた場合のロボットの走行挙動を観察した．
+
+各走行実験においては，対象とするパラメータのみを変更し，それ以外のパラメータはすべて同一の設定とした．これにより，特定のパラメータ変更がロボットの挙動に与える影響を明確にすることを試みた．
+
+また，各実験は同一の走行ルートおよび初期条件のもとで実施した．
+
+パーティクル数は，パーティクルフィルタに基づく自己位置推定において，
+仮説の多様性を決定する重要なパラメータである．
+粒子数が不足した場合，自己位置推定が定性的に破綻し，ロボットが
+ナビゲーションを継続できなくなる．
+そのため，num\_particles に関する実験では，軌道の比較ではなく，
+ゴール到達の可否を評価指標として用いた．こちらの実験回数は10回である.
+
+その他のパラメータについては，自己位置推定が成立した状態での挙動
+の違いを評価することを目的とし，rosbag に記録されたロボットの位置および向き
+の時間変化を用いて解析を行った．こちらの実験回数は一回である.
+
+\subsection{実験条件及びパラメータ設定}
+
+%本研究において基準とした Navigation2 のパラメータ設定を表\ref{tab:base_parameters}に示す．
+
+本研究において基準とした Navigation2 および emcl2 のパラメータを
+Table\ref{tab:emcl2_parameters}〜Table\ref{tab:planner_goal_parameters}に示す。
+
+また，実験番号と変更したパラメータの対応をTable\ref{tab:exp_emcl2}〜Table\ref{tab:exp_planner_goal}に示す．各実験では，表に示したパラメータのみを基準値から変更し，その他の設定はすべて基準値と同一とした．
+
+\begin{table}[H]
   \centering
- \includegraphics[keepaspectratio, scale=0.3]
-      {images/orne-box3.png}
- \caption{ORNE-box3(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
- \label{Fig:ORNE-box3}
-\end{figure}
-\begin{figure}[hbtp]
+  \caption{Baseline Parameter Settings in emcl2}
+  \label{tab:emcl2_parameters}
+  \begin{tabular}{ll}
+    \hline
+    Parameter & Baseline Value \\
+    \hline
+    num\_particles & 500 \\
+    odom\_fw\_dev\_per\_fw & 0.19 \\
+    odom\_fw\_dev\_per\_rot & 0.0001 \\
+    odom\_rot\_dev\_per\_fw & 0.13 \\
+    odom\_rot\_dev\_per\_rot & 0.2 \\
+    laser\_likelihood\_max\_dist & 0.2 \\
+    range\_threshold & 0.3 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
   \centering
- \includegraphics[keepaspectratio, scale=0.3]
-      {images/sensor.png}
- \caption{sensor configuration}
- \label{Fig:sensor configuration}
-\end{figure}
+  \caption{Baseline Parameter Settings for the Nav2 Controller}
+  \label{tab:controller_parameters}
+  \begin{tabular}{ll}
+    \hline
+    Parameter & Baseline Value \\
+    \hline
+    max\_vel\_x & 0.6 \\
+    max\_vel\_theta & 0.7 \\
+    max\_speed\_xy & 0.9 \\
+    min\_theta\_velocity\_threshold & 0.001 \\
+    acc\_lim\_x & 1.0 \\
+    acc\_lim\_theta & 3.2 \\
+    linear\_granularity & 0.05 \\
+    angular\_granularity & 0.025 \\
+    xy\_goal\_tolerance & 0.25 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Baseline Parameter Settings for the Nav2 Costmap}
+  \label{tab:costmap_parameters}
+  \begin{tabular}{lll}
+    \hline
+    Target & Parameter & Baseline Value \\
+    \hline
+    Global & global\_resolution & 0.1 \\
+    Global & global\_cost\_scaling\_factor & 3.0 \\
+    Global & global\_inflation\_radius & 0.5 \\
+    Local & local\_resolution & 0.1 \\
+    Local & local\_cost\_scaling\_factor & 3.0 \\
+    Local & local\_inflation\_radius & 0.3 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Baseline Parameter Settings for the Nav2 Velocity Smoother}
+  \label{tab:velocity_smoother_parameters}
+  \begin{tabular}{ll}
+    \hline
+    Parameter & Baseline Value \\
+    \hline
+    smoothing\_frequency & 20 \\
+    max\_velocity\_x & 0.6 \\
+    max\_velocity\_theta & 1.7 \\
+    max\_accel\_x & 0.5 \\
+    max\_accel\_theta & 1.0 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Baseline Parameter Settings for the Nav2 Planner and Goal Evaluation}
+  \label{tab:planner_goal_parameters}
+  \begin{tabular}{ll}
+    \hline
+    Parameter & Baseline Value \\
+    \hline
+    trans\_stopped\_velocity & 0.25 \\
+    planner\_tolerance & 0.5 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Experiments on emcl2 parameters}
+  \label{tab:exp_emcl2}
+  \begin{tabular}{lll}
+    \hline
+    Experiment ID & Parameter & Tested Values \\
+    \hline
+    E1 & Number of particles & 200, 1000 \\
+    E2 & odom\_fw\_dev\_per\_fw & 0.01, 0.05, 0.1, 0.3, 0.4, 0.5 \\
+    E3 & odom\_fw\_dev\_per\_rot & 0.001, 0.01, 0.1, 0.5 \\
+    E4 & odom\_rot\_dev\_per\_fw & 0.01, 0.2, 0.3, 0.4, 0.5 \\
+    E5 & odom\_rot\_dev\_per\_rot & 0.1, 0.3, 0.4, 0.5 \\
+    E6 & laser\_likelihood\_max\_dist & 0.5, 1.0 \\
+    E7 & range\_threshold & 0.5, 0.9 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Experiments on Nav2 controller parameters}
+  \label{tab:exp_controller}
+  \begin{tabular}{lll}
+    \hline
+    Experiment ID & Parameter & Tested Values \\
+    \hline
+    E8  & max\_vel\_x & 0.2, 1.0 \\
+    E9  & max\_vel\_theta & 0.4, 1.0 \\
+    E10 & max\_speed\_xy & 0.1, 0.5, 1.5 \\
+    E11 & min\_theta\_velocity\_threshold & 0.01, 0.1, 1.0 \\
+    E12 & acc\_lim\_x & 0.1, 0.5, 1.5 \\
+    E13 & acc\_lim\_theta & 0.1, 1.0, 4.0 \\
+    E14 & linear\_granularity & 0.01, 0.1, 0.5 \\
+    E15 & angular\_granularity & 0.001, 0.01, 0.04 \\
+    E16 & xy\_goal\_tolerance & 0.01, 0.1, 0.4 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Experiments on Nav2 costmap parameters}
+  \label{tab:exp_costmap}
+  \begin{tabular}{llll}
+    \hline
+    Experiment ID & Scope & Parameter & Tested Values \\
+    \hline
+    E17 & Global & global\_resolution & 0.05, 0.5, 1.0 \\
+    E18 & Global & global\_cost\_scaling\_factor & 1.0, 5.0, 10.0 \\
+    E19 & Global & global\_inflation\_radius & 0.1, 1.0, 2.0 \\
+    E20 & Local  & local\_resolution & 0.05, 0.5, 1.0 \\
+    E21 & Local  & local\_cost\_scaling\_factor & 1.0, 5.0, 10.0 \\
+    E22 & Local  & local\_inflation\_radius & 0.1, 0.5, 1.0, 2.0 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Experiments on Nav2 velocity smoother parameters}
+  \label{tab:exp_velocity_smoother}
+  \begin{tabular}{lll}
+    \hline
+    Experiment ID & Parameter & Tested Values \\
+    \hline
+    E23 & smoothing\_frequency & 5, 10, 40, 60 \\
+    E24 & max\_velocity\_x & 0.3, 0.9, 1.2 \\
+    E25 & max\_velocity\_theta & 0.6, 2.5 \\
+    E26 & max\_accel\_x & 0.2, 1.0 \\
+    E27 & max\_accel\_theta & 0.5, 2.0 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Experiments on Nav2 planner and goal checker parameters}
+  \label{tab:exp_planner_goal}
+  \begin{tabular}{lll}
+    \hline
+    Experiment ID & Parameter & Tested Values \\
+    \hline
+    E28 & trans\_stopped\_velocity & 0.01, 0.1, 0.4 \\
+    E29 & planner\_tolerance & 0.1, 1.0 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+
+%\begin{figure}[hbtp]
+  %\centering
+ %\includegraphics[keepaspectratio, scale=0.6]
+      %{images/tsudanumachallenge.png}
+ %\caption{Course map of the Tsudanuma Challenge 2025(source: \cite{Tsudanumachallenge})}
+ %\label{Fig:Course map of the Tsudanuma Challenge 2025}
+%\end{figure}
+
+%\begin{figure}[hbtp]
+  %\centering
+ %\includegraphics[keepaspectratio, scale=0.3]
+      %{images/orne-box3.png}
+ %\caption{ORNE-box3(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
+ %\label{Fig:ORNE-box3}
+%\end{figure}
+%\begin{figure}[hbtp]
+  %\centering
+ %\includegraphics[keepaspectratio, scale=0.3]
+      %{images/sensor.png}
+ %\caption{sensor configuration}
+ %\label{Fig:sensor configuration}
+%\end{figure}
 %\subsubsection{etc...}
-
-
-
-
 
 
 \newpage
@@ -68,16 +318,17 @@
 %\end{figure}
 \subsection{実験結果(emcl2)}
 \subsubsection{実験結果(num\_particles)}
-
+基準となるパーティクル数は500である.
 \begin{table}[H]
   \centering
-  \caption{パーティクル数の違いによるゴール到達可否}
+  %\caption{パーティクル数の違いによるゴール到達可否}
+  \caption{Goal Achievement under Different Particle Counts}
   \label{tab:num_particles_result}
   \begin{tabular}{c|c|c|c}
     \hline
     & \multicolumn{3}{c}{Number of particles} \\
     \hline
-    number of times  & 200 & 500 (base) & 1000 \\
+    Number of times  & 200 & 500 (base) & 1000 \\
     \hline
     1  & $\times$ & ○ & ○ \\
     2  & ○ & ○ & $\times$ \\
@@ -97,13 +348,14 @@ Table\ref{tab:num_particles_result}に、パーティクル数の違いによる
 
 \begin{table}[H]
   \centering
-  \caption{パーティクル数ごとのゴール到達成功率}
+  %\caption{パーティクル数ごとのゴール到達成功率}
+  \caption{Goal Achievement Rate for Different Numbers of Particles}
   \label{tab:num_particles_success_rate}
   \begin{tabular}{c|c}
     \hline
-    パーティクル数 & 成功率 [\%] \\
+    Number of Particles & Success Rate [\%] \\
     \hline
-    200  & 60 \\
+    200  & 70 \\
     500 (base) & 80 \\
     1000 & 60 \\
     \hline
@@ -113,7 +365,7 @@ Table\ref{tab:num_particles_result}に、パーティクル数の違いによる
 Table\ref{tab:num_particles_success_rate}に，
 パーティクル数を変化させた際のゴール到達成功率を示す．
 
-Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が示すように、パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
+Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}が示すように、パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
 その結果，パーティクル数 500 の場合に最も高いゴール到達率が得られた．
 一方で，200 および 1000 の場合は，到達率がやや低下する傾向が確認された．
 パーティクル数が少ないと自己位置推定が破綻しやすく、成功率が低下した.また、パーティクル数が多すぎても計算量の増加によって、遅延が発生して安定性が低下した。
@@ -121,35 +373,52 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 自己位置推定の精度と計算負荷のバランスを考慮した適切な設定が重要であることが分かる．
 本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
 
-次からの実験では、\figref{Fig:base orientation},\figref{Fig:base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:base orientation}はロボットの向き、\figref{Fig:base position}はロボットの位置のグラフである。
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.65]
-      {images/base_muki2.png}
- \caption{base orientation}
- \label{Fig:base orientation}
-\end{figure}
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.5]
-      {images/base_postion.png}
- \caption{base position}
- \label{Fig:base position}
-\end{figure}
-
-\subsubsection{実験結果(odom\_fw\_dev\_per\_fw)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.19
+次からの実験では, ロボットの位置と向きを比較する. \figref{Fig:Base orientation}, \figref{Fig:Base position}のグラフが基準の値の時のロボットの挙動である。\figref{Fig:Base orientation}はロボットの向き、\figref{Fig:Base orientation version map}は、コース上での矢印の時のロボットの向き、\figref{Fig:Base position}はロボットの位置のグラフ, \figref{Fig:Base position version map}地図とロボットの位置を合わせたものである. このロボットの位置のグラフにおけるゴールは, x座標-275～-270, y座標-380～-370である.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.01muki.png}
+      {images/1.png}
+ \caption{Base orientation}
+ \label{Fig:Base orientation}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/118.png}
+ \caption{Base orientation version map}
+ \label{Fig:Base orientation version map}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/2.1.png}
+ \caption{Base position}
+ \label{Fig:Base position}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/base111.png}
+ \caption{Base position version map}
+ \label{Fig:Base position version map}
+\end{figure}
+
+\subsubsection{実験結果(odom\_fw\_dev\_per\_fw)}
+Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
+ロボットの位置と向きは、\figref{Fig:Base orientation}, \figref{Fig:Base position version map}で示す
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/fwfw0.01muki3.png}
  \caption{Robot orientation with fw\_dev\_per\_fw = 0.01}
  \label{Fig:Robot orientation with fw_dev_per_fw = 0.01 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.01iti.png}
+      {images/fwfw0.01iti2.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.01
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.01}
@@ -242,7 +511,7 @@ Table\ref{tab:num_particles_result},Table\ref{tab:num_particles_success_rate}が
 %\figref{Fig:Robot orientation with fw_dev_per_fw = 0.01 },\figref{Fig:Robot position with fw_dev_per_fw = 0.01}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_rot)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように、基準の値は、0.0001
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように、基準の値は、0.0001
 
 \begin{figure}[H]
   \centering
@@ -314,7 +583,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_fw)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.13
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.13
 
 \begin{figure}[H]
   \centering
@@ -404,7 +673,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_rot)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.19
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.2
 
 \begin{figure}[H]
   \centering
@@ -490,7 +759,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 
 \subsubsection{実験結果(laser\_likelihood\_max\_dist)}
 
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.2
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.2
 
 \begin{figure}[H]
   \centering
@@ -541,7 +810,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 
 \subsubsection{実験結果(range\_threshold)}
 
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.3
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -607,10 +876,10 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
 各パラメータの意味を理解した上で，
 環境特性に応じた適切な調整が重要であるといえる．
 
-\subsection{実験結果(Nav2\_controller)}
+\subsection{実験結果(Nav2\_Controller)}
 
 \subsubsection{実験結果(max\_vel\_x)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.6
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.6
 
 \begin{figure}[H]
   \centering
@@ -676,7 +945,7 @@ Controller 以外のパラメータや
 
 
 \subsubsection{実験結果(max\_vel\_theta)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.7
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.7
 
 \begin{figure}[H]
   \centering
@@ -740,7 +1009,7 @@ max\_vel\_theta を過度に小さく設定すると，
 
 
 \subsubsection{実験結果(max\_speed\_xy)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.9
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.9
 
 %0.1,0.5,1.5
 
@@ -829,7 +1098,7 @@ max\_speed\_xy を過度に小さく設定すると，
 
 
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.001
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.001
 
 %0.01,0.1,1.0,
 \begin{figure}[H]
@@ -902,7 +1171,7 @@ min\_theta\_velocity\_threshold は，
 
 
 \subsubsection{実験結果(acc\_lim\_x)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、1.0
 
 %0.1,0.5,1.5,
 
@@ -977,7 +1246,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
 
 
 \subsubsection{実験結果(acc\_lim\_theta)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.2
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、3.2
 
 %0.1,1.0,4.0,
 \begin{figure}[H]
@@ -1055,11 +1324,256 @@ acc\_lim\_theta を過度に小さく設定すると，
 一定以上の値に設定することで，
 安定した旋回挙動を維持できることが示唆された．
 
+\subsubsection{実験結果(linear\_granularity)}
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.05
+
+%0.01,0.1,0.5,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.01muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.01}
+ \label{Fig:Robot orientation with linear_granularity = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.01iti.png}
+ \caption{Robot position with linear\_granularity = 0.01
+}
+ \label{Fig:Robot position with linear_granularity = 0.01}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.1muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.1}
+ \label{Fig:Robot orientation with linear_granularity = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.1iti.png}
+ \caption{Robot position with linear\_granularity = 0.1
+}
+ \label{Fig:Robot position with linear_granularity = 0.1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.5muki.png}
+ \caption{Robot orientation with linear\_granularity = 0.5}
+ \label{Fig:Robot orientation with linear_granularity = 0.5 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/lg0.5iti.png}
+ \caption{Robot position with linear\_granularity = 0.5
+}
+ \label{Fig:Robot position with linear_granularity = 0.5}
+\end{figure}
+%\subsection{Planner における linear\_granularity の実験結果}
+
+%本実験では，Navigation2 の Planner において，
+%経路生成時の並進方向の分解能を定義するパラメータ
+%linear\_granularity を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+%本実験では、基準値である linear\_granularity = 0.05 に対し，
+%0.1 および 0.5 の各値について走行実験を行った．
+本実験では、linear\_granularity を 0.5 に設定した場合，
+走行開始後の最初の旋回箇所において
+ロボットが一時的に停止する挙動が確認され，
+その後，再び動き出すまでに時間を要した．
+この挙動は，
+経路の分解能が粗くなったことにより，
+滑らかな経路生成が困難になったためであると考えられる．
+
+一方で，linear\_granularity を 0.1 に設定した場合，
+走行挙動は安定しており，
+旋回動作を含めた経路においても
+スムーズな走行が確認された．
+この結果から，
+linear\_granularity を基準値よりやや大きく設定した場合でも，
+安定したナビゲーションが可能であることが示唆された．
+
+以上の結果より，
+linear\_granularity を過度に大きく設定すると，
+経路生成の精度低下により
+走行挙動が不安定になる可能性がある一方で，
+0.1 程度の設定値であれば，
+計算負荷と走行安定性の両立が可能であると考えられる．
+
+
+
+\subsubsection{実験結果(angular\_granularity)}
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.025
+
+%0.001,0.01,0.04,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.001muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.001}
+ \label{Fig:Robot orientation with angular_granularity = 0.001 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.001iti.png}
+ \caption{Robot position with angular\_granularity = 0.001
+}
+ \label{Fig:Robot position with angular_granularity = 0.001}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.01muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.01}
+ \label{Fig:Robot orientation with angular_granularity = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.01iti.png}
+ \caption{Robot position with angular\_granularity = 0.01
+}
+ \label{Fig:Robot position with angular_granularity = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.04muki.png}
+ \caption{Robot orientation with angular\_granularity = 0.04}
+ \label{Fig:Robot orientation with angular_granularity = 0.04 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/ag0.04iti.png}
+ \caption{Robot position with angular\_granularity = 0.04
+}
+ \label{Fig:Robot position with angular_granularity = 0.04}
+\end{figure}
+
+%\subsection{Planner における angular\_granularity の実験結果}
+
+%本実験では，Navigation2 の Planner において，
+%経路生成時の角度方向の分解能を定義するパラメータ
+%angular\_granularity を変更し，
+%ロボットの走行挙動への影響を調査した．
+
+本実験では、angular\_granularity の値を基準値より小さく設定した場合，
+ロボットの走行挙動に大きな変化は見られず，
+旋回および直進動作ともに
+安定した走行が確認された．
+この結果から，
+角度分解能を高めても，
+本実験環境においては
+挙動への影響は限定的であることが示唆される．
+
+一方で，angular\_granularity を 4.0 に設定した場合，
+最終的な旋回区間において，
+ロボットの進行方向に
+わずかな変化が生じていることが確認された．
+この挙動は，
+angular\_granularity = 4.0 の設定における
+ロボットの姿勢変化を示したグラフからも確認でき，
+角度分解能が粗くなったことにより，
+旋回動作の精度が低下した可能性が考えられる．
+
+以上の結果より，
+angular\_granularity は，
+一定範囲内で値を小さく設定しても
+走行挙動に大きな影響を与えない一方で，
+過度に大きな値を設定した場合には，
+旋回動作時の姿勢精度に影響を及ぼす可能性があることが示された．
+
+
+\subsubsection{実験結果(xy\_goal\_tolerance)}
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.25
+
+%0.01,0.1,0.4,
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.01muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.01}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.01 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.01iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.01
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.1muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.1}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.1 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.1iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.1
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.4muki.png}
+ \caption{Robot orientation with xy\_goal\_tolerance = 0.4}
+ \label{Fig:Robot orientation with xy_goal_tolerance = 0.4 }
+\end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/xygt0.4iti.png}
+ \caption{Robot position with xy\_goal\_tolerance = 0.4
+}
+ \label{Fig:Robot position with xy_goal_tolerance = 0.4}
+\end{figure}
+%\subsection{Goal Checker における xy\_goal\_tolerance の実験結果}
+
+%本実験では，Navigation2 の Goal Checker において，
+%ゴール位置到達判定の許容誤差を示すパラメータ
+%xy\_goal\_tolerance を変更し，
+%ロボットの走行挙動およびゴール到達時の安定性への影響を評価した．
+
+本実験では、xy\_goal\_tolerance の値を0.01,0.1,0.4に設定して実験を行った結果，
+いずれの値においても，
+ロボットの走行挙動に顕著な変化は確認されなかった．
+また，ゴール付近での振動や停止位置の不安定化といった現象も見られず，
+すべての条件において安定したゴール到達が達成された．
+
+この結果から，
+本実験環境および使用したロボットモデルにおいては，
+xy\_goal\_tolerance の設定値が
+ロボットの走行挙動に与える影響は小さいことが示唆される．
+したがって，本パラメータは，
+厳密な位置精度よりも
+ゴール到達判定の柔軟性を調整する目的で用いられ，
+挙動そのものへの影響は限定的であると考えられる．
+
+
 Controllerの各パラメータの結果より，
 Controller に関するパラメータは，
 ロボットの走行速度や旋回特性といった
 運動特性を調整する上で重要な役割を果たす一方で，
-一部のパラメータについては，
+閾値やゴール判定に関するパラメータは
+補助的な役割を果たすことが示唆される．
+また、一部のパラメータについては，
 他の設定値やシステム制約との相互作用によって
 挙動への影響が限定されることが分かった．
 そのため，Controller パラメータの調整においては，
@@ -1070,7 +1584,7 @@ Controller に関するパラメータは，
 \subsection{実験結果(Nav2\_Costmap)}
 
 \subsubsection{実験結果(global\_resolution)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.1
 
 %0.05,0.5,1.0,
 
@@ -1145,7 +1659,7 @@ global\_resolution を変更しても，
 
 
 \subsubsection{実験結果(global\_cost\_scaling\_factor)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3.0
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、3.0
 
 %1.0,5.0,10
 \begin{figure}[H]
@@ -1229,7 +1743,7 @@ global\_cost\_scaling\_factor は，
 適切な値を選択することが重要である．
 
 \subsubsection{実験結果(global\_inflation\_radius)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.5
 
 %0.1,1.0,2.0
 \begin{figure}[H]
@@ -1315,7 +1829,7 @@ global\_inflation\_radius は，
 適切に調整することが重要である．
 
 \subsubsection{実験結果(local\_resolution)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.1
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.1
 
 %0.05,0.5,1.0
 \begin{figure}[H]
@@ -1416,7 +1930,7 @@ local\_resolution はロボットの走行安定性や
 
 
 \subsubsection{実験結果(local\_cost\_scaling\_factor)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、3
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、3
 
 %1.0,5.0,10
 \begin{figure}[H]
@@ -1499,7 +2013,7 @@ local\_cost\_scaling\_factor の値を
 
 
 \subsubsection{実験結果(local\_inflation\_radius)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.3
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.3
 
 %0.1,0.5,1.0,2.0
 \begin{figure}[H]
@@ -1619,7 +2133,7 @@ Local Costmap の解像度設定は，
 \subsection{実験結果(Nav2\_Velocity Smoother)}
 
 \subsubsection{実験結果(smoothing\_frequency)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、20
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、20
 
 %5,10,40,60
 \begin{figure}[H]
@@ -1728,7 +2242,7 @@ smoothing\_frequency は，
 
 
 \subsubsection{実験結果(max\_velocity\_x)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.6
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.6
 
 %0.3,0.9,1.2
 \begin{figure}[H]
@@ -1823,7 +2337,7 @@ Velocity Smoother の \texttt{max\_velocity}（x 成分）は，
 
 
 \subsubsection{実験結果(max\_velocity\_theta)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.7
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、1.7
 
 %0.6,2.5
 
@@ -1895,7 +2409,7 @@ Velocity Smoother における \texttt{max\_velocity}（$\theta$ 成分）は，
 
 
 \subsubsection{実験結果(max\_accel\_x)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.5
 
 %0.2,1.0
 \begin{figure}[H]
@@ -1969,7 +2483,7 @@ Velocity Smoother における \texttt{max\_accel}（x 成分）は，
 
 
 \subsubsection{実験結果(max\_accel\_theta)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、1.0
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、1.0
 
 %0.5,2.0
 
@@ -2046,6 +2560,8 @@ Velocity Smoother のパラメータ設定が
 
 \subsection{実験結果(Nav2\_planner goal)}
 
+\begin{comment}
+     
 \subsubsection{実験結果(linear\_granularity)}
 \figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.05
 
@@ -2287,10 +2803,10 @@ xy\_goal\_tolerance の設定値が
 厳密な位置精度よりも
 ゴール到達判定の柔軟性を調整する目的で用いられ，
 挙動そのものへの影響は限定的であると考えられる．
-
+\end{comment}
 
 \subsubsection{実験結果(trans\_stopped\_velocity)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.25
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.25
 
 %0.01,0.1,0.4
 \begin{figure}[H]
@@ -2378,7 +2894,7 @@ trans\_stopped\_velocity の値は
 
 
 \subsubsection{実験結果(planner\_tolerance)}
-\figref{Fig:base orientation},\figref{Fig:base position}で示すように基準の値は、0.5
+\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.5
 
 %0.1,1.0,
 \begin{figure}[H]
@@ -2452,14 +2968,18 @@ planner\_tolerance は
 
 以上の結果より，
 Planner に関するパラメータは，
-「どのような経路を生成するか」という
-大域的な計画に影響を与える一方で，
-ロボットの実際の運動挙動や安定性に対しては，
+%「どのような経路を生成するか」という
+%大域的な計画に影響を与える一方で，
+ロボットの大域的な走行成否に直接影響するというよりも，
+waypoint 通過時の精度や経路生成のタイミングといった
+挙動の細部を調整する役割を持つことが分かった．
+また,ロボットの実際の運動挙動や安定性に対しては，
 Controller や Localization に比べて
 影響が小さいことが明らかとなった．
 そのため，
 Planner のパラメータ調整は，
-経路の形状や計画のタイミングを整える目的で行い，
+%経路の形状や計画のタイミングを整える目的で行い，
+走行精度や挙動の滑らかさを調整することを目的で行い,
 ロボットの走行安定性や挙動の改善については，
 Controller や自己位置推定に関するパラメータ調整を
 優先すべきであると考えられる．
