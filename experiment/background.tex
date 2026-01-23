@@ -76,9 +76,7 @@
 \subsection{実験方法}
 
 実験では，Navigation2 における各種パラメータを個別に変化させた場合のロボットの走行挙動を観察した．
-
-各走行実験においては，対象とするパラメータのみを変更し，それ以外のパラメータはすべて同一の設定とした．これにより，特定のパラメータ変更がロボットの挙動に与える影響を明確にすることを試みた．
-
+各走行実験においては，対象とするパラメータのみを変更し，それ以外のパラメータは実験前に設定していた値を基準値として固定した. これにより，特定のパラメータ変更がロボットの挙動に与える影響を明確にすることを試みた．
 また，各実験は同一の走行ルートおよび初期条件のもとで実施した．
 
 パーティクル数は，パーティクルフィルタに基づく自己位置推定において，
@@ -385,29 +383,29 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/118.png}
+      {images/map.png}
  \caption{Base orientation version map}
  \label{Fig:Base orientation version map}
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/2.1.png}
+      {images/base111.png}
  \caption{Base position}
  \label{Fig:Base position}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.6]
-      {images/base111.png}
- \caption{Base position version map}
- \label{Fig:Base position version map}
-\end{figure}
+%\begin{figure}[H]
+  %\centering
+ %\includegraphics[keepaspectratio, scale=0.6]
+      %{images/base111.png}
+ %\caption{Base position version map}
+ %\label{Fig:Base position version map}
+%\end{figure}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_fw)}
 Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
-ロボットの位置と向きは、\figref{Fig:Base orientation}, \figref{Fig:Base position version map}で示す
+ロボットの位置と向きは、\figref{Fig:Base orientation}, \figref{Fig:Base position}で示す
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -434,7 +432,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.05iti2.png}
+      {images/fwfw0.05iti3.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.05
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.05}
@@ -450,7 +448,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.1iti2.png}
+      {images/fwfw0.1iti3.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.1
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.1}
@@ -466,7 +464,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.3iti.png}
+      {images/fwfw0.3iti2.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.3
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.3}
@@ -475,14 +473,14 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.4muki.png}
+      {images/fwfw0.4muki2.png}
  \caption{Robot orientation with fw\_dev\_per\_fw = 0.4}
  \label{Fig:Robot orientation with fw_dev_per_fw = 0.4 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.4iti.png}
+      {images/fwfw0.4iti2.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.4
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.4}
@@ -498,7 +496,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwfw0.5iti.png}
+      {images/fwfw0.5iti2.png}
  \caption{Robot position with fw\_dev\_per\_fw = 0.5
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.5}
@@ -511,7 +509,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 %\figref{Fig:Robot orientation with fw_dev_per_fw = 0.01 },\figref{Fig:Robot position with fw_dev_per_fw = 0.01}
 
 \subsubsection{実験結果(odom\_fw\_dev\_per\_rot)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように、基準の値は、0.0001
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように、基準の値は、0.0001
 
 \begin{figure}[H]
   \centering
@@ -523,7 +521,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwrot0.001iti.png}
+      {images/fwrot0.001iti2.png}
  \caption{Robot position with fw\_dev\_per\_rot = 0.001
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.001}
@@ -539,7 +537,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwrot0.01iti.png}
+      {images/fwrot0.01iti2.png}
  \caption{Robot position with fw\_dev\_per\_rot = 0.01
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.01}
@@ -555,7 +553,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwrot0.1iti.png}
+      {images/fwrot0.1iti2.png}
  \caption{Robot position with fw\_dev\_per\_rot = 0.1
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.1}
@@ -571,7 +569,7 @@ Table\ref{tab:emcl2_parameters}が示すように基準の値は、0.19.
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/fwrot0.5iti.png}
+      {images/fwrot0.5iti2.png}
  \caption{Robot position with fw\_dev\_per\_rot = 0.5
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.5}
@@ -583,7 +581,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_fw)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.13
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.13
 
 \begin{figure}[H]
   \centering
@@ -595,7 +593,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.01iti.png}
+      {images/rotfw0.01iti2.png}
  \caption{Robot position with rot\_dev\_per\_fw = 0.01
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.01}
@@ -611,7 +609,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.2iti.png}
+      {images/rotfw0.2iti2.png}
  \caption{Robot position with rot\_dev\_per\_fw = 0.2
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.2}
@@ -627,7 +625,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.3iti.png}
+      {images/rotfw0.3iti2.png}
  \caption{Robot position with rot\_dev\_per\_fw = 0.3
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.3}
@@ -636,14 +634,14 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.4muki.png}
+      {images/rotfw0.4muki2.png}
  \caption{Robot orientation with rot\_dev\_per\_fw = 0.4}
  \label{Fig:Robot orientation with rot_dev_per_fw = 0.4 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.4iti.png}
+      {images/rotfw0.4iti2.png}
  \caption{Robot position with rot\_dev\_per\_fw = 0.4
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.4}
@@ -659,7 +657,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotfw0.5iti.png}
+      {images/rotfw0.5iti2.png}
  \caption{Robot position with rot\_dev\_per\_fw = 0.5
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.5}
@@ -673,7 +671,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 
 
 \subsubsection{実験結果(odom\_rot\_dev\_per\_rot)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.2
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.2
 
 \begin{figure}[H]
   \centering
@@ -685,7 +683,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotrot0.1iti.png}
+      {images/rotrot0.1iti2.png}
  \caption{Robot position with rot\_dev\_per\_rot = 0.1
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.1}
@@ -701,7 +699,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotrot0.3iti.png}
+      {images/rotrot0.3iti2.png}
  \caption{Robot position with rot\_dev\_per\_rot = 0.3
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.3}
@@ -717,7 +715,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotrot0.4iti.png}
+      {images/rotrot0.4iti2.png}
  \caption{Robot position with rot\_dev\_per\_rot = 0.4
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.4}
@@ -726,14 +724,14 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotrot0.5muki.png}
+      {images/rotrot0.5muki2.png}
  \caption{Robot orientation with rot\_dev\_per\_rot = 0.5}
  \label{Fig:Robot orientation with rot_dev_per_rot = 0.5 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rotrot0.5iti.png}
+      {images/rotrot0.5iti2.png}
  \caption{Robot position with rot\_dev\_per\_rot = 0.5
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.5}
@@ -759,7 +757,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 
 \subsubsection{実験結果(laser\_likelihood\_max\_dist)}
 
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.2
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.2
 
 \begin{figure}[H]
   \centering
@@ -771,7 +769,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/llmd0.5iti.png}
+      {images/llmd0.5iti2.png}
  \caption{Robot position with laser\_likelihood\_max\_dist = 0.5
 }
  \label{Fig:Robot position with laser_likelihood_max_dist = 0.5}
@@ -780,14 +778,14 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/llmd1.0muki.png}
+      {images/llmd1.0muki2.png}
  \caption{Robot orientation with laser\_likelihood\_max\_dist = 1.0}
  \label{Fig:Robot orientation with laser_likelihood_max_dist = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/llmd1.0iti.png}
+      {images/llmd1.0iti2.png}
  \caption{Robot position with laser\_likelihood\_max\_dist = 1.0
 }
  \label{Fig:Robot position with laser_likelihood_max_dist = 1.0}
@@ -810,7 +808,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 
 \subsubsection{実験結果(range\_threshold)}
 
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.3
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.3
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
@@ -821,7 +819,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rt0.5iti.png}
+      {images/rt0.5iti2.png}
  \caption{Robot position with range\_threshold = 0.5
 }
  \label{Fig:Robot position with range_threshold = 0.5}
@@ -837,7 +835,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/rt0.9iti.png}
+      {images/rt0.9iti2.png}
  \caption{Robot position with range\_threshold = 0.9
 }
  \label{Fig:Robot position with range_threshold = 0.9}
@@ -879,7 +877,7 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
 \subsection{実験結果(Nav2\_Controller)}
 
 \subsubsection{実験結果(max\_vel\_x)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.6
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.6
 
 \begin{figure}[H]
   \centering
@@ -891,7 +889,7 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx0.2iti.png}
+      {images/mvx0.2iti2.png}
  \caption{Robot position with max\_vel\_x = 0.2
 }
  \label{Fig:Robot position with max_vel_x = 0.2}
@@ -901,14 +899,14 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx1.0muki.png}
+      {images/mvx1.0muki2.png}
  \caption{Robot orientation with max\_vel\_x = 1.0}
  \label{Fig:Robot orientation with max_vel_x = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvx1.0iti.png}
+      {images/mvx1.0iti2.png}
  \caption{Robot position with max\_vel\_x = 1.0
 }
  \label{Fig:Robot position with max_vel_x = 1.0}
@@ -945,19 +943,19 @@ Controller 以外のパラメータや
 
 
 \subsubsection{実験結果(max\_vel\_theta)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.7
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.7
 
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvt0.4muki.png}
+      {images/mvt0.4muki2.png}
  \caption{Robot orientation with max\_vel\_theta = 0.4}
  \label{Fig:Robot orientation with max_vel_theta = 0.4 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvt0.4iti.png}
+      {images/mvt0.4iti2.png}
  \caption{Robot position with max\_vel\_theta = 0.4
 }
  \label{Fig:Robot position with max_vel_theta = 0.4}
@@ -966,14 +964,14 @@ Controller 以外のパラメータや
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvt1.0muki.png}
+      {images/mvt1.0muki2.png}
  \caption{Robot orientation with max\_vel\_theta = 1.0}
  \label{Fig:Robot orientation with max_vel_theta = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mvt1.0iti.png}
+      {images/mvt1.0iti2.png}
  \caption{Robot position with max\_vel\_theta = 1.0
 }
  \label{Fig:Robot position with max_vel_theta = 1.0}
@@ -1009,21 +1007,21 @@ max\_vel\_theta を過度に小さく設定すると，
 
 
 \subsubsection{実験結果(max\_speed\_xy)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.9
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.9
 
 %0.1,0.5,1.5
 
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy0.1muki.png}
+      {images/msxy0.1muki2.png}
  \caption{Robot orientation with max\_speed\_xy = 0.1}
  \label{Fig:Robot orientation with max_speed_xy = 0.1 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy0.1iti.png}
+      {images/msxy0.1iti2.png}
  \caption{Robot position with max\_speed\_xy = 0.1
 }
  \label{Fig:Robot position with max_speed_xy = 0.1}
@@ -1032,14 +1030,14 @@ max\_vel\_theta を過度に小さく設定すると，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy0.5muki.png}
+      {images/msxy0.5muki2.png}
  \caption{Robot orientation with max\_speed\_xy = 0.5}
  \label{Fig:Robot orientation with max_speed_xy = 0.5 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy0.5iti.png}
+      {images/msxy0.5iti2.png}
  \caption{Robot position with max\_speed\_xy = 0.5
 }
  \label{Fig:Robot position with max_speed_xy = 0.5}
@@ -1048,14 +1046,14 @@ max\_vel\_theta を過度に小さく設定すると，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy1.5muki.png}
+      {images/msxy1.5muki2.png}
  \caption{Robot orientation with max\_speed\_xy = 1.5}
  \label{Fig:Robot orientation with max_speed_xy = 1.5 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/msxy1.5iti.png}
+      {images/msxy1.5iti2.png}
  \caption{Robot position with max\_speed\_xy = 1.5
 }
  \label{Fig:Robot position with max_speed_xy = 1.5}
@@ -1098,20 +1096,20 @@ max\_speed\_xy を過度に小さく設定すると，
 
 
 \subsubsection{実験結果(min\_theta\_velocity\_threshold)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、0.001
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、0.001
 
 %0.01,0.1,1.0,
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt0.01muki.png}
+      {images/mtvt0.01muki2.png}
  \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.01}
  \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.01 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt0.01iti.png}
+      {images/mtvt0.01iti2.png}
  \caption{Robot position with min\_theta\_velocity\_threshold = 0.01
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 0.01}
@@ -1119,14 +1117,14 @@ max\_speed\_xy を過度に小さく設定すると，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt0.1muki.png}
+      {images/mtvt0.1muki2.png}
  \caption{Robot orientation with min\_theta\_velocity\_threshold = 0.1}
  \label{Fig:Robot orientation with min_theta_velocity_threshold = 0.1 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt0.1iti.png}
+      {images/mtvt0.1iti2.png}
  \caption{Robot position with min\_theta\_velocity\_threshold = 0.1
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 0.1}
@@ -1134,14 +1132,14 @@ max\_speed\_xy を過度に小さく設定すると，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt1.0muki.png}
+      {images/mtvt1.0muki2.png}
  \caption{Robot orientation with min\_theta\_velocity\_threshold = 1.0}
  \label{Fig:Robot orientation with min_theta_velocity_threshold = 1.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/mtvt1.0iti.png}
+      {images/mtvt1.0iti2.png}
  \caption{Robot position with min\_theta\_velocity\_threshold = 1.0
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 1.0}
@@ -1171,21 +1169,21 @@ min\_theta\_velocity\_threshold は，
 
 
 \subsubsection{実験結果(acc\_lim\_x)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、1.0
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、1.0
 
 %0.1,0.5,1.5,
 
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx0.1muki.png}
+      {images/alx0.1muki2.png}
  \caption{Robot orientation with acc\_lim\_x = 0.1}
  \label{Fig:Robot orientation with acc_lim_x = 0.1 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx0.1iti.png}
+      {images/alx0.1iti2.png}
  \caption{Robot position with acc\_lim\_x = 0.1
 }
  \label{Fig:Robot position with acc_lim_x = 0.1}
@@ -1194,14 +1192,14 @@ min\_theta\_velocity\_threshold は，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx0.5muki.png}
+      {images/alx0.5muki2.png}
  \caption{Robot orientation with acc\_lim\_x = 0.5}
  \label{Fig:Robot orientation with acc_lim_x = 0.5 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx0.5iti.png}
+      {images/alx0.5iti2.png}
  \caption{Robot position with acc\_lim\_x = 0.5
 }
  \label{Fig:Robot position with acc_lim_x = 0.5}
@@ -1209,14 +1207,14 @@ min\_theta\_velocity\_threshold は，
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx1.5muki.png}
+      {images/alx1.5muki2.png}
  \caption{Robot orientation with acc\_lim\_x = 1.5}
  \label{Fig:Robot orientation with acc_lim_x = 1.5 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alx1.5iti.png}
+      {images/alx1.5iti2.png}
  \caption{Robot position with acc\_lim\_x = 1.5
 }
  \label{Fig:Robot position with acc_lim_x = 1.5}
@@ -1246,20 +1244,20 @@ acc\_lim\_x はロボットの加速特性を決定する上で
 
 
 \subsubsection{実験結果(acc\_lim\_theta)}
-\figref{Fig:base orientation}, \figref{Fig:base position}で示すように基準の値は、3.2
+\figref{Fig:Base orientation}, \figref{Fig:Base position}で示すように基準の値は、3.2
 
 %0.1,1.0,4.0,
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alt0.1muki.png}
+      {images/alt0.1muki2.png}
  \caption{Robot orientation with acc\_lim\_theta = 0.1}
  \label{Fig:Robot orientation with acc_lim_theta = 0.1 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alt0.1iti.png}
+      {images/alt0.1iti2.png}
  \caption{Robot position with acc\_lim\_theta = 0.1
 }
  \label{Fig:Robot position with acc_lim_theta = 0.1}
@@ -1274,7 +1272,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alt1.0iti.png}
+      {images/alt1.0iti2.png}
  \caption{Robot position with acc\_lim\_theta = 1.0
 }
  \label{Fig:Robot position with acc_lim_theta = 1.0}
@@ -1282,14 +1280,14 @@ acc\_lim\_x はロボットの加速特性を決定する上で
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alt4.0muki.png}
+      {images/alt4.0muki2.png}
  \caption{Robot orientation with acc\_lim\_theta = 4.0}
  \label{Fig:Robot orientation with acc_lim_theta = 4.0 }
 \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
-      {images/alt4.0iti.png}
+      {images/alt4.0iti2.png}
  \caption{Robot position with acc\_lim\_theta = 4.0
 }
  \label{Fig:Robot position with acc_lim_theta = 4.0}
