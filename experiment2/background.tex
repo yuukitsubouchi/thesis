@@ -1,0 +1,229 @@
+%!TEX root = ../thesis.tex
+
+\section{実験概要}
+これまでの Controller および Velocity Smoother に関する実験において，
+各パラメータの上限値を増加させた場合でも，
+ロボットの並進速度が一定値以上に増加しない挙動が確認された.
+特に，Velocity Smoother における
+\texttt{max\_velocity} や，
+Controller における
+\texttt{max\_vel\_x}，
+\texttt{max\_speed\_xy}
+の値を大きく設定した場合でも，
+実際の走行速度は基準値付近に制限されていた.
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.0sokudo.png}
+ \caption{Robot speed with max\_vel\_x = 1.0
+}
+ \label{Fig:Robot speed with max_vel_x = 1.0}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/msxy1.5sokudo.png}
+ \caption{Robot speed with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_speed_xy = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvx1.2sokudo.png}
+ \caption{Robot speed with max\_velocity\_x = 1.2
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.2}
+\end{figure}
+
+この結果から，Navigation2 におけるロボットの並進速度は，
+単一のパラメータによって決定されるのではなく，
+Controller と Velocity Smoother の複数の速度制限パラメータが
+相互に影響し合うことで制約されている可能性が示唆された.
+
+そこで，速度制限に関与するパラメータ間の関係性を明らかにするため，
+Controller の \texttt{max\_vel\_x} および \texttt{max\_speed\_xy}，
+ならびに Velocity Smoother の
+\texttt{max\_velocity} を対象として，
+それぞれの値を変化させた際のロボットの挙動を比較・評価する
+追加実験を行った.
+
+\section{実験方法}
+本実験では，
+Controller の \texttt{max\_vel\_x} を 1.5 に固定し，
+\texttt{max\_speed\_xy} および
+Velocity Smoother の速度制限パラメータ\texttt{max\_velocity\_x}を段階的に変更することで，
+実際の走行速度およびロボットの挙動への影響を調査した.
+
+Controller および Velocity Smoother における速度制限パラメータの関係性を明らかにするため，
+Controller の \texttt{max\_vel\_x} を 1.5 に固定し，
+\texttt{max\_speed\_xy} および
+Velocity Smoother の \texttt{max\_velocity}（x成分）を
+それぞれ 1.5 に設定した組み合わせ実験を行った。
+本実験では，以下の 3 通りの組み合わせについて評価を行った.
+
+\begin{itemize}
+  \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_speed\_xy = 1.5}
+  \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_velocity\_x = 1.5}
+  \item \texttt{max\_vel\_x = 1.5}，\texttt{max\_velocity\_x = 1.5}，
+        \texttt{max\_speed\_xy = 1.5}
+\end{itemize}
+
+
+\section{実験結果}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvxmsxy1.5.png}
+ \caption{Robot speed with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_speed_xy = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/mvxmvx1.5.png}
+ \caption{Robot speed with max\_velocity\_x = 1.5
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/sokudoall1.5.png}
+ \caption{Robot speed with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot speed with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+\end{figure}
+
+次にロボットの挙動は下のグラフに示す.\texttt{max\_vel\_x}の値は1.5とする.
+
+% \begin{figure}[H]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.6]
+%       {images/s1muki.png}
+%  \caption{Robot orientation with max\_speed\_xy = 1.5}
+%  \label{Fig:Robot orientation with max_speed_xy = 1.5 }
+% \end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s1iti2.png}
+ \caption{Robot position with max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot position with max_speed_xy = 1.5}
+\end{figure}
+
+% \begin{figure}[H]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.6]
+%       {images/s2muki.png}
+%  \caption{Robot orientation with max\_velocity\_x = 1.5}
+%  \label{Fig:Robot orientation with max_velocity_x = 1.5 }
+% \end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s2iti2.png}
+ \caption{Robot position with max\_velocity\_x = 1.5
+}
+ \label{Fig:Robot position with max_velocity_x = 1.5}
+\end{figure}
+
+% \begin{figure}[H]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.6]
+%       {images/s3muki.png}
+%  \caption{Robot orientation with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5}
+%  \label{Fig:Robot orientation with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+% \end{figure}
+\begin{figure}[H]
+  \centering
+ \includegraphics[keepaspectratio, scale=0.6]
+      {images/s3iti2.png}
+ \caption{Robot position with max\_velocity\_x = 1.5 and max\_speed\_xy = 1.5
+}
+ \label{Fig:Robot position with max_velocity_x = 1.5 and max_speed_xy = 1.5}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \caption{Experimental Results for Speed Limitation Parameter Combinations}
+  \label{tab:speed_param_combination}
+  \begin{tabular}{|l|c|l|}
+    \hline
+    Increased parameters & Speed change & Goal achievement \\ \hline
+    All three parameters &
+    Significant increase &
+    Unstable, goal not achieved \\ \hline
+    max\_vel\_x, max\_velocity\_x &
+    Moderate increase &
+    Stable, goal achieved \\ \hline
+    max\_vel\_x, max\_speed\_xy &
+    No increase &
+    Stable, goal achieved \\ \hline
+  \end{tabular}
+\end{table}
+
+%\subsection{速度制限パラメータの組み合わせによる影響}
+
+% Controller および Velocity Smoother における速度制限パラメータの関係性を明らかにするため，
+% Controller の \texttt{max\_vel\_x} を 1.5 に固定し，
+% \texttt{max\_speed\_xy} および
+% Velocity Smoother の \texttt{max\_velocity}（x成分）を
+% それぞれ 1.5 に設定した組み合わせ実験を行った。
+% 本実験では，以下の 3 通りの組み合わせについて評価を行った.
+
+% \begin{itemize}
+%   \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_speed\_xy = 1.5}
+%   \item \texttt{max\_vel\_x = 1.5} と \texttt{max\_velocity\_x = 1.5}
+%   \item \texttt{max\_vel\_x = 1.5}，\texttt{max\_velocity\_x = 1.5}，
+%         \texttt{max\_speed\_xy = 1.5}
+% \end{itemize}
+
+その結果，
+3 つすべてのパラメータを 1.5 に設定した場合，
+最も高い並進速度が確認されたが，
+走行中に経路から外れ，
+コース脇の段差方向へ進行したため，
+ゴールに到達することはできなかった.
+このことから，
+速度制限を同時に緩和しすぎると，
+経路追従性や安定性が低下することが確認された.
+
+一方，
+\texttt{max\_vel\_x = 1.5} と
+\texttt{max\_velocity\_x = 1.5} の組み合わせでは，
+速度が基準値である 0.6 を超えて明確に上昇したにもかかわらず，
+ロボットは安定した挙動を保ち，
+ゴールまで到達することができた.
+この結果は，
+Controller と Velocity Smoother の速度上限を適切に一致させることで，
+速度向上とナビゲーションの安定性を両立できる可能性を示している.
+
+また，
+\texttt{max\_vel\_x = 1.5} と
+\texttt{max\_speed\_xy = 1.5} の組み合わせでは，
+走行中の速度は基準値である 0.6 以上には増加せず，
+他のパラメータによる制限が依然として有効であることが確認された.
+この条件では，
+最初の曲がり角付近で一時的に停止する挙動が見られたものの，
+最終的にはゴールに到達しており，
+ナビゲーション自体は安定していた.
+
+以上の結果から，
+Navigation2 における実際の走行速度は，
+単一の速度制限パラメータではなく，
+Controller と Velocity Smoother にまたがる複数の制約条件の
+組み合わせによって決定されることが明らかとなった.
+特に，
+すべての制限を同時に緩和すると速度は向上するが，
+経路追従性能が低下する一方で，
+一部の制限のみを調整することで，
+安定性を保ったまま速度向上が可能であることが示唆された.
