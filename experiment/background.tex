@@ -38,18 +38,18 @@
 
 \subsection{実験装置}
 
-\begin{figure}[H]
-  \centering
- \includegraphics[keepaspectratio, scale=0.3]
-      {images/orne-box3.png}
- \caption{ORNE-box3(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
- \label{Fig:ORNE-box3}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.3]
+%       {images/orne-box3.png}
+%  \caption{ORNE-box3(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
+%  \label{Fig:ORNE-box3}
+% \end{figure}
 \begin{figure}[H]
   \centering
  \includegraphics[keepaspectratio, scale=0.3]
       {images/117.png}
- \caption{Overview of ORNE-box3 and its onboard sensors}
+ \caption{Overview of ORNE-box3 and its onboard sensors(source: \cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne})}
  \label{Fig:Overview of ORNE-box3 and its onboard sensors}
 \end{figure}
 
@@ -57,7 +57,7 @@
 
 本ロボットは，計算機として Jetson Orin NX 16GB を搭載しており，自己位置推定およびナビゲーション処理を行う．また，周辺環境の認識および状態推定のために，3D LiDAR（R-Fans-16），IMU（ADIS16465），エンコーダ（i-Cart middle）を備えている．
 
-3D LiDAR は自己位置推定および障害物検知に使用され，IMU とエンコーダから得られる情報は emcl2 に入力され，ロボットの自己位置推定に利用される．
+3D LiDAR は自己位置推定および障害物検知に使用され，IMU とエンコーダから得られる情報は自己位置推定ノードの emcl2 に入力され，ロボットの自己位置推定に利用される．
 \subsection{実験環境及び走行ルート}
 
 \begin{figure}[H]
@@ -94,7 +94,7 @@ num\_particles以外のパラメータについては，自己位置推定の結
 %本研究において基準とした Navigation2 のパラメータ設定を表\ref{tab:base_parameters}に示す．
 
 本研究において基準とした Navigation2 および emcl2 のパラメータを
-Table\ref{tab:emcl2_parameters}〜Table\ref{tab:planner_goal_parameters}に示す。
+Table \ref{tab:emcl2_parameters}〜Table \ref{tab:planner_goal_parameters}に示す。
 
 また，変更したパラメータの対応をTable\ref{tab:exp_emcl2}〜Table\ref{tab:exp_planner_goal}に示す．各実験では，表に示したパラメータのみを基準値から変更し，その他の設定はすべて基準値と同一とした．
 
@@ -374,7 +374,7 @@ Table\ref{tab:emcl2_parameters}〜Table\ref{tab:planner_goal_parameters}に示�
   \end{tabular}
 \end{table}
 
-Table\ref{tab:num_particles_result}に、パーティクル数の違いによるゴール到達の可否を示す.
+Table\ref{tab:num_particles_result}に, パーティクル数の違いによるゴール到達の可否を示す.
 
 \begin{table}[H]
   \centering
@@ -395,10 +395,10 @@ Table\ref{tab:num_particles_result}に、パーティクル数の違いによる
 Table\ref{tab:num_particles_success_rate}に，
 パーティクル数を変化させた際のゴール到達成功率を示す．
 
-Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}が示すように、パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
+Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}が示すように, パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
 その結果，パーティクル数 500 の場合に最も高いゴール到達率が得られた．
 一方で，200 および 1000 の場合は，到達率がやや低下する傾向が確認された．
-パーティクル数が少ないと自己位置推定が破綻しやすく、成功率が低下した.また、パーティクル数が多すぎても計算量の増加によって、遅延が発生して安定性が低下した。
+パーティクル数が少ないと自己位置推定が破綻しやすく, 成功率が低下した.また, パーティクル数が多すぎても計算量の増加によって、遅延が発生して安定性が低下した。
 以上より，パーティクル数は多ければ良いわけではなく，
 自己位置推定の精度と計算負荷のバランスを考慮した適切な設定が重要であることが分かる．
 本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
@@ -424,8 +424,9 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/base111.png}
- \caption{Base position}
- \label{Fig:Base position}
+ \caption{Trajectory of the robot controlled by baseline parameters}
+ \label{Fig:Trajectory of the robot controlled by baseline parameters}
+ %\label{Fig:Base position}
 \end{figure}
 
 %\begin{figure}[H]
@@ -450,9 +451,10 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.01iti2.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.01
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.01
+ %\caption{Robot position with fw\_dev\_per\_fw = 0.01
 }
- \label{Fig:Robot position with fw_dev_per_fw = 0.01}
+ \label{Fig:Trajectory of the robot with fw_dev_per_fw = 0.01}
 \end{figure}
 
 % \begin{figure}[H]
@@ -466,7 +468,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.05iti3.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.05
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.05
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.05}
 \end{figure}
@@ -482,7 +484,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.1iti3.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.1
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.1
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.1}
 \end{figure}
@@ -498,7 +500,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.3iti2.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.3
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.3
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.3}
 \end{figure}
@@ -514,7 +516,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.4iti2.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.4
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.4
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.4}
 \end{figure}
@@ -530,12 +532,12 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwfw0.5iti2.png}
- \caption{Robot position with fw\_dev\_per\_fw = 0.5
+ \caption{Trajectory of the robot with fw\_dev\_per\_fw = 0.5
 }
  \label{Fig:Robot position with fw_dev_per_fw = 0.5}
 \end{figure}
 
-\figref{Fig:Robot orientation with fw_dev_per_fw = 0.5 }で示すように、odom\_fw\_dev\_per\_fw を 0.5 に設定した場合，ロボットは走行を続けるにつれて自己位置推定の誤差が累積し，最終的にゴールに到達することができなかった．一方で，0.4 以下の値に設定した場合には，ロボットはゴールまで到達することが確認された．
+\figref{Fig:Robot position with fw_dev_per_fw = 0.5}で示すように、odom\_fw\_dev\_per\_fw を 0.5 に設定した場合，ロボットは走行を続けるにつれて自己位置推定の誤差が累積し，最終的にゴールに到達することができなかった．一方で，0.4 以下の値に設定した場合には，ロボットはゴールまで到達することが確認された．
 
 また，直線走行時の挙動を基準条件と比較すると，odom\_fw\_dev\_per\_fw を大きく設定した場合には，推定されたロボットの位置が徐々にずれていく様子が確認された．このことから，odom\_fw\_dev\_per\_fw の値を過度に大きくすると，前進移動に対するオドメトリ誤差が強調され，自己位置推定の精度が低下することが示唆される．
 
@@ -555,7 +557,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwrot0.001iti2.png}
- \caption{Robot position with fw\_dev\_per\_rot = 0.001
+ \caption{Trajectory of the robot with fw\_dev\_per\_rot = 0.001
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.001}
 \end{figure}
@@ -571,7 +573,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwrot0.01iti2.png}
- \caption{Robot position with fw\_dev\_per\_rot = 0.01
+ \caption{Trajectory of the robot with fw\_dev\_per\_rot = 0.01
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.01}
 \end{figure}
@@ -587,7 +589,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwrot0.1iti2.png}
- \caption{Robot position with fw\_dev\_per\_rot = 0.1
+ \caption{Trajectory of the robot with fw\_dev\_per\_rot = 0.1
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.1}
 \end{figure}
@@ -603,7 +605,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/fwrot0.5iti2.png}
- \caption{Robot position with fw\_dev\_per\_rot = 0.5
+ \caption{Trajectory of the robot with fw\_dev\_per\_rot = 0.5
 }
  \label{Fig:Robot position with fw_dev_per_rot = 0.5}
 \end{figure}
@@ -627,7 +629,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotfw0.01iti2.png}
- \caption{Robot position with rot\_dev\_per\_fw = 0.01
+ \caption{Trajectory of the robot with rot\_dev\_per\_fw = 0.01
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.01}
 \end{figure}
@@ -643,7 +645,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotfw0.2iti2.png}
- \caption{Robot position with rot\_dev\_per\_fw = 0.2
+ \caption{Trajectory of the robot with rot\_dev\_per\_fw = 0.2
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.2}
 \end{figure}
@@ -659,7 +661,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotfw0.3iti2.png}
- \caption{Robot position with rot\_dev\_per\_fw = 0.3
+ \caption{Trajectory of the robot with rot\_dev\_per\_fw = 0.3
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.3}
 \end{figure}
@@ -675,7 +677,7 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotfw0.4iti2.png}
- \caption{Robot position with rot\_dev\_per\_fw = 0.4
+ \caption{Trajectory of the robot with rot\_dev\_per\_fw = 0.4
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.4}
 \end{figure}
@@ -691,12 +693,12 @@ odom\_fw\_dev\_per\_rot を変化させた実験では，すべての設定値�
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotfw0.5iti2.png}
- \caption{Robot position with rot\_dev\_per\_fw = 0.5
+ \caption{Trajectory of the robot with rot\_dev\_per\_fw = 0.5
 }
  \label{Fig:Robot position with rot_dev_per_fw = 0.5}
 \end{figure}
 
-rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした場合においても，ロボットは直進走行中に自己位置および姿勢のわずかなずれが生じるのみであり，走行不能となることはなく，最終的にゴールまで問題なく到達することが確認された．
+rot\_dev\_per\_fwでの実験では, rot\_dev\_per\_fw の値を大きくした場合においても，ロボットは直進走行中に自己位置および姿勢のわずかなずれが生じるのみであり，走行不能となることはなく，最終的にゴールまで問題なく到達することが確認された．
 
 %直線走行区間（目標方位 270°）でのロボットの向きに着目すると，rot\_dev\_per\_fw を 0.01 に設定した\figref{Fig:Robot orientation with rot_dev_per_fw = 0.01 }の場合には，ロボットは目標方位をほぼ維持したまま高い精度で直進していることが確認できた．一方で，rot\_dev\_per\_fw を 0.4 以上に設定した\figref{Fig:Robot orientation with rot_dev_per_fw = 0.4 },\figref{Fig:Robot orientation with rot_dev_per_fw = 0.5 }で示した場合には，走行中のロボットの方位が 270° を下回る傾向が見られ，進行に伴って姿勢が徐々にずれていく様子が確認された．
 
@@ -717,7 +719,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotrot0.1iti2.png}
- \caption{Robot position with rot\_dev\_per\_rot = 0.1
+ \caption{Trajectory of the robot with rot\_dev\_per\_rot = 0.1
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.1}
 \end{figure}
@@ -733,7 +735,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotrot0.3iti2.png}
- \caption{Robot position with rot\_dev\_per\_rot = 0.3
+ \caption{Trajectory of the robot with rot\_dev\_per\_rot = 0.3
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.3}
 \end{figure}
@@ -749,7 +751,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotrot0.4iti2.png}
- \caption{Robot position with rot\_dev\_per\_rot = 0.4
+ \caption{Trajectory of the robot with rot\_dev\_per\_rot = 0.4
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.4}
 \end{figure}
@@ -765,7 +767,7 @@ rot\_dev\_per\_fwでの実験では、rot\_dev\_per\_fw の値を大きくした
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rotrot0.5iti2.png}
- \caption{Robot position with rot\_dev\_per\_rot = 0.5
+ \caption{Trajectory of the robot with rot\_dev\_per\_rot = 0.5
 }
  \label{Fig:Robot position with rot_dev_per_rot = 0.5}
 \end{figure}
@@ -803,7 +805,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/llmd0.5iti2.png}
- \caption{Robot position with laser\_likelihood\_max\_dist = 0.5
+ \caption{Trajectory of the robot with laser\_likelihood\_max\_dist = 0.5
 }
  \label{Fig:Robot position with laser_likelihood_max_dist = 0.5}
 \end{figure}
@@ -819,7 +821,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/llmd1.0iti2.png}
- \caption{Robot position with laser\_likelihood\_max\_dist = 1.0
+ \caption{Trajectory of the robot with laser\_likelihood\_max\_dist = 1.0
 }
  \label{Fig:Robot position with laser_likelihood_max_dist = 1.0}
 \end{figure}
@@ -853,7 +855,7 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rt0.5iti2.png}
- \caption{Robot position with range\_threshold = 0.5
+ \caption{Trajectory of the robot with range\_threshold = 0.5
 }
  \label{Fig:Robot position with range_threshold = 0.5}
 \end{figure}
@@ -869,14 +871,14 @@ rot\_dev\_per\_rot を 0.5 および 0.4 に設定した条件では，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/rt0.9iti2.png}
- \caption{Robot position with range\_threshold = 0.9
+ \caption{Trajectory of the robot with range\_threshold = 0.9
 }
  \label{Fig:Robot position with range_threshold = 0.9}
 \end{figure}
 
 %\subsection{range\_threshold に関する実験結果}
 
-本実験では、基準値である range\_threshold = 0.3 の場合，
+本実験では, 基準値である range\_threshold = 0.3 の場合，
 ロボットは主に比較的近距離のレーザスキャン情報を用いて
 自己位置推定を行っており，
 推定された位置および姿勢は安定していた．
@@ -922,7 +924,7 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx0.2iti2.png}
- \caption{Robot position with max\_vel\_x = 0.2
+ \caption{Trajectory of the robot with max\_vel\_x = 0.2
 }
  \label{Fig:Robot position with max_vel_x = 0.2}
 \end{figure}
@@ -939,7 +941,7 @@ emcl2の各パラメータの結果より，emcl2 における各パラメータ
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx1.0iti2.png}
- \caption{Robot position with max\_vel\_x = 1.0
+ \caption{Trajectory of the robot with max\_vel\_x = 1.0
 }
  \label{Fig:Robot position with max_vel_x = 1.0}
 \end{figure}
@@ -988,7 +990,7 @@ Controller 以外のパラメータや
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvt0.4iti2.png}
- \caption{Robot position with max\_vel\_theta = 0.4
+ \caption{Trajectory of the robot with max\_vel\_theta = 0.4
 }
  \label{Fig:Robot position with max_vel_theta = 0.4}
 \end{figure}
@@ -1004,7 +1006,7 @@ Controller 以外のパラメータや
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvt1.0iti2.png}
- \caption{Robot position with max\_vel\_theta = 1.0
+ \caption{Trajectory of the robot with max\_vel\_theta = 1.0
 }
  \label{Fig:Robot position with max_vel_theta = 1.0}
 \end{figure}
@@ -1014,7 +1016,7 @@ Controller 以外のパラメータや
 %最大角速度を制御するパラメータ max\_vel\_theta を変更し，
 %ロボットの旋回挙動への影響を調査した．
 
-本実験で、max\_vel\_theta の値を基準値より大きく設定した場合，
+本実験で, max\_vel\_theta の値を基準値より大きく設定した場合，
 ロボットの走行挙動に顕著な変化は見られなかった．
 この結果から，
 基準値の時点でロボットの旋回性能は十分に確保されており，
@@ -1051,7 +1053,7 @@ max\_vel\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/msxy0.1iti2.png}
- \caption{Robot position with max\_speed\_xy = 0.1
+ \caption{Trajectory of the robot with max\_speed\_xy = 0.1
 }
  \label{Fig:Robot position with max_speed_xy = 0.1}
 \end{figure}
@@ -1067,7 +1069,7 @@ max\_vel\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/msxy0.5iti2.png}
- \caption{Robot position with max\_speed\_xy = 0.5
+ \caption{Trajectory of the robot with max\_speed\_xy = 0.5
 }
  \label{Fig:Robot position with max_speed_xy = 0.5}
 \end{figure}
@@ -1083,7 +1085,7 @@ max\_vel\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/msxy1.5iti2.png}
- \caption{Robot position with max\_speed\_xy = 1.5
+ \caption{Trajectory of the robot with max\_speed\_xy = 1.5
 }
  \label{Fig:Robot position with max_speed_xy = 1.5}
 \end{figure}
@@ -1094,7 +1096,7 @@ max\_vel\_theta を過度に小さく設定すると，
 %並進方向の合成速度の上限を制御するパラメータ max\_speed\_xy を変更し，
 %ロボットの走行挙動への影響を調査した．
 
-本実験では、max\_speed\_xy を 0.5 に設定した場合，
+本実験では, max\_speed\_xy を 0.5 に設定した場合，
 ロボットは安定した走行を維持したままゴールへ到達することができた．
 また，max\_speed\_xy を 1.5 に設定した場合においても，
 ロボットの実際の走行速度に大きな変化は見られなかった．
@@ -1139,7 +1141,7 @@ max\_speed\_xy を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mtvt0.01iti2.png}
- \caption{Robot position with min\_theta\_velocity\_threshold = 0.01
+ \caption{Trajectory of the robot with min\_theta\_velocity\_threshold = 0.01
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 0.01}
 \end{figure}
@@ -1154,7 +1156,7 @@ max\_speed\_xy を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mtvt0.1iti2.png}
- \caption{Robot position with min\_theta\_velocity\_threshold = 0.1
+ \caption{Trajectory of the robot with min\_theta\_velocity\_threshold = 0.1
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 0.1}
 \end{figure}
@@ -1169,7 +1171,7 @@ max\_speed\_xy を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mtvt1.0iti2.png}
- \caption{Robot position with min\_theta\_velocity\_threshold = 1.0
+ \caption{Trajectory of the robot with min\_theta\_velocity\_threshold = 1.0
 }
  \label{Fig:Robot position with min_theta_velocity_threshold = 1.0}
 \end{figure}
@@ -1180,7 +1182,7 @@ max\_speed\_xy を過度に小さく設定すると，
 %min\_theta\_velocity\_threshold を変更し，
 %ロボットの旋回挙動への影響を調査した．
 
-本実験では、基準値である min\_theta\_velocity\_threshold = 0.001 に対し，
+本実験では, 基準値である min\_theta\_velocity\_threshold = 0.001 に対し，
 本実験では 0.01，0.1，1.0 の各値について走行実験を行った．
 その結果，基準値から値を段階的に増加させた場合においても，
 ロボットの走行挙動に大きな変化は確認されなかった．
@@ -1213,7 +1215,7 @@ min\_theta\_velocity\_threshold は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alx0.1iti2.png}
- \caption{Robot position with acc\_lim\_x = 0.1
+ \caption{Trajectory of the robot with acc\_lim\_x = 0.1
 }
  \label{Fig:Robot position with acc_lim_x = 0.1}
 \end{figure}
@@ -1229,7 +1231,7 @@ min\_theta\_velocity\_threshold は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alx0.5iti2.png}
- \caption{Robot position with acc\_lim\_x = 0.5
+ \caption{Trajectory of the robot with acc\_lim\_x = 0.5
 }
  \label{Fig:Robot position with acc_lim_x = 0.5}
 \end{figure}
@@ -1244,7 +1246,7 @@ min\_theta\_velocity\_threshold は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alx1.5iti2.png}
- \caption{Robot position with acc\_lim\_x = 1.5
+ \caption{Trajectory of the robot with acc\_lim\_x = 1.5
 }
  \label{Fig:Robot position with acc_lim_x = 1.5}
 \end{figure}
@@ -1254,7 +1256,7 @@ min\_theta\_velocity\_threshold は，
 %並進方向の加速度制限を定義するパラメータ acc\_lim\_x を変更し，
 %ロボットの走行挙動への影響を調査した．
 
-本実験では、acc\_lim\_x の値を変化させた場合，
+本実験では, acc\_lim\_x の値を変化させた場合，
 曲がり角通過後の直進動作において，
 ロボットの加速がやや速く感じられる場面が確認された．
 しかしながら，それ以外の走行挙動においては
@@ -1287,7 +1289,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alt0.1iti2.png}
- \caption{Robot position with acc\_lim\_theta = 0.1
+ \caption{Trajectory of the robot with acc\_lim\_theta = 0.1
 }
  \label{Fig:Robot position with acc_lim_theta = 0.1}
 \end{figure}
@@ -1302,7 +1304,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alt1.0iti2.png}
- \caption{Robot position with acc\_lim\_theta = 1.0
+ \caption{Trajectory of the robot with acc\_lim\_theta = 1.0
 }
  \label{Fig:Robot position with acc_lim_theta = 1.0}
 \end{figure}
@@ -1317,7 +1319,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/alt4.0iti2.png}
- \caption{Robot position with acc\_lim\_theta = 4.0
+ \caption{Trajectory of the robot with acc\_lim\_theta = 4.0
 }
  \label{Fig:Robot position with acc_lim_theta = 4.0}
 \end{figure}
@@ -1327,7 +1329,7 @@ acc\_lim\_x はロボットの加速特性を決定する上で
 %角加速度の制限を定義するパラメータ acc\_lim\_theta を変更し，
 %ロボットの旋回挙動への影響を調査した．
 
-本実験では、acc\_lim\_theta を 0.1 に設定した場合，
+本実験では, acc\_lim\_theta を 0.1 に設定した場合，
 最終的な旋回動作前の直進区間と旋回中において，
 ロボットの進行方向が細かく変化する，
 いわゆるくねくねとした挙動が確認された．
@@ -1366,7 +1368,7 @@ acc\_lim\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lg0.01iti2.png}
- \caption{Robot position with linear\_granularity = 0.01
+ \caption{Trajectory of the robot with linear\_granularity = 0.01
 }
  \label{Fig:Robot position with linear_granularity = 0.01}
 \end{figure}
@@ -1381,7 +1383,7 @@ acc\_lim\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lg0.1iti2.png}
- \caption{Robot position with linear\_granularity = 0.1
+ \caption{Trajectory of the robot with linear\_granularity = 0.1
 }
  \label{Fig:Robot position with linear_granularity = 0.1}
 \end{figure}
@@ -1396,7 +1398,7 @@ acc\_lim\_theta を過度に小さく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lg0.5iti2.png}
- \caption{Robot position with linear\_granularity = 0.5
+ \caption{Trajectory of the robot with linear\_granularity = 0.5
 }
  \label{Fig:Robot position with linear_granularity = 0.5}
 \end{figure}
@@ -1409,7 +1411,7 @@ acc\_lim\_theta を過度に小さく設定すると，
 
 %本実験では、基準値である linear\_granularity = 0.05 に対し，
 %0.1 および 0.5 の各値について走行実験を行った．
-本実験では、linear\_granularity を 0.5 に設定した場合，
+本実験では, linear\_granularity を 0.5 に設定した場合，
 走行開始後の最初の旋回箇所において
 ロボットが一時的に停止する挙動が確認され，
 その後，再び動き出すまでに時間を要した．
@@ -1449,7 +1451,7 @@ linear\_granularity を過度に大きく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/ag0.001iti2.png}
- \caption{Robot position with angular\_granularity = 0.001
+ \caption{Trajectory of the robot with angular\_granularity = 0.001
 }
  \label{Fig:Robot position with angular_granularity = 0.001}
 \end{figure}
@@ -1465,7 +1467,7 @@ linear\_granularity を過度に大きく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/ag0.01iti2.png}
- \caption{Robot position with angular\_granularity = 0.01
+ \caption{Trajectory of the robot with angular\_granularity = 0.01
 }
  \label{Fig:Robot position with angular_granularity = 0.01}
 \end{figure}
@@ -1481,7 +1483,7 @@ linear\_granularity を過度に大きく設定すると，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/ag0.04iti2.png}
- \caption{Robot position with angular\_granularity = 0.04
+ \caption{Trajectory of the robot with angular\_granularity = 0.04
 }
  \label{Fig:Robot position with angular_granularity = 0.04}
 \end{figure}
@@ -1493,7 +1495,7 @@ linear\_granularity を過度に大きく設定すると，
 %angular\_granularity を変更し，
 %ロボットの走行挙動への影響を調査した．
 
-本実験では、angular\_granularity の値を基準値より小さく設定した場合，
+本実験では, angular\_granularity の値を基準値より小さく設定した場合，
 ロボットの走行挙動に大きな変化は見られず，
 旋回および直進動作ともに
 安定した走行が確認された．
@@ -1535,7 +1537,7 @@ angular\_granularity は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/xygt0.01iti2.png}
- \caption{Robot position with xy\_goal\_tolerance = 0.01
+ \caption{Trajectory of the robot with xy\_goal\_tolerance = 0.01
 }
  \label{Fig:Robot position with xy_goal_tolerance = 0.01}
 \end{figure}
@@ -1551,7 +1553,7 @@ angular\_granularity は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/xygt0.1iti2.png}
- \caption{Robot position with xy\_goal\_tolerance = 0.1
+ \caption{Trajectory of the robot with xy\_goal\_tolerance = 0.1
 }
  \label{Fig:Robot position with xy_goal_tolerance = 0.1}
 \end{figure}
@@ -1567,7 +1569,7 @@ angular\_granularity は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/xygt0.4iti2.png}
- \caption{Robot position with xy\_goal\_tolerance = 0.4
+ \caption{Trajectory of the robot with xy\_goal\_tolerance = 0.4
 }
  \label{Fig:Robot position with xy_goal_tolerance = 0.4}
 \end{figure}
@@ -1578,7 +1580,7 @@ angular\_granularity は，
 %xy\_goal\_tolerance を変更し，
 %ロボットの走行挙動およびゴール到達時の安定性への影響を評価した．
 
-本実験では、xy\_goal\_tolerance の値を0.01,0.1,0.4に設定して実験を行った結果，
+本実験では, xy\_goal\_tolerance の値を0.01,0.1,0.4に設定して実験を行った結果，
 いずれの値においても，
 ロボットの走行挙動に顕著な変化は確認されなかった．
 また，ゴール付近での振動や停止位置の不安定化といった現象も見られず，
@@ -1600,7 +1602,7 @@ Controller に関するパラメータは，
 運動特性を調整する上で重要な役割を果たす一方で，
 閾値やゴール判定に関するパラメータは
 補助的な役割を果たすことが示唆される．
-また、一部のパラメータについては，
+また, 一部のパラメータについては，
 他の設定値やシステム制約との相互作用によって
 挙動への影響が限定されることが分かった．
 そのため，Controller パラメータの調整においては，
@@ -1626,7 +1628,7 @@ Controller に関するパラメータは，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gr0.05iti2.png}
- \caption{Robot position with global\_resolution = 0.05
+ \caption{Trajectory of the robot with global\_resolution = 0.05
 }
  \label{Fig:Robot position with global_resolution = 0.05}
 \end{figure}
@@ -1641,7 +1643,7 @@ Controller に関するパラメータは，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gr0.5iti2.png}
- \caption{Robot position with global\_resolution = 0.5
+ \caption{Trajectory of the robot with global\_resolution = 0.5
 }
  \label{Fig:Robot position with global_resolution = 0.5}
 \end{figure}
@@ -1656,7 +1658,7 @@ Controller に関するパラメータは，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gr1.0iti2.png}
- \caption{Robot position with global\_resolution = 1.0
+ \caption{Trajectory of the robot with global\_resolution = 1.0
 }
  \label{Fig:Robot position with global_resolution = 1.0}
 \end{figure}
@@ -1700,7 +1702,7 @@ global\_resolution を変更しても，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gcsf1.0iti2.png}
- \caption{Robot position with global\_cost\_scaling\_factor = 1.0
+ \caption{Trajectory of the robot with global\_cost\_scaling\_factor = 1.0
 }
  \label{Fig:Robot position with global_cost_scaling_factor = 1.0}
 \end{figure}
@@ -1715,7 +1717,7 @@ global\_resolution を変更しても，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gcsf5.0iti2.png}
- \caption{Robot position with global\_cost\_scaling\_factor = 5.0
+ \caption{Trajectory of the robot with global\_cost\_scaling\_factor = 5.0
 }
  \label{Fig:Robot position with global_cost_scaling_factor = 5.0}
 \end{figure}
@@ -1730,7 +1732,7 @@ global\_resolution を変更しても，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gcsf10iti2.png}
- \caption{Robot position with global\_cost\_scaling\_factor = 10
+ \caption{Trajectory of the robot with global\_cost\_scaling\_factor = 10
 }
  \label{Fig:Robot position with global_cost_scaling_factor = 10}
 \end{figure}
@@ -1784,7 +1786,7 @@ global\_cost\_scaling\_factor は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gir0.1iti2.png}
- \caption{Robot position with global\_inflation\_radius = 0.1
+ \caption{Trajectory of the robot with global\_inflation\_radius = 0.1
 }
  \label{Fig:Robot position with global_inflation_radius = 0.1}
 \end{figure}
@@ -1799,7 +1801,7 @@ global\_cost\_scaling\_factor は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gir1.0iti2.png}
- \caption{Robot position with global\_inflation\_radius = 1.0
+ \caption{Trajectory of the robot with global\_inflation\_radius = 1.0
 }
  \label{Fig:Robot position with global_inflation_radius = 1.0}
 \end{figure}
@@ -1814,7 +1816,7 @@ global\_cost\_scaling\_factor は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/gir2.0iti2.png}
- \caption{Robot position with global\_inflation\_radius = 2.0
+ \caption{Trajectory of the robot with global\_inflation\_radius = 2.0
 }
  \label{Fig:Robot position with global_inflation_radius = 2.0}
 \end{figure}
@@ -1870,7 +1872,7 @@ global\_inflation\_radius は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lr0.05iti2.png}
- \caption{Robot position with local\_resolution = 0.05
+ \caption{Trajectory of the robot with local\_resolution = 0.05
 }
  \label{Fig:Robot position with local_resolution = 0.05}
 \end{figure}
@@ -1885,7 +1887,7 @@ global\_inflation\_radius は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lr0.5iti2.png}
- \caption{Robot position with local\_resolution = 0.5
+ \caption{Trajectory of the robot with local\_resolution = 0.5
 }
  \label{Fig:Robot position with local_resolution = 0.5}
 \end{figure}
@@ -1900,7 +1902,7 @@ global\_inflation\_radius は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lr1.0iti2.png}
- \caption{Robot position with local\_resolution = 1.0
+ \caption{Trajectory of the robot with local\_resolution = 1.0
 }
  \label{Fig:Robot position with local_resolution = 1.0}
 \end{figure}
@@ -1971,7 +1973,7 @@ local\_resolution はロボットの走行安定性や
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lcsf1.0iti2.png}
- \caption{Robot position with local\_cost\_scaling\_factor = 1.0
+ \caption{Trajectory of the robot with local\_cost\_scaling\_factor = 1.0
 }
  \label{Fig:Robot position with local_cost_scaling_factor = 1.0}
 \end{figure}
@@ -1986,7 +1988,7 @@ local\_resolution はロボットの走行安定性や
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lcsf5.0iti2.png}
- \caption{Robot position with local\_cost\_scaling\_factor = 5.0
+ \caption{Trajectory of the robot with local\_cost\_scaling\_factor = 5.0
 }
  \label{Fig:Robot position with local_cost_scaling_factor = 5.0}
 \end{figure}
@@ -2001,7 +2003,7 @@ local\_resolution はロボットの走行安定性や
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lcsf10iti2.png}
- \caption{Robot position with local\_cost\_scaling\_factor = 10
+ \caption{Trajectory of the robot with local\_cost\_scaling\_factor = 10
 }
  \label{Fig:Robot position with local_cost_scaling_factor = 10}
 \end{figure}
@@ -2054,7 +2056,7 @@ local\_cost\_scaling\_factor の値を
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lir0.1iti2.png}
- \caption{Robot position with local\_inflation\_radius = 0.1
+ \caption{Trajectory of the robot with local\_inflation\_radius = 0.1
 }
  \label{Fig:Robot position with local_inflation_radius = 0.1}
 \end{figure}
@@ -2070,7 +2072,7 @@ local\_cost\_scaling\_factor の値を
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lir0.5iti2.png}
- \caption{Robot position with local\_inflation\_radius = 0.5
+ \caption{Trajectory of the robot with local\_inflation\_radius = 0.5
 }
  \label{Fig:Robot position with local_inflation_radius = 0.5}
 \end{figure}
@@ -2086,7 +2088,7 @@ local\_cost\_scaling\_factor の値を
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lir1.0iti2.png}
- \caption{Robot position with local\_inflation\_radius = 1.0
+ \caption{Trajectory of the robot with local\_inflation\_radius = 1.0
 }
  \label{Fig:Robot position with local_inflation_radius = 1.0}
 \end{figure}
@@ -2101,7 +2103,7 @@ local\_cost\_scaling\_factor の値を
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/lir2.0iti2.png}
- \caption{Robot position with local\_inflation\_radius = 2.0
+ \caption{Trajectory of the robot with local\_inflation\_radius = 2.0
 }
  \label{Fig:Robot position with local_inflation_radius = 2.0}
 \end{figure}
@@ -2174,7 +2176,7 @@ Local Costmap の解像度設定は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/sf5iti2.png}
- \caption{Robot position with smoothing\_frequency = 5
+ \caption{Trajectory of the robot with smoothing\_frequency = 5
 }
  \label{Fig:Robot position with smoothing_frequency = 5}
 \end{figure}
@@ -2190,7 +2192,7 @@ Local Costmap の解像度設定は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/sf10iti2.png}
- \caption{Robot position with smoothing\_frequency = 10
+ \caption{Trajectory of the robot with smoothing\_frequency = 10
 }
  \label{Fig:Robot position with smoothing_frequency = 10}
 \end{figure}
@@ -2206,7 +2208,7 @@ Local Costmap の解像度設定は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/sf40iti2.png}
- \caption{Robot position with smoothing\_frequency = 40
+ \caption{Trajectory of the robot with smoothing\_frequency = 40
 }
  \label{Fig:Robot position with smoothing_frequency = 40}
 \end{figure}
@@ -2222,7 +2224,7 @@ Local Costmap の解像度設定は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/sf60iti2.png}
- \caption{Robot position with smoothing\_frequency = 60
+ \caption{Trajectory of the robot with smoothing\_frequency = 60
 }
  \label{Fig:Robot position with smoothing_frequency = 60}
 \end{figure}
@@ -2283,7 +2285,7 @@ smoothing\_frequency は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx0.3iti2.png}
- \caption{Robot position with max\_velocity\_x = 0.3
+ \caption{Trajectory of the robot with max\_velocity\_x = 0.3
 }
  \label{Fig:Robot position with max_velocity_x = 0.3}
 \end{figure}
@@ -2299,7 +2301,7 @@ smoothing\_frequency は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx0.9iti2.png}
- \caption{Robot position with max\_velocity\_x = 0.9
+ \caption{Trajectory of the robot with max\_velocity\_x = 0.9
 }
  \label{Fig:Robot position with max_velocity_x = 0.9}
 \end{figure}
@@ -2315,7 +2317,7 @@ smoothing\_frequency は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvx1.2iti2.png}
- \caption{Robot position with max\_velocity\_x = 1.2
+ \caption{Trajectory of the robot with max\_velocity\_x = 1.2
 }
  \label{Fig:Robot position with max_velocity_x = 1.2}
 \end{figure}
@@ -2341,7 +2343,7 @@ smoothing\_frequency は，
 ナビゲーションの成立自体には大きな影響を及ぼさないことが確認された．
 
 一方で，
-値を基準より大きく設定した0.9、1.2の場合には，
+値を基準より大きく設定した0.9, 1.2の場合には，
 設定値に関わらず，
 ロボットの走行速度が明らかに基準値である 0.6\,m/s を超えることはなく，
 実際の挙動に大きな変化は見られなかった．
@@ -2379,7 +2381,7 @@ Velocity Smoother の \texttt{max\_velocity}（x 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvt0.6iti2.png}
- \caption{Robot position with max\_velocity\_theta = 0.6
+ \caption{Trajectory of the robot with max\_velocity\_theta = 0.6
 }
  \label{Fig:Robot position with max_velocity_theta = 0.6}
 \end{figure}
@@ -2395,7 +2397,7 @@ Velocity Smoother の \texttt{max\_velocity}（x 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mvt2.5iti2.png}
- \caption{Robot position with max\_velocity\_theta = 2.5
+ \caption{Trajectory of the robot with max\_velocity\_theta = 2.5
 }
  \label{Fig:Robot position with max_velocity_theta = 2.5}
 \end{figure}
@@ -2450,7 +2452,7 @@ Velocity Smoother における \texttt{max\_velocity}（$\theta$ 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mams0.2iti2.png}
- \caption{Robot position with max\_accel\_x = 0.2
+ \caption{Trajectory of the robot with max\_accel\_x = 0.2
 }
  \label{Fig:Robot position with max_accel_x = 0.2}
 \end{figure}
@@ -2466,7 +2468,7 @@ Velocity Smoother における \texttt{max\_velocity}（$\theta$ 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mams1.0iti2.png}
- \caption{Robot position with max\_accel\_x = 1.0
+ \caption{Trajectory of the robot with max\_accel\_x = 1.0
 }
  \label{Fig:Robot position with max_accel_x = 1.0}
 \end{figure}
@@ -2525,7 +2527,7 @@ Velocity Smoother における \texttt{max\_accel}（x 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mars0.5iti2.png}
- \caption{Robot position with max\_accel\_theta = 0.5
+ \caption{Trajectory of the robot with max\_accel\_theta = 0.5
 }
  \label{Fig:Robot position with max_accel_theta = 0.5}
 \end{figure}
@@ -2541,7 +2543,7 @@ Velocity Smoother における \texttt{max\_accel}（x 成分）は，
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/mars2.0iti2.png}
- \caption{Robot position with max\_accel\_theta = 2.0
+ \caption{Trajectory of the robot with max\_accel\_theta = 2.0
 }
  \label{Fig:Robot position with max_accel_theta = 2.0}
 \end{figure}
@@ -2847,7 +2849,7 @@ xy\_goal\_tolerance の設定値が
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/tsv0.01iti2.png}
- \caption{Robot position with trans\_stopped\_velocity = 0.01
+ \caption{Trajectory of the robot with trans\_stopped\_velocity = 0.01
 }
  \label{Fig:Robot position with trans_stopped_velocity = 0.01}
 \end{figure}
@@ -2862,7 +2864,7 @@ xy\_goal\_tolerance の設定値が
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/tsv0.1iti2.png}
- \caption{Robot position with trans\_stopped\_velocity = 0.1
+ \caption{Trajectory of the robot with trans\_stopped\_velocity = 0.1
 }
  \label{Fig:Robot position with trans_stopped_velocity = 0.1}
 \end{figure}
@@ -2877,7 +2879,7 @@ xy\_goal\_tolerance の設定値が
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/tsv0.4iti2.png}
- \caption{Robot position with trans\_stopped\_velocity = 0.4
+ \caption{Trajectory of the robot with trans\_stopped\_velocity = 0.4
 }
  \label{Fig:Robot position with trans_stopped_velocity = 0.4}
 \end{figure}
@@ -2936,7 +2938,7 @@ trans\_stopped\_velocity の値は
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/pt0.1iti2.png}
- \caption{Robot position with planner\_tolerance = 0.1
+ \caption{Trajectory of the robot with planner\_tolerance = 0.1
 }
  \label{Fig:Robot position with planner_tolerance = 0.1}
 \end{figure}
@@ -2952,7 +2954,7 @@ trans\_stopped\_velocity の値は
   \centering
  \includegraphics[keepaspectratio, scale=0.6]
       {images/pt1.0iti2.png}
- \caption{Robot position with planner\_tolerance = 1.0
+ \caption{Trajectory of the robot with planner\_tolerance = 1.0
 }
  \label{Fig:Robot position with planner_tolerance = 1.0}
 \end{figure}
