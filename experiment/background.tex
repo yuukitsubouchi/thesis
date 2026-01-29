@@ -53,7 +53,7 @@
  \label{Fig:Overview of ORNE-box3 and its onboard sensors}
 \end{figure}
 
-実験には，本研究室で開発されている自律移動ロボット ORNE-box3\cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne} を使用した．ORNE-box3 の外観を\figref{Fig:ORNE-box3} に示す．
+実験には，本研究室で開発されている自律移動ロボット ORNE-box3\cite{井口颯人2023屋外自律移動ロボットプラットフォーム-orne} を使用した．ORNE-box3 の外観を\figref{Fig:Overview of ORNE-box3 and its onboard sensors} に示す．
 
 本ロボットは，計算機として Jetson Orin NX 16GB を搭載しており，自己位置推定およびナビゲーション処理を行う．また，周辺環境の認識および状態推定のために，3D LiDAR（R-Fans-16），IMU（ADIS16465），エンコーダ（i-Cart middle）を備えている．
 
@@ -96,7 +96,7 @@ num\_particles以外のパラメータについては，自己位置推定の結
 本研究において基準とした Navigation2 および emcl2 のパラメータを
 Table \ref{tab:emcl2_parameters}〜Table \ref{tab:planner_goal_parameters}に示す。
 
-また，変更したパラメータの対応をTable\ref{tab:exp_emcl2}〜Table\ref{tab:exp_planner_goal}に示す．各実験では，表に示したパラメータのみを基準値から変更し，その他の設定はすべて基準値と同一とした．
+また，変更したパラメータの対応をTable \ref{tab:exp_emcl2}〜Table \ref{tab:exp_planner_goal}に示す．各実験では，表に示したパラメータのみを基準値から変更し，その他の設定はすべて基準値と同一とした．
 
 \begin{table}[H]
   \centering
@@ -374,7 +374,7 @@ Table \ref{tab:emcl2_parameters}〜Table \ref{tab:planner_goal_parameters}に示
   \end{tabular}
 \end{table}
 
-Table\ref{tab:num_particles_result}に, パーティクル数の違いによるゴール到達の可否を示す.
+Table \ref{tab:num_particles_result}に, パーティクル数の違いによるゴール到達の可否を示す.
 
 \begin{table}[H]
   \centering
@@ -392,10 +392,10 @@ Table\ref{tab:num_particles_result}に, パーティクル数の違いによる�
   \end{tabular}
 \end{table}
 
-Table\ref{tab:num_particles_success_rate}に，
+Table \ref{tab:num_particles_success_rate}に，
 パーティクル数を変化させた際のゴール到達成功率を示す．
 
-Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}が示すように, パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
+Table \ref{tab:num_particles_result}, Table \ref{tab:num_particles_success_rate}が示すように, パーティクル数を 200，500，1000 と変化させて自己位置推定の安定性を評価した．
 その結果，パーティクル数 500 の場合に最も高いゴール到達率が得られた．
 一方で，200 および 1000 の場合は，到達率がやや低下する傾向が確認された．
 パーティクル数が少ないと自己位置推定が破綻しやすく, 成功率が低下した.また, パーティクル数が多すぎても計算量の増加によって、遅延が発生して安定性が低下した。
@@ -404,7 +404,7 @@ Table\ref{tab:num_particles_result}, Table\ref{tab:num_particles_success_rate}�
 本実験環境においては，パーティクル数 500 が最も安定した性能を示した．
 
 \section{実験2の結果}
-次からの実験では, ロボットの位置を比較する. \figref{Fig:Base position}のグラフが基準の値の時のロボットの位置である. このロボットの位置のグラフにおけるゴールは, x座標-275～-270, y座標-380～-370の所である.また,スタート地点を基準にしているため\figref{Fig:Base position}のようなグラフになっている.
+次からの実験では, ロボットの位置を比較する. \figref{Fig:Trajectory of the robot controlled by baseline parameters}のグラフが基準の値の時のロボットの位置である. このロボットの位置のグラフにおけるゴールは, x座標-275～-270, y座標-380～-370の所である.また,スタート地点を基準にしているため\figref{Fig:Trajectory of the robot controlled by baseline parameters}のようなグラフになっている.
 % \begin{figure}[H]
 %   \centering
 %  \includegraphics[keepaspectratio, scale=0.6]
